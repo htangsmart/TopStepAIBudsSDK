@@ -220,17 +220,6 @@ extension TopStepAIBudsSDK.TopStepAIBuds : TopStepAIBudsSDK.TSSoudbudObserver {
   public static func makeScanError(type: TopStepAIBudsSDK.TSBTErrorType) -> Foundation.NSError
   @objc deinit
 }
-@_hasMissingDesignatedInitializers @objc public class TSSBEarbuds : TopStepAIBudsSDK.TSBTDevice {
-  @objc public var commandManager: TopStepAIBudsSDK.TSSBEarbudsCommMannger {
-    get
-  }
-  @objc override public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didDiscoverServices error: (any Swift.Error)?)
-  @objc override public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didDiscoverCharacteristicsFor service: CoreBluetooth.CBService, error: (any Swift.Error)?)
-  @objc override public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didUpdateNotificationStateFor characteristic: CoreBluetooth.CBCharacteristic, error: (any Swift.Error)?)
-  @objc override public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didWriteValueFor characteristic: CoreBluetooth.CBCharacteristic, error: (any Swift.Error)?)
-  @objc override public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didUpdateValueFor characteristic: CoreBluetooth.CBCharacteristic, error: (any Swift.Error)?)
-  @objc deinit
-}
 @objc public enum TSSBBTCommandType : Swift.UInt8 {
   case request = 1
   case response = 2
@@ -528,6 +517,17 @@ extension TopStepAIBudsSDK.TSSBEarbudsCommMannger {
   @objc dynamic public func startFileTransfer(result: @escaping (_ code: Swift.Int, _ error: (any Swift.Error)?) -> Swift.Void)
   @objc dynamic public func setABMateStandardTime(timestamp: Swift.UInt32, timezoneMinutes: Swift.Int16, result: @escaping (_ resultCode: Swift.UInt8, _ error: (any Swift.Error)?) -> Swift.Void)
   @objc dynamic public func controlABMetaRecord(recordType: Swift.UInt8, status: Swift.UInt8, result: @escaping (_ isSuccess: Swift.Bool, _ error: (any Swift.Error)?) -> Swift.Void)
+}
+@_hasMissingDesignatedInitializers @objc public class TSSBEarbuds : TopStepAIBudsSDK.TSBTDevice {
+  @objc public var commandManager: TopStepAIBudsSDK.TSSBEarbudsCommMannger {
+    get
+  }
+  @objc override public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didDiscoverServices error: (any Swift.Error)?)
+  @objc override public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didDiscoverCharacteristicsFor service: CoreBluetooth.CBService, error: (any Swift.Error)?)
+  @objc override public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didUpdateNotificationStateFor characteristic: CoreBluetooth.CBCharacteristic, error: (any Swift.Error)?)
+  @objc override public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didWriteValueFor characteristic: CoreBluetooth.CBCharacteristic, error: (any Swift.Error)?)
+  @objc override public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didUpdateValueFor characteristic: CoreBluetooth.CBCharacteristic, error: (any Swift.Error)?)
+  @objc deinit
 }
 extension TopStepAIBudsSDK.TSSBEarbudsCommandType : Swift.Equatable {}
 extension TopStepAIBudsSDK.TSSBEarbudsCommandType : Swift.Hashable {}

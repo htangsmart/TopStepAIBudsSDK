@@ -6,6 +6,16 @@
     "children": [
       {
         "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "TopStepAIBudsSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
         "name": "UIKit",
         "printedName": "UIKit",
         "declKind": "Import",
@@ -8238,16 +8248,6 @@
       },
       {
         "kind": "Import",
-        "name": "Foundation",
-        "printedName": "Foundation",
-        "declKind": "Import",
-        "moduleName": "TopStepAIBudsSDK",
-        "declAttributes": [
-          "RawDocComment"
-        ]
-      },
-      {
-        "kind": "Import",
         "name": "UIKit",
         "printedName": "UIKit",
         "declKind": "Import",
@@ -10454,422 +10454,6 @@
         "moduleName": "TopStepAIBudsSDK",
         "declAttributes": [
           "RawDocComment"
-        ]
-      },
-      {
-        "kind": "Import",
-        "name": "CoreBluetooth",
-        "printedName": "CoreBluetooth",
-        "declKind": "Import",
-        "moduleName": "TopStepAIBudsSDK",
-        "declAttributes": [
-          "RawDocComment"
-        ]
-      },
-      {
-        "kind": "TypeDecl",
-        "name": "TSSBEarbuds",
-        "printedName": "TSSBEarbuds",
-        "children": [
-          {
-            "kind": "Var",
-            "name": "commandManager",
-            "printedName": "commandManager",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "TSSBEarbudsCommMannger",
-                "printedName": "TopStepAIBudsSDK.TSSBEarbudsCommMannger",
-                "usr": "c:@M@TopStepAIBudsSDK@objc(cs)TSSBEarbudsCommMannger"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "c:@M@TopStepAIBudsSDK@objc(cs)TSSBEarbuds(py)commandManager",
-            "mangledName": "$s16TopStepAIBudsSDK11TSSBEarbudsC14commandManagerAA0E11CommManngerCvp",
-            "moduleName": "TopStepAIBudsSDK",
-            "declAttributes": [
-              "HasStorage",
-              "SetterAccess",
-              "AccessControl",
-              "ObjC",
-              "RawDocComment"
-            ],
-            "hasStorage": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "TSSBEarbudsCommMannger",
-                    "printedName": "TopStepAIBudsSDK.TSSBEarbudsCommMannger",
-                    "usr": "c:@M@TopStepAIBudsSDK@objc(cs)TSSBEarbudsCommMannger"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "c:@M@TopStepAIBudsSDK@objc(cs)TSSBEarbuds(im)commandManager",
-                "mangledName": "$s16TopStepAIBudsSDK11TSSBEarbudsC14commandManagerAA0E11CommManngerCvg",
-                "moduleName": "TopStepAIBudsSDK",
-                "implicit": true,
-                "declAttributes": [
-                  "ObjC"
-                ],
-                "accessorKind": "get"
-              }
-            ]
-          },
-          {
-            "kind": "Function",
-            "name": "peripheral",
-            "printedName": "peripheral(_:didDiscoverServices:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "CBPeripheral",
-                "printedName": "CoreBluetooth.CBPeripheral",
-                "usr": "c:objc(cs)CBPeripheral"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "(any Swift.Error)?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Error",
-                    "printedName": "any Swift.Error",
-                    "usr": "s:s5ErrorP"
-                  }
-                ],
-                "usr": "s:Sq"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "c:@M@TopStepAIBudsSDK@objc(cs)TSSBEarbuds(im)peripheral:didDiscoverServices:",
-            "mangledName": "$s16TopStepAIBudsSDK11TSSBEarbudsC10peripheral_19didDiscoverServicesySo12CBPeripheralC_s5Error_pSgtF",
-            "moduleName": "TopStepAIBudsSDK",
-            "overriding": true,
-            "objc_name": "peripheral:didDiscoverServices:",
-            "declAttributes": [
-              "ObjC",
-              "Override",
-              "AccessControl",
-              "RawDocComment"
-            ],
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "peripheral",
-            "printedName": "peripheral(_:didDiscoverCharacteristicsFor:error:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "CBPeripheral",
-                "printedName": "CoreBluetooth.CBPeripheral",
-                "usr": "c:objc(cs)CBPeripheral"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "CBService",
-                "printedName": "CoreBluetooth.CBService",
-                "usr": "c:objc(cs)CBService"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "(any Swift.Error)?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Error",
-                    "printedName": "any Swift.Error",
-                    "usr": "s:s5ErrorP"
-                  }
-                ],
-                "usr": "s:Sq"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "c:@M@TopStepAIBudsSDK@objc(cs)TSSBEarbuds(im)peripheral:didDiscoverCharacteristicsForService:error:",
-            "mangledName": "$s16TopStepAIBudsSDK11TSSBEarbudsC10peripheral_29didDiscoverCharacteristicsFor5errorySo12CBPeripheralC_So9CBServiceCs5Error_pSgtF",
-            "moduleName": "TopStepAIBudsSDK",
-            "overriding": true,
-            "objc_name": "peripheral:didDiscoverCharacteristicsForService:error:",
-            "declAttributes": [
-              "ObjC",
-              "Override",
-              "AccessControl",
-              "RawDocComment"
-            ],
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "peripheral",
-            "printedName": "peripheral(_:didUpdateNotificationStateFor:error:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "CBPeripheral",
-                "printedName": "CoreBluetooth.CBPeripheral",
-                "usr": "c:objc(cs)CBPeripheral"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "CBCharacteristic",
-                "printedName": "CoreBluetooth.CBCharacteristic",
-                "usr": "c:objc(cs)CBCharacteristic"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "(any Swift.Error)?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Error",
-                    "printedName": "any Swift.Error",
-                    "usr": "s:s5ErrorP"
-                  }
-                ],
-                "usr": "s:Sq"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "c:@M@TopStepAIBudsSDK@objc(cs)TSSBEarbuds(im)peripheral:didUpdateNotificationStateForCharacteristic:error:",
-            "mangledName": "$s16TopStepAIBudsSDK11TSSBEarbudsC10peripheral_29didUpdateNotificationStateFor5errorySo12CBPeripheralC_So16CBCharacteristicCs5Error_pSgtF",
-            "moduleName": "TopStepAIBudsSDK",
-            "overriding": true,
-            "objc_name": "peripheral:didUpdateNotificationStateForCharacteristic:error:",
-            "declAttributes": [
-              "ObjC",
-              "Override",
-              "AccessControl",
-              "RawDocComment"
-            ],
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "peripheral",
-            "printedName": "peripheral(_:didWriteValueFor:error:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "CBPeripheral",
-                "printedName": "CoreBluetooth.CBPeripheral",
-                "usr": "c:objc(cs)CBPeripheral"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "CBCharacteristic",
-                "printedName": "CoreBluetooth.CBCharacteristic",
-                "usr": "c:objc(cs)CBCharacteristic"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "(any Swift.Error)?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Error",
-                    "printedName": "any Swift.Error",
-                    "usr": "s:s5ErrorP"
-                  }
-                ],
-                "usr": "s:Sq"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "c:@M@TopStepAIBudsSDK@objc(cs)TSSBEarbuds(im)peripheral:didWriteValueForCharacteristic:error:",
-            "mangledName": "$s16TopStepAIBudsSDK11TSSBEarbudsC10peripheral_16didWriteValueFor5errorySo12CBPeripheralC_So16CBCharacteristicCs5Error_pSgtF",
-            "moduleName": "TopStepAIBudsSDK",
-            "overriding": true,
-            "objc_name": "peripheral:didWriteValueForCharacteristic:error:",
-            "declAttributes": [
-              "ObjC",
-              "Override",
-              "AccessControl",
-              "RawDocComment"
-            ],
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "peripheral",
-            "printedName": "peripheral(_:didUpdateValueFor:error:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "CBPeripheral",
-                "printedName": "CoreBluetooth.CBPeripheral",
-                "usr": "c:objc(cs)CBPeripheral"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "CBCharacteristic",
-                "printedName": "CoreBluetooth.CBCharacteristic",
-                "usr": "c:objc(cs)CBCharacteristic"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "(any Swift.Error)?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Error",
-                    "printedName": "any Swift.Error",
-                    "usr": "s:s5ErrorP"
-                  }
-                ],
-                "usr": "s:Sq"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "c:@M@TopStepAIBudsSDK@objc(cs)TSSBEarbuds(im)peripheral:didUpdateValueForCharacteristic:error:",
-            "mangledName": "$s16TopStepAIBudsSDK11TSSBEarbudsC10peripheral_17didUpdateValueFor5errorySo12CBPeripheralC_So16CBCharacteristicCs5Error_pSgtF",
-            "moduleName": "TopStepAIBudsSDK",
-            "overriding": true,
-            "objc_name": "peripheral:didUpdateValueForCharacteristic:error:",
-            "declAttributes": [
-              "ObjC",
-              "Override",
-              "AccessControl",
-              "RawDocComment"
-            ],
-            "funcSelfKind": "NonMutating"
-          }
-        ],
-        "declKind": "Class",
-        "usr": "c:@M@TopStepAIBudsSDK@objc(cs)TSSBEarbuds",
-        "mangledName": "$s16TopStepAIBudsSDK11TSSBEarbudsC",
-        "moduleName": "TopStepAIBudsSDK",
-        "declAttributes": [
-          "AccessControl",
-          "ObjC"
-        ],
-        "superclassUsr": "c:@M@TopStepAIBudsSDK@objc(cs)TSBTDevice",
-        "hasMissingDesignatedInitializers": true,
-        "superclassNames": [
-          "TopStepAIBudsSDK.TSBTDevice",
-          "ObjectiveC.NSObject"
-        ],
-        "conformances": [
-          {
-            "kind": "Conformance",
-            "name": "Copyable",
-            "printedName": "Copyable",
-            "usr": "s:s8CopyableP",
-            "mangledName": "$ss8CopyableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Escapable",
-            "printedName": "Escapable",
-            "usr": "s:s9EscapableP",
-            "mangledName": "$ss9EscapableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Equatable",
-            "printedName": "Equatable",
-            "usr": "s:SQ",
-            "mangledName": "$sSQ"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Hashable",
-            "printedName": "Hashable",
-            "usr": "s:SH",
-            "mangledName": "$sSH"
-          },
-          {
-            "kind": "Conformance",
-            "name": "CVarArg",
-            "printedName": "CVarArg",
-            "usr": "s:s7CVarArgP",
-            "mangledName": "$ss7CVarArgP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "_KeyValueCodingAndObservingPublishing",
-            "printedName": "_KeyValueCodingAndObservingPublishing",
-            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
-            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "_KeyValueCodingAndObserving",
-            "printedName": "_KeyValueCodingAndObserving",
-            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
-            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "CustomStringConvertible",
-            "printedName": "CustomStringConvertible",
-            "usr": "s:s23CustomStringConvertibleP",
-            "mangledName": "$ss23CustomStringConvertibleP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "CustomDebugStringConvertible",
-            "printedName": "CustomDebugStringConvertible",
-            "usr": "s:s28CustomDebugStringConvertibleP",
-            "mangledName": "$ss28CustomDebugStringConvertibleP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "ReactiveCompatible",
-            "printedName": "ReactiveCompatible",
-            "children": [
-              {
-                "kind": "TypeWitness",
-                "name": "ReactiveBase",
-                "printedName": "ReactiveBase",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "NSObject",
-                    "printedName": "ObjectiveC.NSObject",
-                    "usr": "c:objc(cs)NSObject"
-                  }
-                ]
-              }
-            ],
-            "usr": "s:7RxSwift18ReactiveCompatibleP",
-            "mangledName": "$s7RxSwift18ReactiveCompatibleP"
-          }
         ]
       },
       {
@@ -18564,6 +18148,16 @@
       },
       {
         "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "TopStepAIBudsSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
         "name": "CoreBluetooth",
         "printedName": "CoreBluetooth",
         "declKind": "Import",
@@ -19737,21 +19331,427 @@
         ]
       },
       {
-        "kind": "Import",
-        "name": "TopStepComKit",
-        "printedName": "TopStepComKit",
-        "declKind": "Import",
-        "moduleName": "TopStepAIBudsSDK"
+        "kind": "TypeDecl",
+        "name": "TSSBEarbuds",
+        "printedName": "TSSBEarbuds",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "commandManager",
+            "printedName": "commandManager",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TSSBEarbudsCommMannger",
+                "printedName": "TopStepAIBudsSDK.TSSBEarbudsCommMannger",
+                "usr": "c:@M@TopStepAIBudsSDK@objc(cs)TSSBEarbudsCommMannger"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@TopStepAIBudsSDK@objc(cs)TSSBEarbuds(py)commandManager",
+            "mangledName": "$s16TopStepAIBudsSDK11TSSBEarbudsC14commandManagerAA0E11CommManngerCvp",
+            "moduleName": "TopStepAIBudsSDK",
+            "declAttributes": [
+              "HasStorage",
+              "SetterAccess",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TSSBEarbudsCommMannger",
+                    "printedName": "TopStepAIBudsSDK.TSSBEarbudsCommMannger",
+                    "usr": "c:@M@TopStepAIBudsSDK@objc(cs)TSSBEarbudsCommMannger"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TopStepAIBudsSDK@objc(cs)TSSBEarbuds(im)commandManager",
+                "mangledName": "$s16TopStepAIBudsSDK11TSSBEarbudsC14commandManagerAA0E11CommManngerCvg",
+                "moduleName": "TopStepAIBudsSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "peripheral",
+            "printedName": "peripheral(_:didDiscoverServices:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CBPeripheral",
+                "printedName": "CoreBluetooth.CBPeripheral",
+                "usr": "c:objc(cs)CBPeripheral"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "(any Swift.Error)?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Error",
+                    "printedName": "any Swift.Error",
+                    "usr": "s:s5ErrorP"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@TopStepAIBudsSDK@objc(cs)TSSBEarbuds(im)peripheral:didDiscoverServices:",
+            "mangledName": "$s16TopStepAIBudsSDK11TSSBEarbudsC10peripheral_19didDiscoverServicesySo12CBPeripheralC_s5Error_pSgtF",
+            "moduleName": "TopStepAIBudsSDK",
+            "overriding": true,
+            "objc_name": "peripheral:didDiscoverServices:",
+            "declAttributes": [
+              "ObjC",
+              "Override",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "peripheral",
+            "printedName": "peripheral(_:didDiscoverCharacteristicsFor:error:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CBPeripheral",
+                "printedName": "CoreBluetooth.CBPeripheral",
+                "usr": "c:objc(cs)CBPeripheral"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CBService",
+                "printedName": "CoreBluetooth.CBService",
+                "usr": "c:objc(cs)CBService"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "(any Swift.Error)?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Error",
+                    "printedName": "any Swift.Error",
+                    "usr": "s:s5ErrorP"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@TopStepAIBudsSDK@objc(cs)TSSBEarbuds(im)peripheral:didDiscoverCharacteristicsForService:error:",
+            "mangledName": "$s16TopStepAIBudsSDK11TSSBEarbudsC10peripheral_29didDiscoverCharacteristicsFor5errorySo12CBPeripheralC_So9CBServiceCs5Error_pSgtF",
+            "moduleName": "TopStepAIBudsSDK",
+            "overriding": true,
+            "objc_name": "peripheral:didDiscoverCharacteristicsForService:error:",
+            "declAttributes": [
+              "ObjC",
+              "Override",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "peripheral",
+            "printedName": "peripheral(_:didUpdateNotificationStateFor:error:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CBPeripheral",
+                "printedName": "CoreBluetooth.CBPeripheral",
+                "usr": "c:objc(cs)CBPeripheral"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CBCharacteristic",
+                "printedName": "CoreBluetooth.CBCharacteristic",
+                "usr": "c:objc(cs)CBCharacteristic"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "(any Swift.Error)?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Error",
+                    "printedName": "any Swift.Error",
+                    "usr": "s:s5ErrorP"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@TopStepAIBudsSDK@objc(cs)TSSBEarbuds(im)peripheral:didUpdateNotificationStateForCharacteristic:error:",
+            "mangledName": "$s16TopStepAIBudsSDK11TSSBEarbudsC10peripheral_29didUpdateNotificationStateFor5errorySo12CBPeripheralC_So16CBCharacteristicCs5Error_pSgtF",
+            "moduleName": "TopStepAIBudsSDK",
+            "overriding": true,
+            "objc_name": "peripheral:didUpdateNotificationStateForCharacteristic:error:",
+            "declAttributes": [
+              "ObjC",
+              "Override",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "peripheral",
+            "printedName": "peripheral(_:didWriteValueFor:error:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CBPeripheral",
+                "printedName": "CoreBluetooth.CBPeripheral",
+                "usr": "c:objc(cs)CBPeripheral"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CBCharacteristic",
+                "printedName": "CoreBluetooth.CBCharacteristic",
+                "usr": "c:objc(cs)CBCharacteristic"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "(any Swift.Error)?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Error",
+                    "printedName": "any Swift.Error",
+                    "usr": "s:s5ErrorP"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@TopStepAIBudsSDK@objc(cs)TSSBEarbuds(im)peripheral:didWriteValueForCharacteristic:error:",
+            "mangledName": "$s16TopStepAIBudsSDK11TSSBEarbudsC10peripheral_16didWriteValueFor5errorySo12CBPeripheralC_So16CBCharacteristicCs5Error_pSgtF",
+            "moduleName": "TopStepAIBudsSDK",
+            "overriding": true,
+            "objc_name": "peripheral:didWriteValueForCharacteristic:error:",
+            "declAttributes": [
+              "ObjC",
+              "Override",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "peripheral",
+            "printedName": "peripheral(_:didUpdateValueFor:error:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CBPeripheral",
+                "printedName": "CoreBluetooth.CBPeripheral",
+                "usr": "c:objc(cs)CBPeripheral"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CBCharacteristic",
+                "printedName": "CoreBluetooth.CBCharacteristic",
+                "usr": "c:objc(cs)CBCharacteristic"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "(any Swift.Error)?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Error",
+                    "printedName": "any Swift.Error",
+                    "usr": "s:s5ErrorP"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@TopStepAIBudsSDK@objc(cs)TSSBEarbuds(im)peripheral:didUpdateValueForCharacteristic:error:",
+            "mangledName": "$s16TopStepAIBudsSDK11TSSBEarbudsC10peripheral_17didUpdateValueFor5errorySo12CBPeripheralC_So16CBCharacteristicCs5Error_pSgtF",
+            "moduleName": "TopStepAIBudsSDK",
+            "overriding": true,
+            "objc_name": "peripheral:didUpdateValueForCharacteristic:error:",
+            "declAttributes": [
+              "ObjC",
+              "Override",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@TopStepAIBudsSDK@objc(cs)TSSBEarbuds",
+        "mangledName": "$s16TopStepAIBudsSDK11TSSBEarbudsC",
+        "moduleName": "TopStepAIBudsSDK",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC"
+        ],
+        "superclassUsr": "c:@M@TopStepAIBudsSDK@objc(cs)TSBTDevice",
+        "hasMissingDesignatedInitializers": true,
+        "superclassNames": [
+          "TopStepAIBudsSDK.TSBTDevice",
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "ReactiveCompatible",
+            "printedName": "ReactiveCompatible",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "ReactiveBase",
+                "printedName": "ReactiveBase",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NSObject",
+                    "printedName": "ObjectiveC.NSObject",
+                    "usr": "c:objc(cs)NSObject"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:7RxSwift18ReactiveCompatibleP",
+            "mangledName": "$s7RxSwift18ReactiveCompatibleP"
+          }
+        ]
       },
       {
         "kind": "Import",
-        "name": "Foundation",
-        "printedName": "Foundation",
+        "name": "CoreBluetooth",
+        "printedName": "CoreBluetooth",
         "declKind": "Import",
         "moduleName": "TopStepAIBudsSDK",
         "declAttributes": [
           "RawDocComment"
         ]
+      },
+      {
+        "kind": "Import",
+        "name": "TopStepComKit",
+        "printedName": "TopStepComKit",
+        "declKind": "Import",
+        "moduleName": "TopStepAIBudsSDK"
       }
     ],
     "json_format_version": 8
@@ -20148,34 +20148,6 @@
       "offset": 3145,
       "length": 6,
       "value": "\"%02x\""
-    },
-    {
-      "filePath": "\/Users\/Zhuanz\/Desktop\/soundbuds\/ios\/Runner\/SupportSDKs\/TopStepAIBudsSDK\/TopStepAIBudsSDK\/TSABMate\/TSFileDownloader.swift",
-      "kind": "IntegerLiteral",
-      "offset": 375,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/Zhuanz\/Desktop\/soundbuds\/ios\/Runner\/SupportSDKs\/TopStepAIBudsSDK\/TopStepAIBudsSDK\/TSABMate\/TSFileDownloader.swift",
-      "kind": "IntegerLiteral",
-      "offset": 421,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/Zhuanz\/Desktop\/soundbuds\/ios\/Runner\/SupportSDKs\/TopStepAIBudsSDK\/TopStepAIBudsSDK\/TSABMate\/TSFileDownloader.swift",
-      "kind": "IntegerLiteral",
-      "offset": 644,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/Zhuanz\/Desktop\/soundbuds\/ios\/Runner\/SupportSDKs\/TopStepAIBudsSDK\/TopStepAIBudsSDK\/TSABMate\/TSFileDownloader.swift",
-      "kind": "FloatLiteral",
-      "offset": 790,
-      "length": 3,
-      "value": "3.0"
     },
     {
       "filePath": "\/Users\/Zhuanz\/Desktop\/soundbuds\/ios\/Runner\/SupportSDKs\/TopStepAIBudsSDK\/TopStepAIBudsSDK\/TSABMate\/TSSBEarbudsOTAHandler.swift",
@@ -20820,34 +20792,6 @@
       "offset": 11894,
       "length": 4,
       "value": "true"
-    },
-    {
-      "filePath": "\/Users\/Zhuanz\/Desktop\/soundbuds\/ios\/Runner\/SupportSDKs\/TopStepAIBudsSDK\/TopStepAIBudsSDK\/TSABMate\/TSSBEarbuds.swift",
-      "kind": "StringLiteral",
-      "offset": 254,
-      "length": 6,
-      "value": "\"FDB3\""
-    },
-    {
-      "filePath": "\/Users\/Zhuanz\/Desktop\/soundbuds\/ios\/Runner\/SupportSDKs\/TopStepAIBudsSDK\/TopStepAIBudsSDK\/TSABMate\/TSSBEarbuds.swift",
-      "kind": "StringLiteral",
-      "offset": 383,
-      "length": 6,
-      "value": "\"FF17\""
-    },
-    {
-      "filePath": "\/Users\/Zhuanz\/Desktop\/soundbuds\/ios\/Runner\/SupportSDKs\/TopStepAIBudsSDK\/TopStepAIBudsSDK\/TSABMate\/TSSBEarbuds.swift",
-      "kind": "StringLiteral",
-      "offset": 511,
-      "length": 6,
-      "value": "\"FF18\""
-    },
-    {
-      "filePath": "\/Users\/Zhuanz\/Desktop\/soundbuds\/ios\/Runner\/SupportSDKs\/TopStepAIBudsSDK\/TopStepAIBudsSDK\/TSABMate\/TSSBEarbuds.swift",
-      "kind": "StringLiteral",
-      "offset": 631,
-      "length": 6,
-      "value": "\"FF20\""
     },
     {
       "filePath": "\/Users\/Zhuanz\/Desktop\/soundbuds\/ios\/Runner\/SupportSDKs\/TopStepAIBudsSDK\/TopStepAIBudsSDK\/TSABMate\/TSSBEarbudsRequest.swift",
@@ -21963,6 +21907,34 @@
       "value": "5"
     },
     {
+      "filePath": "\/Users\/Zhuanz\/Desktop\/soundbuds\/ios\/Runner\/SupportSDKs\/TopStepAIBudsSDK\/TopStepAIBudsSDK\/TSABMate\/TSFileDownloader.swift",
+      "kind": "IntegerLiteral",
+      "offset": 375,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/Zhuanz\/Desktop\/soundbuds\/ios\/Runner\/SupportSDKs\/TopStepAIBudsSDK\/TopStepAIBudsSDK\/TSABMate\/TSFileDownloader.swift",
+      "kind": "IntegerLiteral",
+      "offset": 421,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/Zhuanz\/Desktop\/soundbuds\/ios\/Runner\/SupportSDKs\/TopStepAIBudsSDK\/TopStepAIBudsSDK\/TSABMate\/TSFileDownloader.swift",
+      "kind": "IntegerLiteral",
+      "offset": 644,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/Zhuanz\/Desktop\/soundbuds\/ios\/Runner\/SupportSDKs\/TopStepAIBudsSDK\/TopStepAIBudsSDK\/TSABMate\/TSFileDownloader.swift",
+      "kind": "FloatLiteral",
+      "offset": 790,
+      "length": 3,
+      "value": "3.0"
+    },
+    {
       "filePath": "\/Users\/Zhuanz\/Desktop\/soundbuds\/ios\/Runner\/SupportSDKs\/TopStepAIBudsSDK\/TopStepAIBudsSDK\/TSABMate\/TSSBEarbudsCommandHandler.swift",
       "kind": "BooleanLiteral",
       "offset": 307,
@@ -21977,6 +21949,34 @@
       "value": "true"
     },
     {
+      "filePath": "\/Users\/Zhuanz\/Desktop\/soundbuds\/ios\/Runner\/SupportSDKs\/TopStepAIBudsSDK\/TopStepAIBudsSDK\/TSABMate\/TSSBEarbuds.swift",
+      "kind": "StringLiteral",
+      "offset": 254,
+      "length": 6,
+      "value": "\"FDB3\""
+    },
+    {
+      "filePath": "\/Users\/Zhuanz\/Desktop\/soundbuds\/ios\/Runner\/SupportSDKs\/TopStepAIBudsSDK\/TopStepAIBudsSDK\/TSABMate\/TSSBEarbuds.swift",
+      "kind": "StringLiteral",
+      "offset": 383,
+      "length": 6,
+      "value": "\"FF17\""
+    },
+    {
+      "filePath": "\/Users\/Zhuanz\/Desktop\/soundbuds\/ios\/Runner\/SupportSDKs\/TopStepAIBudsSDK\/TopStepAIBudsSDK\/TSABMate\/TSSBEarbuds.swift",
+      "kind": "StringLiteral",
+      "offset": 511,
+      "length": 6,
+      "value": "\"FF18\""
+    },
+    {
+      "filePath": "\/Users\/Zhuanz\/Desktop\/soundbuds\/ios\/Runner\/SupportSDKs\/TopStepAIBudsSDK\/TopStepAIBudsSDK\/TSABMate\/TSSBEarbuds.swift",
+      "kind": "StringLiteral",
+      "offset": 631,
+      "length": 6,
+      "value": "\"FF20\""
+    },
+    {
       "filePath": "\/Users\/Zhuanz\/Desktop\/soundbuds\/ios\/Runner\/SupportSDKs\/TopStepAIBudsSDK\/TopStepAIBudsSDK\/TSBTBase\/TSBTScanner.swift",
       "kind": "IntegerLiteral",
       "offset": 1728,
@@ -21986,14 +21986,14 @@
     {
       "filePath": "\/Users\/Zhuanz\/Desktop\/soundbuds\/ios\/Runner\/SupportSDKs\/TopStepAIBudsSDK\/TopStepAIBudsSDK\/TSBTBase\/TSBTScanner.swift",
       "kind": "IntegerLiteral",
-      "offset": 4360,
+      "offset": 4376,
       "length": 2,
       "value": "45"
     },
     {
       "filePath": "\/Users\/Zhuanz\/Desktop\/soundbuds\/ios\/Runner\/SupportSDKs\/TopStepAIBudsSDK\/TopStepAIBudsSDK\/TSBTBase\/TSBTScanner.swift",
       "kind": "IntegerLiteral",
-      "offset": 7648,
+      "offset": 7664,
       "length": 2,
       "value": "30"
     }

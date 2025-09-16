@@ -6,27 +6,21 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXContainerItemProxy section */
-		4BE73C712E73F7B90088905F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4BE73C522E73F7B60088905F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4BE73C592E73F7B60088905F;
-			remoteInfo = TSDemo;
-		};
-		4BE73C7B2E73F7B90088905F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4BE73C522E73F7B60088905F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4BE73C592E73F7B60088905F;
-			remoteInfo = TSDemo;
-		};
-/* End PBXContainerItemProxy section */
+/* Begin PBXBuildFile section */
+		F780499AF18AEF3723A97BDD /* Pods_TSDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 304F7AE100BDBF387C39AAF3 /* Pods_TSDemo.framework */; };
+/* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		19854CDEB2BBB79B17F5BA57 /* Pods-TSDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TSDemoTests.release.xcconfig"; path = "Target Support Files/Pods-TSDemoTests/Pods-TSDemoTests.release.xcconfig"; sourceTree = "<group>"; };
+		304F7AE100BDBF387C39AAF3 /* Pods_TSDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TSDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3075524142CA8F9587FE20BA /* Pods-TSDemo-TSDemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TSDemo-TSDemoUITests.debug.xcconfig"; path = "Target Support Files/Pods-TSDemo-TSDemoUITests/Pods-TSDemo-TSDemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4BE73C5A2E73F7B60088905F /* TSDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TSDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4BE73C702E73F7B90088905F /* TSDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TSDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4BE73C7A2E73F7B90088905F /* TSDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TSDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		64D869EEAF59B749174A2658 /* Pods_TSDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TSDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		718CF30155F5107EC87F85F1 /* Pods-TSDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TSDemoTests.debug.xcconfig"; path = "Target Support Files/Pods-TSDemoTests/Pods-TSDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		97549D427511CCF6E95B1A64 /* Pods-TSDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TSDemo.debug.xcconfig"; path = "Target Support Files/Pods-TSDemo/Pods-TSDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		9A399C22FDFCA3599FEAE0CC /* Pods-TSDemo-TSDemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TSDemo-TSDemoUITests.release.xcconfig"; path = "Target Support Files/Pods-TSDemo-TSDemoUITests/Pods-TSDemo-TSDemoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		D6A4FA2DA4FCED981E227D16 /* Pods_TSDemo_TSDemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TSDemo_TSDemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA3DD71757EFA73F76FCD805 /* Pods-TSDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TSDemo.release.xcconfig"; path = "Target Support Files/Pods-TSDemo/Pods-TSDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -48,16 +42,6 @@
 			path = TSDemo;
 			sourceTree = "<group>";
 		};
-		4BE73C732E73F7B90088905F /* TSDemoTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = TSDemoTests;
-			sourceTree = "<group>";
-		};
-		4BE73C7D2E73F7B90088905F /* TSDemoUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = TSDemoUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,33 +49,43 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4BE73C6D2E73F7B90088905F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4BE73C772E73F7B90088905F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				F780499AF18AEF3723A97BDD /* Pods_TSDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		35AD76D76EBEB0F622F4D6C0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				97549D427511CCF6E95B1A64 /* Pods-TSDemo.debug.xcconfig */,
+				FA3DD71757EFA73F76FCD805 /* Pods-TSDemo.release.xcconfig */,
+				3075524142CA8F9587FE20BA /* Pods-TSDemo-TSDemoUITests.debug.xcconfig */,
+				9A399C22FDFCA3599FEAE0CC /* Pods-TSDemo-TSDemoUITests.release.xcconfig */,
+				718CF30155F5107EC87F85F1 /* Pods-TSDemoTests.debug.xcconfig */,
+				19854CDEB2BBB79B17F5BA57 /* Pods-TSDemoTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		36C8B1F17CDE5DBCF5BC4B00 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				304F7AE100BDBF387C39AAF3 /* Pods_TSDemo.framework */,
+				D6A4FA2DA4FCED981E227D16 /* Pods_TSDemo_TSDemoUITests.framework */,
+				64D869EEAF59B749174A2658 /* Pods_TSDemoTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4BE73C512E73F7B60088905F = {
 			isa = PBXGroup;
 			children = (
 				4BE73C5C2E73F7B60088905F /* TSDemo */,
-				4BE73C732E73F7B90088905F /* TSDemoTests */,
-				4BE73C7D2E73F7B90088905F /* TSDemoUITests */,
 				4BE73C5B2E73F7B60088905F /* Products */,
+				35AD76D76EBEB0F622F4D6C0 /* Pods */,
+				36C8B1F17CDE5DBCF5BC4B00 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,8 +93,6 @@
 			isa = PBXGroup;
 			children = (
 				4BE73C5A2E73F7B60088905F /* TSDemo.app */,
-				4BE73C702E73F7B90088905F /* TSDemoTests.xctest */,
-				4BE73C7A2E73F7B90088905F /* TSDemoUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -112,9 +104,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4BE73C832E73F7B90088905F /* Build configuration list for PBXNativeTarget "TSDemo" */;
 			buildPhases = (
+				C95C9407848362B8ED4EBA0A /* [CP] Check Pods Manifest.lock */,
 				4BE73C562E73F7B60088905F /* Sources */,
 				4BE73C572E73F7B60088905F /* Frameworks */,
 				4BE73C582E73F7B60088905F /* Resources */,
+				BCD68312C79022A5813BCF27 /* [CP] Embed Pods Frameworks */,
+				2F6FFC18FC3EEB123088C748 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -124,57 +119,9 @@
 				4BE73C5C2E73F7B60088905F /* TSDemo */,
 			);
 			name = TSDemo;
-			packageProductDependencies = (
-			);
 			productName = TSDemo;
 			productReference = 4BE73C5A2E73F7B60088905F /* TSDemo.app */;
 			productType = "com.apple.product-type.application";
-		};
-		4BE73C6F2E73F7B90088905F /* TSDemoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4BE73C882E73F7B90088905F /* Build configuration list for PBXNativeTarget "TSDemoTests" */;
-			buildPhases = (
-				4BE73C6C2E73F7B90088905F /* Sources */,
-				4BE73C6D2E73F7B90088905F /* Frameworks */,
-				4BE73C6E2E73F7B90088905F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				4BE73C722E73F7B90088905F /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				4BE73C732E73F7B90088905F /* TSDemoTests */,
-			);
-			name = TSDemoTests;
-			packageProductDependencies = (
-			);
-			productName = TSDemoTests;
-			productReference = 4BE73C702E73F7B90088905F /* TSDemoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		4BE73C792E73F7B90088905F /* TSDemoUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4BE73C8B2E73F7B90088905F /* Build configuration list for PBXNativeTarget "TSDemoUITests" */;
-			buildPhases = (
-				4BE73C762E73F7B90088905F /* Sources */,
-				4BE73C772E73F7B90088905F /* Frameworks */,
-				4BE73C782E73F7B90088905F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				4BE73C7C2E73F7B90088905F /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				4BE73C7D2E73F7B90088905F /* TSDemoUITests */,
-			);
-			name = TSDemoUITests;
-			packageProductDependencies = (
-			);
-			productName = TSDemoUITests;
-			productReference = 4BE73C7A2E73F7B90088905F /* TSDemoUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -188,14 +135,6 @@
 				TargetAttributes = {
 					4BE73C592E73F7B60088905F = {
 						CreatedOnToolsVersion = 16.4;
-					};
-					4BE73C6F2E73F7B90088905F = {
-						CreatedOnToolsVersion = 16.4;
-						TestTargetID = 4BE73C592E73F7B60088905F;
-					};
-					4BE73C792E73F7B90088905F = {
-						CreatedOnToolsVersion = 16.4;
-						TestTargetID = 4BE73C592E73F7B60088905F;
 					};
 				};
 			};
@@ -214,8 +153,6 @@
 			projectRoot = "";
 			targets = (
 				4BE73C592E73F7B60088905F /* TSDemo */,
-				4BE73C6F2E73F7B90088905F /* TSDemoTests */,
-				4BE73C792E73F7B90088905F /* TSDemoUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -228,21 +165,66 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4BE73C6E2E73F7B90088905F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4BE73C782E73F7B90088905F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2F6FFC18FC3EEB123088C748 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TSDemo/Pods-TSDemo-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TSDemo/Pods-TSDemo-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TSDemo/Pods-TSDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BCD68312C79022A5813BCF27 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TSDemo/Pods-TSDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TSDemo/Pods-TSDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TSDemo/Pods-TSDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C95C9407848362B8ED4EBA0A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TSDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4BE73C562E73F7B60088905F /* Sources */ = {
@@ -252,44 +234,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4BE73C6C2E73F7B90088905F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4BE73C762E73F7B90088905F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		4BE73C722E73F7B90088905F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4BE73C592E73F7B60088905F /* TSDemo */;
-			targetProxy = 4BE73C712E73F7B90088905F /* PBXContainerItemProxy */;
-		};
-		4BE73C7C2E73F7B90088905F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4BE73C592E73F7B60088905F /* TSDemo */;
-			targetProxy = 4BE73C7B2E73F7B90088905F /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		4BE73C842E73F7B90088905F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 97549D427511CCF6E95B1A64 /* Pods-TSDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = H4FAC5B5WL;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TSDemo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -297,6 +254,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -304,6 +262,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.topstep.TSDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -312,12 +274,14 @@
 		};
 		4BE73C852E73F7B90088905F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA3DD71757EFA73F76FCD805 /* Pods-TSDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = H4FAC5B5WL;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TSDemo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -325,6 +289,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -332,6 +297,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.topstep.TSDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -459,78 +428,6 @@
 			};
 			name = Release;
 		};
-		4BE73C892E73F7B90088905F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = H4FAC5B5WL;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.topstep.TSDemoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TSDemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TSDemo";
-			};
-			name = Debug;
-		};
-		4BE73C8A2E73F7B90088905F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = H4FAC5B5WL;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.topstep.TSDemoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TSDemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TSDemo";
-			};
-			name = Release;
-		};
-		4BE73C8C2E73F7B90088905F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = H4FAC5B5WL;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.topstep.TSDemoUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = TSDemo;
-			};
-			name = Debug;
-		};
-		4BE73C8D2E73F7B90088905F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = H4FAC5B5WL;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.topstep.TSDemoUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = TSDemo;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -548,24 +445,6 @@
 			buildConfigurations = (
 				4BE73C842E73F7B90088905F /* Debug */,
 				4BE73C852E73F7B90088905F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4BE73C882E73F7B90088905F /* Build configuration list for PBXNativeTarget "TSDemoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4BE73C892E73F7B90088905F /* Debug */,
-				4BE73C8A2E73F7B90088905F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4BE73C8B2E73F7B90088905F /* Build configuration list for PBXNativeTarget "TSDemoUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4BE73C8C2E73F7B90088905F /* Debug */,
-				4BE73C8D2E73F7B90088905F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

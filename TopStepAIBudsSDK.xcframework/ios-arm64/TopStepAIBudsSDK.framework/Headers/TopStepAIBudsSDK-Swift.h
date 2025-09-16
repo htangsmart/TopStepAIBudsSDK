@@ -306,12 +306,78 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 #if defined(__OBJC__)
 
+typedef SWIFT_ENUM(NSInteger, TPSDeviceCategory, open) {
+/// 未知
+  TPSDeviceCategoryUNKNOW = -1,
+/// 手表
+  TPSDeviceCategoryWATCH = 0,
+/// 戒指
+  TPSDeviceCategoryRING = 1,
+/// 手机
+  TPSDeviceCategoryPHONE = 2,
+/// 眼镜
+  TPSDeviceCategoryGLASS = 3,
+/// 耳机仓
+  TPSDeviceCategoryCHARGINGCASE = 4,
+/// 耳机
+  TPSDeviceCategorySOUNDBUD = 5,
+};
+
+typedef SWIFT_ENUM(NSInteger, TPSDeviceConnectStyle, open) {
+/// GATT 方式连接
+  TPSDeviceConnectStyleGATT = 1,
+/// BLE 方式连接
+  TPSDeviceConnectStyleBLE = 2,
+};
+
+/// 厂商信息对应的设备类型
+/// 我们项目号4x/9x瑞昱，5x/8x蓝讯，6绅聚，7恒玄，以下注释中的项目号是对方公司的项目号。
+typedef SWIFT_ENUM(NSUInteger, TPSDeviceType, open) {
+/// 未知设备
+  TPSDeviceTypeUnknown = 0,
+/// 瑞昱8773&8763
+  TPSDeviceTypeRyTB = 0x5442,
+/// 恒玄2700
+  TPSDeviceTypeHxTD = 0x5444,
+/// 中科895x/568x/569x
+  TPSDeviceTypeZkTZ = 0x545A,
+/// 瑞昱8762D
+  TPSDeviceTypeRyHT = 0x4854,
+/// 瑞昱8762c
+  TPSDeviceTypeRyXQ = 0x5851,
+/// 中科戒指
+  TPSDeviceTypeZkZR = 0x5A52,
+/// 中科眼镜
+  TPSDeviceTypeZkZG = 0x5A47,
+/// 文档未描述设备
+  TPSDeviceTypeHx0600 = 0x0600,
+/// 中科/瑞昱 5452 文档未描述设备
+  TPSDeviceTypeZkryTR = 0x5452,
+/// 绅聚c001
+  TPSDeviceTypeSjC001 = 0xC001,
+/// 蓝讯耳机仓
+  TPSDeviceTypeZkZC = 0x5A43,
+/// 蓝讯耳机
+  TPSDeviceTypeZk4206 = 0x4206,
+};
+
 typedef SWIFT_ENUM(uint8_t, TPSSDKType, open) {
   TPSSDKTypeUnknow = 0,
   TPSSDKTypeFlywear = 1,
   TPSSDKTypeFitcloud = 2,
   TPSSDKTypeShenjuwm = 3,
   TPSSDKTypeAbmate = 4,
+};
+
+/// EN: Bluetooth connection state
+/// CN: 蓝牙连接状态
+typedef SWIFT_ENUM(NSInteger, TSBTConnectState, open) {
+  TSBTConnectStateDisconnected = 0,
+  TSBTConnectStateConnecting = 1,
+  TSBTConnectStateConnected = 2,
+  TSBTConnectStateDisconnecting = 3,
+/// 连接失败，对设备来说与disconnected状态一致
+  TSBTConnectStateFailed = 4,
 };
 
 @class CBPeripheral;
@@ -338,7 +404,52 @@ SWIFT_CLASS("_TtC16TopStepAIBudsSDK10TSBTDevice")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-@class NSNumber;
+/// 蓝牙错误类型枚举
+typedef SWIFT_ENUM(NSInteger, TSBTErrorType, open) {
+  TSBTErrorTypeUnkmown = -99999,
+  TSBTErrorTypePermissionNotDetermined = -1000,
+  TSBTErrorTypePermissionRestricted = -1001,
+  TSBTErrorTypePermissionDenied = -1002,
+  TSBTErrorTypePermissionUnknown = -1003,
+  TSBTErrorTypeStateUnknown = -1100,
+  TSBTErrorTypeStateResetting = -1101,
+  TSBTErrorTypeStateUnsupported = -1102,
+  TSBTErrorTypeStateUnauthorized = -1103,
+  TSBTErrorTypeStatePoweredOff = -1104,
+  TSBTErrorTypeStateUnknownError = -1105,
+  TSBTErrorTypeConnectTimeout = -1200,
+  TSBTErrorTypeConnectCancel = -1201,
+  TSBTErrorTypeConnectFailed = -1202,
+  TSBTErrorTypeConnectBluetoothOff = -1203,
+  TSBTErrorTypeConnectInvalidDevice = -1204,
+  TSBTErrorTypeConnectLost = -1205,
+  TSBTErrorTypeServiceDiscoveryFailed = -1206,
+  TSBTErrorTypeCharacteristicDiscoveryFailed = -1207,
+  TSBTErrorTypeConnectConflict = -1208,
+  TSBTErrorTypeScanTimeout = -1300,
+  TSBTErrorTypeScanStop = -1301,
+  TSBTErrorTypeScanConflict = -1302,
+  TSBTErrorTypeScanBluetoothOff = -1303,
+  TSBTErrorTypeWriteFailed = -1400,
+  TSBTErrorTypeReadFailed = -1401,
+  TSBTErrorTypeNotifyFailed = -1402,
+  TSBTErrorTypeInvalidData = -1403,
+  TSBTErrorTypeInvalidParameter = -1404,
+  TSBTErrorTypeOperationNotSupported = -1405,
+  TSBTErrorTypeOperationTimeout = -1406,
+  TSBTErrorTypeOperationFailed = -1407,
+  TSBTErrorTypeSetDeviceDataFailed = -1408,
+  TSBTErrorTypeCommandRepeatFailed = -1409,
+  TSBTErrorTypeReceiveEmptyData = -1410,
+  TSBTErrorTypeSystemBusy = -1411,
+  TSBTErrorTypeFullStorage = -1412,
+  TSBTErrorTypeStateLowPower = -1413,
+  TSBTErrorTypeSameFirmware = -1513,
+  TSBTErrorTypeUnableUpdate = -1514,
+  TSBTErrorTypeDataLenthError = -1515,
+  TSBTErrorTypeIsFirmwareUploading = -1516,
+};
+
 @class NSString;
 /// EN: Device basic information model for Objective‑C API
 /// CN: 提供给 Objective‑C 的设备基础信息模型
@@ -346,13 +457,13 @@ SWIFT_CLASS("_TtC16TopStepAIBudsSDK20TSDeviceBaseInfoObjc")
 @interface TSDeviceBaseInfoObjc : NSObject
 /// EN: SDK type (TPSSDKType.rawValue)
 /// CN: SDK 类型（TPSSDKType.rawValue）
-@property (nonatomic, readonly, strong) NSNumber * _Nonnull sdkType;
+@property (nonatomic, readonly) enum TPSSDKType sdkType;
 /// EN: Vendor device type (TPSDeviceType.rawValue, UInt)
 /// CN: 厂商设备类型（TPSDeviceType.rawValue，UInt）
-@property (nonatomic, readonly, strong) NSNumber * _Nonnull deviceType;
+@property (nonatomic, readonly) enum TPSDeviceType deviceType;
 /// EN: Device category (TPSDeviceCategory.rawValue)
 /// CN: 设备分类（TPSDeviceCategory.rawValue）
-@property (nonatomic, readonly, strong) NSNumber * _Nonnull deviceCategory;
+@property (nonatomic, readonly) enum TPSDeviceCategory deviceCategory;
 /// EN: Device MAC (string if available)
 /// CN: 设备 MAC（如有）
 @property (nonatomic, readonly, strong) NSString * _Nonnull mac;
@@ -362,7 +473,7 @@ SWIFT_CLASS("_TtC16TopStepAIBudsSDK20TSDeviceBaseInfoObjc")
 /// EN: Peripheral UUID string
 /// CN: 设备 UUID 字符串
 @property (nonatomic, readonly, strong) NSString * _Nonnull uuid;
-- (nonnull instancetype)initWithSdkType:(NSNumber * _Nonnull)sdkType deviceType:(NSNumber * _Nonnull)deviceType deviceCategory:(NSNumber * _Nonnull)deviceCategory mac:(NSString * _Nonnull)mac name:(NSString * _Nonnull)name uuid:(NSString * _Nonnull)uuid OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithSdkType:(enum TPSSDKType)sdkType deviceType:(enum TPSDeviceType)deviceType deviceCategory:(enum TPSDeviceCategory)deviceCategory mac:(NSString * _Nonnull)mac name:(NSString * _Nonnull)name uuid:(NSString * _Nonnull)uuid OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -757,6 +868,7 @@ typedef SWIFT_ENUM(uint8_t, TSSBRemoteCameraState, open) {
   TSSBRemoteCameraStateTakePhotoFailed = 3,
 };
 
+@class NSNumber;
 @class NSArray;
 @class NSData;
 /// EN: Objective‑C observer protocol (all methods optional)
@@ -764,33 +876,33 @@ typedef SWIFT_ENUM(uint8_t, TSSBRemoteCameraState, open) {
 SWIFT_PROTOCOL("_TtP16TopStepAIBudsSDK21TSSoudbudObserverObjc_")
 @protocol TSSoudbudObserverObjc <NSObject>
 @optional
-- (void)observerDeviceBTStateWithState:(NSNumber * _Nonnull)state peripheral:(CBPeripheral * _Nonnull)peripheral;
-- (void)observerPowerChangeWithLeftPower:(NSNumber * _Nullable)leftPower leftCharging:(NSNumber * _Nullable)leftCharging rightPower:(NSNumber * _Nullable)rightPower rightCharging:(NSNumber * _Nullable)rightCharging hubPower:(NSNumber * _Nullable)hubPower hubCharging:(NSNumber * _Nullable)hubCharging;
-- (void)observerPlayStateChangeWithIsPlaying:(NSNumber * _Nonnull)isPlaying;
-- (void)observerWorkModeChangeWithWorkMode:(NSNumber * _Nonnull)workMode;
-- (void)observerInEarStatusChangeWithLeftInEar:(NSNumber * _Nonnull)leftInEar rightInEar:(NSNumber * _Nonnull)rightInEar;
-- (void)observerTWSConnectedChangeWithIsConnected:(NSNumber * _Nonnull)isConnected;
-- (void)observerEQSettingChangeWithMode:(NSNumber * _Nonnull)mode gains:(NSArray * _Nonnull)gains;
-- (void)observerDeviceVolumeChangeWithVolume:(NSNumber * _Nonnull)volume;
-- (void)observerANCModeChangeWithMode:(NSNumber * _Nonnull)mode;
-- (void)observerANCGainChangeWithGain:(NSNumber * _Nonnull)gain;
-- (void)observerTransparencyGainChangeWithGain:(NSNumber * _Nonnull)gain;
-- (void)observerSoundEffect3DChangeWithIsEnabled:(NSNumber * _Nonnull)isEnabled;
-- (void)observerBassEngineStatusChangeWithIsEnabled:(NSNumber * _Nonnull)isEnabled;
+- (void)observerDeviceBTStateWithState:(enum TSBTConnectState)state peripheral:(CBPeripheral * _Nonnull)peripheral;
+- (void)observerPowerChangeWithLeftPower:(NSNumber * _Nullable)leftPower leftCharging:(BOOL)leftCharging rightPower:(NSNumber * _Nullable)rightPower rightCharging:(BOOL)rightCharging hubPower:(NSNumber * _Nullable)hubPower hubCharging:(BOOL)hubCharging;
+- (void)observerPlayStateChangeWithIsPlaying:(BOOL)isPlaying;
+- (void)observerWorkModeChangeWithWorkMode:(enum TSSBEarbudsWorkMode)workMode;
+- (void)observerInEarStatusChangeWithLeftInEar:(BOOL)leftInEar rightInEar:(BOOL)rightInEar;
+- (void)observerTWSConnectedChangeWithIsConnected:(BOOL)isConnected;
+- (void)observerEQSettingChangeWithMode:(uint8_t)mode gains:(NSArray * _Nonnull)gains;
+- (void)observerDeviceVolumeChangeWithVolume:(uint8_t)volume;
+- (void)observerANCModeChangeWithMode:(enum TSSBEarbudsAncMode)mode;
+- (void)observerANCGainChangeWithGain:(uint8_t)gain;
+- (void)observerTransparencyGainChangeWithGain:(uint8_t)gain;
+- (void)observerSoundEffect3DChangeWithIsEnabled:(BOOL)isEnabled;
+- (void)observerBassEngineStatusChangeWithIsEnabled:(BOOL)isEnabled;
 - (void)observerKeySettingsChangeWithSettings:(NSArray * _Nonnull)settings;
-- (void)observerPromptToneTypeChangeWithType:(NSNumber * _Nonnull)type;
-- (void)observerLEDSwitchChangeWithIsOn:(NSNumber * _Nonnull)isOn;
-- (void)observerMainSideChangeWithIsLeft:(NSNumber * _Nonnull)isLeft;
-- (void)observerMultipointStatusChangeWithIsEnabled:(NSNumber * _Nonnull)isEnabled;
+- (void)observerPromptToneTypeChangeWithType:(uint8_t)type;
+- (void)observerLEDSwitchChangeWithIsOn:(BOOL)isOn;
+- (void)observerMainSideChangeWithIsLeft:(BOOL)isLeft;
+- (void)observerMultipointStatusChangeWithIsEnabled:(BOOL)isEnabled;
 - (void)observerMultipointInfoChangeWithDevices:(NSArray * _Nonnull)devices;
-- (void)observerVoiceRecognitionChangeWithIsEnabled:(NSNumber * _Nonnull)isEnabled;
-- (void)observerRemoteCameraControlStateWithState:(NSNumber * _Nonnull)state;
-- (void)observerMediaCountDidChangedWithPicCount:(NSNumber * _Nonnull)picCount videoCount:(NSNumber * _Nonnull)videoCount audioCount:(NSNumber * _Nonnull)audioCount;
-- (void)observerWifiStateChangedWithState:(NSNumber * _Nonnull)state;
+- (void)observerVoiceRecognitionChangeWithIsEnabled:(BOOL)isEnabled;
+- (void)observerRemoteCameraControlStateWithState:(enum TSSBRemoteCameraState)state;
+- (void)observerMediaCountDidChangedWithPicCount:(uint32_t)picCount videoCount:(uint32_t)videoCount audioCount:(uint32_t)audioCount;
+- (void)observerWifiStateChangedWithState:(enum TSSBEarbudsWiFiState)state;
 - (void)observerWifiAddressNotifyWithWifiAddress:(NSString * _Nonnull)wifiAddress;
 - (void)observerAIRecordNotifyWithRecordData:(NSData * _Nullable)recordData;
 - (void)observerAIStateNotifyWithStatus:(NSData * _Nonnull)status;
-- (void)observerIsSupportCallRecordNotifyWithStatus:(NSNumber * _Nonnull)status;
+- (void)observerIsSupportCallRecordNotifyWithStatus:(BOOL)status;
 - (void)observerAIChatImageNotifyWithImageData:(NSData * _Nonnull)imageData;
 - (void)observerSubFirmwareVersionNotifyWithVersion:(NSString * _Nonnull)version;
 @end
@@ -847,14 +959,6 @@ SWIFT_CLASS("_TtC16TopStepAIBudsSDK17TopStepAIBudsObjc")
 /// EN: Get device maximum packet size; returns NSNumber for ObjC nullability
 /// CN: 获取设备最大包长；以 NSNumber 返回以兼容 ObjC 的可空语义
 + (void)getMaxPacketSize:(void (^ _Nonnull)(NSError * _Nullable, NSNumber * _Nullable))callback;
-/// EN: Fetch device current EQ (mode and band gains)
-/// CN: 获取设备当前 EQ（模式与各频段增益）
-/// <ul>
-///   <li>
-///     callback: (error, mode NSNumber, gains NSArray<NSNumber *>?)
-///   </li>
-/// </ul>
-+ (void)getDeviceEqualizer:(void (^ _Nonnull)(NSError * _Nullable, NSNumber * _Nullable, NSArray * _Nullable))callback;
 /// EN: Get all preset EQ settings (local list)
 /// CN: 获取所有预设 EQ（本地列表）
 + (void)getAllEqualizer:(void (^ _Nonnull)(NSError * _Nullable, NSArray * _Nonnull))callback;
@@ -863,10 +967,10 @@ SWIFT_CLASS("_TtC16TopStepAIBudsSDK17TopStepAIBudsObjc")
 + (void)setDeviceEqualizerWithMode:(NSNumber * _Nonnull)mode gains:(NSArray * _Nonnull)gains :(void (^ _Nonnull)(NSError * _Nullable))callback;
 /// EN: Set ANC mode
 /// CN: 设置 ANC 模式
-+ (void)setANCWithMode:(NSNumber * _Nonnull)mode :(void (^ _Nonnull)(NSError * _Nullable))callback;
++ (void)setANCWithMode:(enum TSSBEarbudsAncMode)mode :(void (^ _Nonnull)(NSError * _Nullable))callback;
 /// EN: Set device work mode
 /// CN: 设置工作模式
-+ (void)setWorkModeWithMode:(NSNumber * _Nonnull)mode :(void (^ _Nonnull)(NSError * _Nullable))callback;
++ (void)setWorkModeWithMode:(enum TSSBEarbudsWorkMode)mode :(void (^ _Nonnull)(NSError * _Nullable))callback;
 /// EN: Volume up by one step
 /// CN: 音量增加一级
 + (void)volumeUp:(void (^ _Nonnull)(NSError * _Nullable))callback;
@@ -875,13 +979,13 @@ SWIFT_CLASS("_TtC16TopStepAIBudsSDK17TopStepAIBudsObjc")
 + (void)volumeDown:(void (^ _Nonnull)(NSError * _Nullable))callback;
 /// EN: Mute/unmute
 /// CN: 静音/取消静音
-+ (void)volumeMute:(NSNumber * _Nonnull)mute :(void (^ _Nonnull)(NSError * _Nullable))callback;
++ (void)volumeMute:(BOOL)mute :(void (^ _Nonnull)(NSError * _Nullable))callback;
 /// EN: Set volume to value 0~100
 /// CN: 设置音量到 0~100
 + (void)volumeChange:(NSNumber * _Nonnull)value :(void (^ _Nonnull)(NSError * _Nullable))callback;
 /// EN: Trigger find device
 /// CN: 触发寻找耳机
-+ (void)findDevice:(NSNumber * _Nonnull)start :(void (^ _Nonnull)(NSError * _Nullable))callback;
++ (void)findDevice:(BOOL)start :(void (^ _Nonnull)(NSError * _Nullable))callback;
 /// EN: Shutdown device
 /// CN: 关机设备
 + (void)shutdownDevice:(void (^ _Nonnull)(NSError * _Nullable))callback;
@@ -890,7 +994,7 @@ SWIFT_CLASS("_TtC16TopStepAIBudsSDK17TopStepAIBudsObjc")
 + (void)resetDevice:(void (^ _Nonnull)(NSError * _Nullable))callback;
 /// EN: Toggle AI chat
 /// CN: 开启/关闭 AI 对话
-+ (void)aiChatStateChange:(NSNumber * _Nonnull)open :(void (^ _Nonnull)(NSError * _Nullable))callback;
++ (void)aiChatStateChange:(BOOL)open :(void (^ _Nonnull)(NSError * _Nullable))callback;
 /// EN: Start device audio record
 /// CN: 启动设备录音
 + (void)startAudioRecord:(void (^ _Nonnull)(BOOL, NSError * _Nullable))callback;
@@ -908,10 +1012,10 @@ SWIFT_CLASS("_TtC16TopStepAIBudsSDK17TopStepAIBudsObjc")
 + (void)setSystemWiFiWithModel:(NSNumber * _Nullable)model channel:(NSNumber * _Nullable)channel ssid:(NSString * _Nullable)ssid password:(NSString * _Nullable)password :(void (^ _Nonnull)(NSNumber * _Nonnull, NSError * _Nullable))callback;
 /// EN: Configure voice recognition settings by payload
 /// CN: 配置语音识别设置（载荷）
-+ (void)voiceRecognitionSetting:(NSNumber * _Nonnull)payload :(void (^ _Nonnull)(NSNumber * _Nonnull, NSError * _Nullable))callback;
++ (void)voiceRecognitionSetting:(NSNumber * _Nonnull)payload :(void (^ _Nonnull)(BOOL, NSError * _Nullable))callback;
 /// EN: Start ABMate OTA with file meta and callbacks
 /// CN: 以文件信息与回调启动 ABMate OTA 升级
-+ (void)startABMateOTAWithFilePath:(NSString * _Nullable)filePath updateVersion:(NSString * _Nullable)updateVersion fileSize:(NSNumber * _Nullable)fileSize fileMD5:(NSString * _Nullable)fileMD5 prcVersion:(NSString * _Nullable)prcVersion progress:(void (^ _Nonnull)(NSNumber * _Nonnull))progress completion:(void (^ _Nonnull)(NSNumber * _Nonnull, NSError * _Nullable))completion;
++ (void)startABMateOTAWithFilePath:(NSString * _Nullable)filePath updateVersion:(NSString * _Nullable)updateVersion fileSize:(NSNumber * _Nullable)fileSize fileMD5:(NSString * _Nullable)fileMD5 prcVersion:(NSString * _Nullable)prcVersion progress:(void (^ _Nonnull)(NSNumber * _Nonnull))progress completion:(void (^ _Nonnull)(BOOL, NSError * _Nullable))completion;
 /// EN: Set standard time (unix + timezone minutes)
 /// CN: 设置标准时间（时间戳 + 时区分钟）
 + (void)setStandardTimeWithTimestamp:(NSNumber * _Nonnull)timestamp timezoneMinutes:(NSNumber * _Nonnull)timezoneMinutes :(void (^ _Nonnull)(NSNumber * _Nonnull, NSError * _Nullable))callback;

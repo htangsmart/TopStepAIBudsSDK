@@ -450,29 +450,16 @@ typedef SWIFT_ENUM(NSInteger, TSBTErrorType, open) {
   TSBTErrorTypeIsFirmwareUploading = -1516,
 };
 
+SWIFT_PROTOCOL("_TtP16TopStepAIBudsSDK12TSBTObserver_")
+@protocol TSBTObserver <NSObject>
+/// EN: Observe Bluetooth connection state changes of the device
+/// CN: 监听设备蓝牙状态
+- (void)observerDeviceBTStateWithState:(enum TSBTConnectState)state peripheral:(CBPeripheral * _Nonnull)peripheral;
+@end
+
 @class NSString;
-/// EN: Device basic information model for Objective‑C API
-/// CN: 提供给 Objective‑C 的设备基础信息模型
-SWIFT_CLASS("_TtC16TopStepAIBudsSDK20TSDeviceBaseInfoObjc")
-@interface TSDeviceBaseInfoObjc : NSObject
-/// EN: SDK type (TPSSDKType.rawValue)
-/// CN: SDK 类型（TPSSDKType.rawValue）
-@property (nonatomic, readonly) enum TPSSDKType sdkType;
-/// EN: Vendor device type (TPSDeviceType.rawValue, UInt)
-/// CN: 厂商设备类型（TPSDeviceType.rawValue，UInt）
-@property (nonatomic, readonly) enum TPSDeviceType deviceType;
-/// EN: Device category (TPSDeviceCategory.rawValue)
-/// CN: 设备分类（TPSDeviceCategory.rawValue）
-@property (nonatomic, readonly) enum TPSDeviceCategory deviceCategory;
-/// EN: Device MAC (string if available)
-/// CN: 设备 MAC（如有）
-@property (nonatomic, readonly, strong) NSString * _Nonnull mac;
-/// EN: Advertised name or peripheral name
-/// CN: 设备名称
-@property (nonatomic, readonly, strong) NSString * _Nonnull name;
-/// EN: Peripheral UUID string
-/// CN: 设备 UUID 字符串
-@property (nonatomic, readonly, strong) NSString * _Nonnull uuid;
+SWIFT_CLASS("_TtC16TopStepAIBudsSDK16TSDeviceBaseInfo")
+@interface TSDeviceBaseInfo : NSObject
 - (nonnull instancetype)initWithSdkType:(enum TPSSDKType)sdkType deviceType:(enum TPSDeviceType)deviceType deviceCategory:(enum TPSDeviceCategory)deviceCategory mac:(NSString * _Nonnull)mac name:(NSString * _Nonnull)name uuid:(NSString * _Nonnull)uuid OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
@@ -538,8 +525,193 @@ typedef SWIFT_ENUM(uint8_t, TSSBEarbudsAncMode, open) {
 /// </ol>
 SWIFT_CLASS("_TtC16TopStepAIBudsSDK22TSSBEarbudsCommMannger")
 @interface TSSBEarbudsCommMannger : NSObject
+/// EN: Current connected peripheral
+/// CN: 当前连接的外设
+@property (nonatomic, strong) CBPeripheral * _Nonnull peripheral;
+/// EN: Current device base information
+/// CN: 当前设备基础信息
+@property (nonatomic, strong) TSDeviceBaseInfo * _Nonnull deviceInfo;
+/// EN: Class-level configurable maximum packet size in bytes
+/// CN: 可配置的类级最大数据包大小（字节）
+/// 注意：修改此值可能会影响通信性能
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class) NSInteger MAX_PACKET_SIZE;)
++ (NSInteger)MAX_PACKET_SIZE SWIFT_WARN_UNUSED_RESULT;
++ (void)setMAX_PACKET_SIZE:(NSInteger)value;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+@class NSError;
+@class NSNumber;
+enum TSSBEarbudsWorkMode : uint8_t;
+enum TSSBEarbudsDeviceOperationType : uint8_t;
+enum TSSBEarbudsKeyFunction : uint8_t;
+@class NSData;
+enum TSSBRemoteCameraState : uint8_t;
+@interface TSSBEarbudsCommMannger (SWIFT_EXTENSION(TopStepAIBudsSDK))
+/// EN: Get device supported maximum packet size.
+/// CN: 获取设备支持的最大数据包大小。
+/// EN: Get device supported maximum packet size.
+/// CN: 获取设备支持的最大数据包大小。
+/// note:
+///
+/// <ul>
+///   <li>
+///     result second param: NSNumber(UInt8/Int)，表示最大包长（字节数）。
+///   </li>
+///   <li>
+///     Objective‑C 调用示例：<code>- (void)getMaxPacketSizeWithResult:(void(^)(NSError *error, NSNumber *size))result;</code>
+///   </li>
+/// </ul>
+- (void)getMaxPacketSizeWithResult:(void (^ _Nonnull)(NSError * _Nullable, NSNumber * _Nullable))result;
+/// EN: Get all preset equalizer settings (local list).
+/// CN: 获取所有预设 EQ 设置（本地列表）。
+- (void)getAllEqualizerWithResult:(void (^ _Nonnull)(NSError * _Nullable, NSArray<NSDictionary<NSString *, id> *> * _Nonnull))result;
+/// EN: Get current EQ mode and gains from device.
+/// CN: 从设备获取当前 EQ 模式与增益。
+/// Objective‑C 兼容：将返回值改为 NSDictionary
+/// { “eqMode”: NSNumber(UInt8), “eqGain”: [NSNumber(Int8)] }
+- (void)getDeviceEqualizerWithResult:(void (^ _Nonnull)(NSError * _Nullable, NSDictionary * _Nullable))result;
+/// EN: Get power and charging states for left/right earbuds and case.
+/// CN: 获取左右耳机与充电仓的电量与充电状态。
+/// Objective‑C 兼容：将返回值改为 NSDictionary
+/// { “leftPower”: NSNumber(UInt8), “leftCharging”: NSNumber(BOOL), … }
+- (void)getDevicePowerWithResult:(void (^ _Nonnull)(NSError * _Nullable, NSDictionary * _Nullable))result;
+/// EN: Get device key operation-function mappings.
+/// CN: 获取设备按键操作与功能映射关系。
+/// Objective‑C 兼容：将返回值改为并行数组字典
+/// { “operations”: [NSNumber(UInt8)], “functions”: [NSNumber(UInt8)] }
+- (void)getDeviceKeySettingsWithResult:(void (^ _Nonnull)(NSError * _Nullable, NSDictionary * _Nullable))result;
+/// EN: Query whether device supports TWS.
+/// CN: 查询设备是否支持 TWS。
+- (void)getIsSupportTWSWithResult:(void (^ _Nonnull)(NSError * _Nullable, BOOL))result;
+/// EN: Check TWS connection state.
+/// CN: 查询 TWS 是否已连接。
+- (void)getIsTWSConnectedWithResult:(void (^ _Nonnull)(NSError * _Nullable, BOOL))result;
+/// EN: Get main firmware version string.
+/// CN: 获取主片固件版本号。
+- (void)getMainFirmwareVersionWithResult:(void (^ _Nonnull)(NSError * _Nullable, NSString * _Nullable))result;
+/// EN: Get sub-chip firmware version string.
+/// CN: 获取从片固件版本号。
+- (void)getSubFirmwareVersionWithResult:(void (^ _Nonnull)(NSError * _Nullable, NSString * _Nullable))result;
+/// EN: Set device EQ with mode and per-band gains.
+/// CN: 设置设备 EQ 模式与各频段增益。
+/// Objective‑C 兼容：gains 使用 [NSNumber]
+- (void)setDeviceEqualizerWithMode:(uint8_t)mode gains:(NSArray<NSNumber *> * _Nonnull)gains result:(void (^ _Nonnull)(NSError * _Nullable))result;
+/// EN: Set ANC mode.
+/// CN: 设置 ANC 模式。
+- (void)setANCWithMode:(enum TSSBEarbudsAncMode)mode result:(void (^ _Nonnull)(NSError * _Nullable))result;
+/// EN: Set work mode.
+/// CN: 设置工作模式。
+- (void)setWorkModeWithMode:(enum TSSBEarbudsWorkMode)mode result:(void (^ _Nonnull)(NSError * _Nullable))result;
+/// EN: Restore device to factory settings.
+/// CN: 设备恢复出厂设置。
+- (void)resetDeviceWithResult:(void (^ _Nonnull)(NSError * _Nullable))result;
+/// EN: Set key operation-function mapping for device.
+/// CN: 设置耳机按键的操作-功能映射。
+- (void)setDeviceOperationWithOperation:(enum TSSBEarbudsDeviceOperationType)operation function:(enum TSSBEarbudsKeyFunction)function result:(void (^ _Nonnull)(NSError * _Nullable))result;
+/// EN: Trigger finding earbuds (play sound/locate).
+/// CN: 触发寻找耳机（发声/定位）。
+- (void)findDeviceWithStart:(BOOL)start result:(void (^ _Nonnull)(NSError * _Nullable))result;
+/// EN: Get supported voice prompt languages.
+/// CN: 获取设备支持的提示音语言。
+- (void)getSupportLanguagesWithResult:(void (^ _Nonnull)(NSData * _Nullable, NSError * _Nullable))result;
+/// EN: Set current language for voice prompts. 0 English, 1 Chinese.
+/// CN: 设置提示音语言。0 英文，1 中文。
+- (void)setCurrentLanguagesWithLanguageCode:(NSInteger)languageCode result:(void (^ _Nonnull)(BOOL, NSError * _Nullable))result;
+/// EN: Query multiple device information items in one request.
+/// CN: 一次请求查询多个设备信息项。
+- (void)queryABMateDeviceinfoWithResult:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nullable, NSError * _Nullable))result;
+/// EN: Update app remote camera state to device.
+/// CN: 将 App 的远程拍照状态同步到设备。
+- (void)updateCameraStateWithCameraState:(enum TSSBRemoteCameraState)cameraState result:(void (^ _Nonnull)(BOOL, NSError * _Nullable))result;
+/// EN: Start ABMate OTA with file meta and callbacks.
+/// CN: 以文件信息与回调启动 ABMate OTA 升级。
+/// Objective‑C 兼容：fileSize 使用 NSNumber?
+- (void)startABMateOTAWithFilePath:(NSString * _Nullable)filePath updateVersion:(NSString * _Nullable)updateVersion fileSize:(NSNumber * _Nullable)fileSize fileMD5:(NSString * _Nullable)fileMD5 prcVersion:(NSString * _Nullable)prcVersion progress:(void (^ _Nonnull)(NSInteger))progress result:(void (^ _Nonnull)(BOOL, NSError * _Nullable))result;
+/// EN: Query storage usage (used and remaining space).
+/// CN: 查询存储信息（已用与剩余空间）。
+/// Objective‑C 兼容：回调使用 NSNumber 表示 UInt32
+- (void)queryABMateStorageInfoWithResult:(void (^ _Nonnull)(NSNumber * _Nonnull, NSNumber * _Nonnull, NSError * _Nullable))result;
+/// EN: Query media count on device.
+/// CN: 查询设备端媒体数量。
+- (void)queryABMateMediaCountWithResult:(void (^ _Nonnull)(BOOL, NSError * _Nullable))result;
+/// EN: Start audio recording on device.
+/// CN: 启动设备端音频录制。
+- (void)startABMateAudioRecordWithResult:(void (^ _Nonnull)(BOOL, NSError * _Nullable))result;
+/// EN: Stop/Shutdown device recording and return code.
+/// CN: 停止/关闭设备录音并返回结果码。
+- (void)shutDownABMateRecordWithResult:(void (^ _Nonnull)(NSInteger, NSError * _Nullable))result;
+/// EN: Start camera and take a photo with mode.
+/// CN: 启动相机并按模式拍照。
+- (void)takePhotoWithModel:(uint8_t)model result:(void (^ _Nonnull)(BOOL, NSError * _Nullable))result;
+/// EN: Start video recording.
+/// CN: 开始录像。
+- (void)takeVideoRecordWithResult:(void (^ _Nonnull)(BOOL, NSError * _Nullable))result;
+/// EN: Increase volume by one step.
+/// CN: 音量增加一级。
+- (void)volumeUpWithResult:(void (^ _Nonnull)(NSError * _Nullable))result;
+/// EN: Decrease volume by one step.
+/// CN: 音量降低一级。
+- (void)volumeDownWithResult:(void (^ _Nonnull)(NSError * _Nullable))result;
+/// EN: Mute or unmute device.
+/// CN: 设置设备静音/取消静音。
+- (void)volumeMuteWithMute:(BOOL)mute result:(void (^ _Nonnull)(NSError * _Nullable))result;
+/// EN: Set volume to specific value (0-100).
+/// CN: 设置音量为指定值（0-100）。
+- (void)volumeChangeWithVolume:(uint8_t)volume result:(void (^ _Nonnull)(NSError * _Nullable))result;
+/// EN: Toggle AI chat state (open/close).
+/// CN: 开启/关闭 AI 对话。
+- (void)aiChatStateChangeWithOpen:(BOOL)open result:(void (^ _Nonnull)(NSError * _Nullable))result;
+/// EN: Shutdown device.
+/// CN: 关机设备。
+- (void)shutdownDeviceWithResult:(void (^ _Nonnull)(NSError * _Nullable))result;
+/// EN: Configure voice recognition settings by payload.
+/// CN: 通过载荷配置语音识别设置。
+- (void)voiceRecognitionSettingWithPayload:(uint8_t)payload result:(void (^ _Nonnull)(BOOL, NSError * _Nullable))result;
+/// @brief 设置WiFi信息（TLV格式）
+/// @chinese 以TLV方式设置WiFi信息，包含model、ssid、password、channel
+/// @param model
+/// EN: WiFi mode, 1 byte
+/// CN: WiFi模式，1字节
+/// @param channel
+/// EN: WiFi channel, 1 byte
+/// CN: WiFi频道，1字节
+/// @param ssid
+/// EN: WiFi SSID, max 32 bytes, must be valid UTF-8
+/// CN: WiFi名称，最长32字节，必须为合法UTF-8
+/// @param password
+/// EN: WiFi password, max 32 bytes, must be valid UTF-8
+/// CN: WiFi密码，最长32字节，必须为合法UTF-8
+/// @param result
+/// EN: Callback, true if success, false and error if failed
+/// CN: 回调，成功true，失败false和错误信息
+/// Objective‑C 兼容：model/channel 使用 NSNumber?
+- (void)setSystemWiFiWithModel:(NSNumber * _Nullable)model channel:(NSNumber * _Nullable)channel ssid:(NSString * _Nullable)ssid password:(NSString * _Nullable)password result:(void (^ _Nonnull)(NSInteger, NSError * _Nullable))result;
+/// @brief 启动文件传输模式
+/// @chinese 启动文件传输模式，处理不同的返回码
+/// @param result
+/// EN: Callback, true if success, false and error if failed
+/// CN: 回调，成功true，失败false和错误信息
+- (void)startFileTransferWithResult:(void (^ _Nonnull)(NSInteger, NSError * _Nullable))result;
+/// @brief 设置标准时间
+/// @chinese 设置设备的标准时间（Unix时间戳+时区信息）
+/// @param timestamp
+/// EN: Unix timestamp, 4 bytes, seconds
+/// CN: Unix时间戳，4字节，单位秒
+/// @param timezoneMinutes
+/// EN: Timezone offset in minutes, signed 16-bit integer
+/// CN: 时区偏移，单位分钟，有符号16位整数
+/// @param result
+/// EN: Callback, returns result code (UInt8) and error if failed
+/// CN: 回调，返回结果码(UInt8)，失败时返回错误信息
+- (void)setABMateStandardTimeWithTimestamp:(uint32_t)timestamp timezoneMinutes:(int16_t)timezoneMinutes result:(void (^ _Nonnull)(uint8_t, NSError * _Nullable))result;
+/// @brief 设置设备AI 录音的开启/关闭
+/// @param recordType
+/// 录音类型 0现场录音 1通话录音
+/// @param status
+/// 开启/关闭 0关闭 1开启
+- (void)controlABMetaRecordWithRecordType:(uint8_t)recordType status:(uint8_t)status result:(void (^ _Nonnull)(BOOL, NSError * _Nullable))result;
 @end
 
 /// EN: Bluetooth command codes for earbuds protocol
@@ -868,158 +1040,320 @@ typedef SWIFT_ENUM(uint8_t, TSSBRemoteCameraState, open) {
   TSSBRemoteCameraStateTakePhotoFailed = 3,
 };
 
-@class NSNumber;
-@class NSArray;
-@class NSData;
-/// EN: Objective‑C observer protocol (all methods optional)
-/// CN: Objective‑C 观察者协议（方法均为可选）
-SWIFT_PROTOCOL("_TtP16TopStepAIBudsSDK21TSSoudbudObserverObjc_")
-@protocol TSSoudbudObserverObjc <NSObject>
-@optional
-- (void)observerDeviceBTStateWithState:(enum TSBTConnectState)state peripheral:(CBPeripheral * _Nonnull)peripheral;
-- (void)observerPowerChangeWithLeftPower:(NSNumber * _Nullable)leftPower leftCharging:(BOOL)leftCharging rightPower:(NSNumber * _Nullable)rightPower rightCharging:(BOOL)rightCharging hubPower:(NSNumber * _Nullable)hubPower hubCharging:(BOOL)hubCharging;
+/// EN: Soundbuds event observer protocol. Receives status/config/media/Wi‑Fi/AI notifications.
+/// CN: 耳机事件观察者协议。用于接收状态、配置、媒体、Wi‑Fi、AI 等通知。
+SWIFT_PROTOCOL("_TtP16TopStepAIBudsSDK17TSSoudbudObserver_")
+@protocol TSSoudbudObserver <TSBTObserver>
+/// EN: Observe power and charging state changes
+/// CN: 监听电量变化
+/// note:
+/// 为了兼容 Objective‑C，这里使用 NSNumber?
+/// <ul>
+///   <li>
+///     leftPower/rightPower/hubPower: UInt8，取值 0~100（电量百分比），请用 <code>unsigned char</code>/<code>NSUInteger</code> 封装为 NSNumber
+///   </li>
+///   <li>
+///     leftCharging/rightCharging/hubCharging: Bool（0/1），请用 <code>BOOL</code>/<code>bool</code> 封装为 NSNumber（<code>@YES/@NO</code>）
+///   </li>
+/// </ul>
+/// \param leftPower EN: Left earbud battery, CN: 左耳电量
+///
+/// \param rightPower EN: Right earbud battery, CN: 右耳电量
+///
+/// \param hubPower EN: Case battery, CN: 充电仓电量
+/// EN: Observe power and charging state changes
+/// CN: 监听电量与充电状态变化
+///
+- (void)observerPowerChangeWithLeftPower:(NSNumber * _Nullable)leftPower leftCharging:(NSNumber * _Nullable)leftCharging rightPower:(NSNumber * _Nullable)rightPower rightCharging:(NSNumber * _Nullable)rightCharging hubPower:(NSNumber * _Nullable)hubPower hubCharging:(NSNumber * _Nullable)hubCharging;
+/// EN: Observe playback state changes
+/// CN: 监听播放状态变化
+/// \param isPlaying 是否正在播放
+///
 - (void)observerPlayStateChangeWithIsPlaying:(BOOL)isPlaying;
+/// EN: Observe work mode changes
+/// CN: 监听工作模式变化
+/// \param workMode 工作模式
+///
 - (void)observerWorkModeChangeWithWorkMode:(enum TSSBEarbudsWorkMode)workMode;
+/// EN: Observe in‑ear detection state changes
+/// CN: 监听入耳检测状态变化
+/// \param leftInEar EN: Left ear in‑ear, CN: 左耳是否入耳
+///
+/// \param rightInEar EN: Right ear in‑ear, CN: 右耳是否入耳
+///
 - (void)observerInEarStatusChangeWithLeftInEar:(BOOL)leftInEar rightInEar:(BOOL)rightInEar;
+/// EN: Observe TWS connection state changes
+/// CN: 监听TWS连接状态变化
+/// \param isConnected 是否已连接
+///
 - (void)observerTWSConnectedChangeWithIsConnected:(BOOL)isConnected;
-- (void)observerEQSettingChangeWithMode:(uint8_t)mode gains:(NSArray * _Nonnull)gains;
+/// EN: Observe EQ settings changes
+/// CN: 监听EQ设置变化
+/// note:
+/// 为了兼容 Objective‑C，<code>gains</code> 使用 <code>[NSNumber]</code>
+/// <ul>
+///   <li>
+///     mode: UInt8（EQ 模式，<code>unsigned char</code>）
+///   </li>
+///   <li>
+///     gains: Int8 数组（每段EQ增益，范围 -128~127），请用 <code>NSNumber numberWithChar:</code> 或 <code>@(int8_tValue)</code> 封装
+///   </li>
+/// </ul>
+/// \param mode EN: EQ mode, CN: EQ模式
+///
+/// \param gains EN: EQ band gains, CN: EQ增益值数组
+/// EN: Observe EQ settings changes
+/// CN: 监听EQ设置变化
+///
+- (void)observerEQSettingChangeWithMode:(uint8_t)mode gains:(NSArray<NSNumber *> * _Nonnull)gains;
+/// EN: Observe device volume changes
+/// CN: 监听设备音量变化
+/// \param volume 音量值
+///
 - (void)observerDeviceVolumeChangeWithVolume:(uint8_t)volume;
+/// EN: Observe ANC mode changes
+/// CN: 监听ANC模式变化
+/// \param mode ANC模式
+///
 - (void)observerANCModeChangeWithMode:(enum TSSBEarbudsAncMode)mode;
+/// EN: Observe ANC gain changes
+/// CN: 监听降噪等级变化
+/// \param gain 降噪等级
+///
 - (void)observerANCGainChangeWithGain:(uint8_t)gain;
+/// EN: Observe transparency gain changes
+/// CN: 监听通透等级变化
+/// \param gain 通透等级
+///
 - (void)observerTransparencyGainChangeWithGain:(uint8_t)gain;
+/// EN: Observe 3D sound effect enable/disable
+/// CN: 监听3D音效状态变化
+/// \param isEnabled 是否启用
+///
 - (void)observerSoundEffect3DChangeWithIsEnabled:(BOOL)isEnabled;
+/// EN: Observe Bass Engine enable/disable
+/// CN: 监听动态低音状态变化
+/// \param isEnabled 是否启用
+///
 - (void)observerBassEngineStatusChangeWithIsEnabled:(BOOL)isEnabled;
-- (void)observerKeySettingsChangeWithSettings:(NSArray * _Nonnull)settings;
+/// EN: Observe key settings changes
+/// CN: 监听按键配置变化
+/// note:
+/// 为了兼容 Objective‑C，元组数组改为并行数组 <code>[NSNumber]</code>
+/// <ul>
+///   <li>
+///     operations: <code>TSSBEarbudsDeviceOperationType.rawValue</code>（UInt8），请用 <code>unsigned char</code> 封装为 NSNumber
+///   </li>
+///   <li>
+///     functions: <code>TSSBEarbudsKeyFunction.rawValue</code>（UInt8），请用 <code>unsigned char</code> 封装为 NSNumber
+///   </li>
+/// </ul>
+/// \param operation EN: Operation type, CN: 操作类型
+///
+/// \param function EN: Function type, CN: 功能类型
+/// EN: Observe key settings changes
+/// CN: 监听按键配置变化
+///
+- (void)observerKeySettingsChangeWithOperations:(NSArray<NSNumber *> * _Nonnull)operations functions:(NSArray<NSNumber *> * _Nonnull)functions;
+/// EN: Observe prompt tone type changes
+/// CN: 监听提示音类型变化
+/// \param type 提示音类型
+///
 - (void)observerPromptToneTypeChangeWithType:(uint8_t)type;
+/// EN: Observe LED switch state changes
+/// CN: 监听LED灯开关状态变化
+/// \param isOn 是否开启
+///
 - (void)observerLEDSwitchChangeWithIsOn:(BOOL)isOn;
+/// EN: Observe main/side change (left/right primary)
+/// CN: 监听主从耳信息变化
+/// \param isLeft 是否左耳为主耳
+///
 - (void)observerMainSideChangeWithIsLeft:(BOOL)isLeft;
+/// EN: Observe multipoint enable state changes
+/// CN: 监听1拖2开关状态变化
+/// \param isEnabled 是否启用
+///
 - (void)observerMultipointStatusChangeWithIsEnabled:(BOOL)isEnabled;
-- (void)observerMultipointInfoChangeWithDevices:(NSArray * _Nonnull)devices;
+/// EN: Observe multipoint device list and connection changes
+/// CN: 监听已连接的手机相关信息变化
+/// note:
+/// 为了兼容 Objective‑C，使用字典数组，每个字典包含：
+/// <ul>
+///   <li>
+///     “mac”: [NSNumber]（每个元素为 UInt8，建议用 <code>unsigned char</code> 封装）
+///   </li>
+///   <li>
+///     “isConnected”: NSNumber(BOOL)，请使用 <code>@YES/@NO</code>
+///   </li>
+///   <li>
+///     “name”: NSString
+///   </li>
+/// </ul>
+/// \param devices EN: List of (MAC, state, name), CN: 设备信息数组（MAC/连接状态/名称）
+/// EN: Observe multipoint device list and states
+/// CN: 监听多点连接设备列表及其连接状态
+///
+- (void)observerMultipointInfoChangeWithDevices:(NSArray<NSDictionary *> * _Nonnull)devices;
+/// EN: Observe voice recognition enable state changes
+/// CN: 监听语音识别开关状态变化
+/// \param isEnabled 是否启用
+///
 - (void)observerVoiceRecognitionChangeWithIsEnabled:(BOOL)isEnabled;
-- (void)observerRemoteCameraControlStateWithState:(enum TSSBRemoteCameraState)state;
+/// EN: Observe remote camera control state
+/// CN: 监听遥控拍照状态
+/// \param state 0:退出拍照，1:进入拍照，2:拍照
+///
+- (void)observerRemoteCameraControlStateWithState:(uint8_t)state;
+/// EN: Observe media counts (picture/video/audio)
+/// CN: 监听多媒体数量
 - (void)observerMediaCountDidChangedWithPicCount:(uint32_t)picCount videoCount:(uint32_t)videoCount audioCount:(uint32_t)audioCount;
+/// EN: Observe Wi‑Fi state changes
+/// CN: wifi状态变化
 - (void)observerWifiStateChangedWithState:(enum TSSBEarbudsWiFiState)state;
+/// EN: Observe Wi‑Fi address (IP or Hotspot info)
+/// CN: wifi address（IP 或热点信息）
 - (void)observerWifiAddressNotifyWithWifiAddress:(NSString * _Nonnull)wifiAddress;
+/// EN: Observe AI record data stream
+/// CN: ai 录音数据
 - (void)observerAIRecordNotifyWithRecordData:(NSData * _Nullable)recordData;
+/// EN: Observe AI chat switch state
+/// CN: AI聊天开关状态
 - (void)observerAIStateNotifyWithStatus:(NSData * _Nonnull)status;
+/// EN: Observe whether device supports call recording
+/// CN: 监听设备是否支持通话录音
 - (void)observerIsSupportCallRecordNotifyWithStatus:(BOOL)status;
+/// EN: Observe AI chat image for intent recognition
+/// CN: AI聊天意图识别返回图片
 - (void)observerAIChatImageNotifyWithImageData:(NSData * _Nonnull)imageData;
+/// EN: Observe sub‑chip firmware version for glasses
+/// CN: 眼镜从片固件版本号
 - (void)observerSubFirmwareVersionNotifyWithVersion:(NSString * _Nonnull)version;
 @end
 
 SWIFT_CLASS("_TtC16TopStepAIBudsSDK13TopStepAIBuds")
 @interface TopStepAIBuds : NSObject
+/// EN: SDK singleton instance
+/// CN: SDK 单例
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TopStepAIBuds * _Nonnull shared;)
++ (TopStepAIBuds * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
+/// EN: Currently connected earbuds device
+/// CN: 当前连接的设备
+@property (nonatomic, readonly, strong) TSSBEarbuds * _Nullable earbuds;
+/// EN: External observer for device events
+/// CN: 监听设备返回的事件
+@property (nonatomic, readonly, strong) id <TSSoudbudObserver> _Nullable observer;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+/// EN: Stop scanning for devices.
+/// CN: 停止扫描设备。
++ (void)stopScan;
+/// EN: Scan nearby devices and return the first found result via callback.
+/// CN: 扫描附近设备，通过回调返回第一个发现的结果。
++ (void)scanDeviceWithResult:(void (^ _Nonnull)(NSError * _Nullable, TSDeviceBaseInfo * _Nullable, CBPeripheral * _Nullable))result timeout:(NSTimeInterval)timeout;
+/// 查找已连接的经典蓝牙设备
+/// EN: Find a connected GATT device by UUID and service ID.
+/// CN: 通过 UUID 与服务 ID 查找已连接的 GATT 设备。
++ (void)findGATTDeviceWithUuid:(NSString * _Nonnull)uuid servicesID:(NSString * _Nonnull)servicesID result:(void (^ _Nonnull)(NSError * _Nullable, CBPeripheral * _Nullable))result timeout:(NSTimeInterval)timeout;
+/// 根据uuid查找指定的ble设备
+/// EN: Find a BLE device by UUID.
+/// CN: 通过 UUID 查找 BLE 设备。
++ (void)findDeviceWithUuid:(NSString * _Nonnull)uuid result:(void (^ _Nonnull)(NSError * _Nullable, TSDeviceBaseInfo * _Nullable, CBPeripheral * _Nullable))result timeout:(NSTimeInterval)timeout;
+/// CN: 断开当前连接设备
++ (void)disconnectDevice;
+/// EN: Connect to a device with specified UUID and connection style, then initialize.
+/// CN: 使用指定 UUID 与连接方式连接设备，并完成初始化。
++ (void)connectDeviceWithUuid:(NSString * _Nonnull)uuid connectStyle:(enum TPSDeviceConnectStyle)connectStyle category:(enum TPSDeviceCategory)category deviceObserver:(id <TSSoudbudObserver> _Nullable)deviceObserver result:(void (^ _Nonnull)(NSError * _Nullable, TSDeviceBaseInfo * _Nullable, CBPeripheral * _Nullable))result;
 @end
 
-@class NSError;
-/// EN: Objective‑C Facade class that exposes stable APIs
-/// CN: 面向 Objective‑C 的门面类，提供稳定 API
-SWIFT_CLASS("_TtC16TopStepAIBudsSDK17TopStepAIBudsObjc")
-@interface TopStepAIBudsObjc : NSObject
-/// EN: Enable/disable console logs
-/// CN: 开启/关闭控制台日志
-/// \param open EN: true to enable, false to disable
-/// CN: true 开启，false 关闭
-///
-+ (void)logsOpen:(BOOL)open;
-/// EN: Stop scanning devices
-/// CN: 停止扫描设备
-+ (void)stopScan;
-/// EN: Scan nearby devices and return the found device
-/// CN: 扫描附近设备，返回发现的设备
-/// \param timeout EN: timeout in seconds; CN: 超时时间（秒）
-///
-/// \param callback (error, info, peripheral)
-///
-+ (void)scanDeviceWithTimeout:(NSTimeInterval)timeout callback:(void (^ _Nonnull)(NSError * _Nullable, TSDeviceBaseInfoObjc * _Nullable, CBPeripheral * _Nullable))callback;
-/// EN: Find BLE device by UUID
-/// CN: 通过 UUID 查找 BLE 设备
-+ (void)findDeviceWithUuid:(NSString * _Nonnull)uuid timeout:(NSTimeInterval)timeout callback:(void (^ _Nonnull)(NSError * _Nullable, TSDeviceBaseInfoObjc * _Nullable, CBPeripheral * _Nullable))callback;
-/// EN: Find a connected GATT device by UUID and service ID
-/// CN: 通过 UUID 与服务 ID 查找已连接的 GATT 设备
-+ (void)findGATTDeviceWithUuid:(NSString * _Nonnull)uuid servicesID:(NSString * _Nonnull)servicesID timeout:(NSTimeInterval)timeout callback:(void (^ _Nonnull)(NSError * _Nullable, CBPeripheral * _Nullable))callback;
-/// EN: Connect device by UUID; set observer; initialize and callback
-/// CN: 通过 UUID 连接设备；设置观察者；初始化并回调
-/// \param uuid 设备 UUID 字符串
-///
-/// \param connectStyle 连接方式（1=GATT, 2=BLE），默认 BLE
-///
-/// \param category 设备分类（参见 Swift 枚举 <code>TPSDeviceCategory</code> 的 rawValue）
-///
-/// \param observer 观察者（可选）
-///
-/// \param callback (error, info, peripheral)
-///
-+ (void)connectDeviceWithUuid:(NSString * _Nonnull)uuid connectStyle:(NSNumber * _Nullable)connectStyle category:(NSNumber * _Nonnull)category observer:(id <TSSoudbudObserverObjc> _Nullable)observer callback:(void (^ _Nonnull)(NSError * _Nullable, TSDeviceBaseInfoObjc * _Nullable, CBPeripheral * _Nullable))callback;
-/// EN: Disconnect current device and clear observer adapter
-/// CN: 断开当前设备并清理观察者适配器
-+ (void)disconnectDevice;
-/// EN: Get device maximum packet size; returns NSNumber for ObjC nullability
-/// CN: 获取设备最大包长；以 NSNumber 返回以兼容 ObjC 的可空语义
-+ (void)getMaxPacketSize:(void (^ _Nonnull)(NSError * _Nullable, NSNumber * _Nullable))callback;
-/// EN: Get all preset EQ settings (local list)
-/// CN: 获取所有预设 EQ（本地列表）
-+ (void)getAllEqualizer:(void (^ _Nonnull)(NSError * _Nullable, NSArray * _Nonnull))callback;
-/// EN: Set EQ by mode and gains
-/// CN: 设置 EQ 模式与增益
-+ (void)setDeviceEqualizerWithMode:(NSNumber * _Nonnull)mode gains:(NSArray * _Nonnull)gains :(void (^ _Nonnull)(NSError * _Nullable))callback;
-/// EN: Set ANC mode
-/// CN: 设置 ANC 模式
-+ (void)setANCWithMode:(enum TSSBEarbudsAncMode)mode :(void (^ _Nonnull)(NSError * _Nullable))callback;
-/// EN: Set device work mode
-/// CN: 设置工作模式
-+ (void)setWorkModeWithMode:(enum TSSBEarbudsWorkMode)mode :(void (^ _Nonnull)(NSError * _Nullable))callback;
-/// EN: Volume up by one step
-/// CN: 音量增加一级
-+ (void)volumeUp:(void (^ _Nonnull)(NSError * _Nullable))callback;
-/// EN: Volume down by one step
-/// CN: 音量降低一级
-+ (void)volumeDown:(void (^ _Nonnull)(NSError * _Nullable))callback;
-/// EN: Mute/unmute
-/// CN: 静音/取消静音
-+ (void)volumeMute:(BOOL)mute :(void (^ _Nonnull)(NSError * _Nullable))callback;
-/// EN: Set volume to value 0~100
-/// CN: 设置音量到 0~100
-+ (void)volumeChange:(NSNumber * _Nonnull)value :(void (^ _Nonnull)(NSError * _Nullable))callback;
-/// EN: Trigger find device
-/// CN: 触发寻找耳机
-+ (void)findDevice:(BOOL)start :(void (^ _Nonnull)(NSError * _Nullable))callback;
-/// EN: Shutdown device
-/// CN: 关机设备
-+ (void)shutdownDevice:(void (^ _Nonnull)(NSError * _Nullable))callback;
-/// EN: Restore factory settings
-/// CN: 恢复出厂设置
-+ (void)resetDevice:(void (^ _Nonnull)(NSError * _Nullable))callback;
-/// EN: Toggle AI chat
-/// CN: 开启/关闭 AI 对话
-+ (void)aiChatStateChange:(BOOL)open :(void (^ _Nonnull)(NSError * _Nullable))callback;
-/// EN: Start device audio record
-/// CN: 启动设备录音
-+ (void)startAudioRecord:(void (^ _Nonnull)(BOOL, NSError * _Nullable))callback;
-/// EN: Stop/shutdown device record, returns code
-/// CN: 停止/关闭设备录音，返回结果码
-+ (void)shutDownRecord:(void (^ _Nonnull)(NSNumber * _Nonnull, NSError * _Nullable))callback;
-/// EN: Start camera and take a photo with model
-/// CN: 启动相机并拍照（模式）
-+ (void)takePhoto:(NSNumber * _Nonnull)model :(void (^ _Nonnull)(BOOL, NSError * _Nullable))callback;
-/// EN: Start video record
-/// CN: 开始录像
-+ (void)takeVideoRecord:(void (^ _Nonnull)(BOOL, NSError * _Nullable))callback;
-/// EN: Set Wi‑Fi by TLV payloads
-/// CN: 以 TLV 设置 Wi‑Fi 参数
-+ (void)setSystemWiFiWithModel:(NSNumber * _Nullable)model channel:(NSNumber * _Nullable)channel ssid:(NSString * _Nullable)ssid password:(NSString * _Nullable)password :(void (^ _Nonnull)(NSNumber * _Nonnull, NSError * _Nullable))callback;
-/// EN: Configure voice recognition settings by payload
-/// CN: 配置语音识别设置（载荷）
-+ (void)voiceRecognitionSetting:(NSNumber * _Nonnull)payload :(void (^ _Nonnull)(BOOL, NSError * _Nullable))callback;
-/// EN: Start ABMate OTA with file meta and callbacks
-/// CN: 以文件信息与回调启动 ABMate OTA 升级
-+ (void)startABMateOTAWithFilePath:(NSString * _Nullable)filePath updateVersion:(NSString * _Nullable)updateVersion fileSize:(NSNumber * _Nullable)fileSize fileMD5:(NSString * _Nullable)fileMD5 prcVersion:(NSString * _Nullable)prcVersion progress:(void (^ _Nonnull)(NSNumber * _Nonnull))progress completion:(void (^ _Nonnull)(BOOL, NSError * _Nullable))completion;
-/// EN: Set standard time (unix + timezone minutes)
-/// CN: 设置标准时间（时间戳 + 时区分钟）
-+ (void)setStandardTimeWithTimestamp:(NSNumber * _Nonnull)timestamp timezoneMinutes:(NSNumber * _Nonnull)timezoneMinutes :(void (^ _Nonnull)(NSNumber * _Nonnull, NSError * _Nullable))callback;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@interface TopStepAIBuds (SWIFT_EXTENSION(TopStepAIBudsSDK)) <TSSoudbudObserver>
+/// EN: Notify sub-chip firmware version update.
+/// CN: 通知从片固件版本变更。
+- (void)observerSubFirmwareVersionNotifyWithVersion:(NSString * _Nonnull)version;
+/// EN: Notify AI chat image data.
+/// CN: 通知 AI 对话图片数据。
+- (void)observerAIChatImageNotifyWithImageData:(NSData * _Nonnull)imageData;
+/// EN: Notify device support state for call recording.
+/// CN: 通知设备是否支持通话录音。
+- (void)observerIsSupportCallRecordNotifyWithStatus:(BOOL)status;
+/// EN: Notify Bluetooth connection state changes.
+/// CN: 通知蓝牙连接状态变化。
+- (void)observerDeviceBTStateWithState:(enum TSBTConnectState)state peripheral:(CBPeripheral * _Nonnull)peripheral;
+/// EN: Notify power changes of earbuds and case.
+/// CN: 通知耳机与充电盒电量变化。
+- (void)observerPowerChangeWithLeftPower:(NSNumber * _Nullable)leftPower leftCharging:(NSNumber * _Nullable)leftCharging rightPower:(NSNumber * _Nullable)rightPower rightCharging:(NSNumber * _Nullable)rightCharging hubPower:(NSNumber * _Nullable)hubPower hubCharging:(NSNumber * _Nullable)hubCharging;
+/// EN: Notify playback state changes.
+/// CN: 通知播放状态变化。
+- (void)observerPlayStateChangeWithIsPlaying:(BOOL)isPlaying;
+/// EN: Notify work mode changes.
+/// CN: 通知工作模式变化。
+- (void)observerWorkModeChangeWithWorkMode:(enum TSSBEarbudsWorkMode)workMode;
+/// EN: Notify in-ear detection changes.
+/// CN: 通知入耳检测状态变化。
+- (void)observerInEarStatusChangeWithLeftInEar:(BOOL)leftInEar rightInEar:(BOOL)rightInEar;
+/// EN: Notify TWS connection state changes.
+/// CN: 通知 TWS 连接状态变化。
+- (void)observerTWSConnectedChangeWithIsConnected:(BOOL)isConnected;
+/// EN: Notify EQ setting changes.
+/// CN: 通知 EQ 设置变化。
+- (void)observerEQSettingChangeWithMode:(uint8_t)mode gains:(NSArray<NSNumber *> * _Nonnull)gains;
+/// EN: Notify device volume change.
+/// CN: 通知设备音量变化。
+- (void)observerDeviceVolumeChangeWithVolume:(uint8_t)volume;
+/// EN: Notify ANC mode changes.
+/// CN: 通知 ANC 模式变化。
+- (void)observerANCModeChangeWithMode:(enum TSSBEarbudsAncMode)mode;
+/// EN: Notify ANC gain changes.
+/// CN: 通知 ANC 增益变化。
+- (void)observerANCGainChangeWithGain:(uint8_t)gain;
+/// EN: Notify transparency gain changes.
+/// CN: 通知通透增益变化。
+- (void)observerTransparencyGainChangeWithGain:(uint8_t)gain;
+/// EN: Notify 3D sound effect enable state changes.
+/// CN: 通知 3D 音效开关变化。
+- (void)observerSoundEffect3DChangeWithIsEnabled:(BOOL)isEnabled;
+/// EN: Notify Bass Engine enable state changes.
+/// CN: 通知低音增强开关变化。
+- (void)observerBassEngineStatusChangeWithIsEnabled:(BOOL)isEnabled;
+/// EN: Notify AI record data stream.
+/// CN: 通知 AI 录音数据流。
+- (void)observerAIRecordNotifyWithRecordData:(NSData * _Nullable)recordData;
+/// EN: Notify AI state data.
+/// CN: 通知 AI 状态数据。
+- (void)observerAIStateNotifyWithStatus:(NSData * _Nonnull)status;
+/// EN: Notify key settings change.
+/// CN: 通知按键设置变化。
+- (void)observerKeySettingsChangeWithOperations:(NSArray<NSNumber *> * _Nonnull)operations functions:(NSArray<NSNumber *> * _Nonnull)functions;
+/// EN: Notify prompt tone type change.
+/// CN: 通知提示音类型变化。
+- (void)observerPromptToneTypeChangeWithType:(uint8_t)type;
+/// EN: Notify LED switch state change.
+/// CN: 通知 LED 开关状态变化。
+- (void)observerLEDSwitchChangeWithIsOn:(BOOL)isOn;
+/// EN: Notify main side change (left/right primary).
+/// CN: 通知主副耳变化（左/右主）。
+- (void)observerMainSideChangeWithIsLeft:(BOOL)isLeft;
+/// EN: Notify multipoint enable state change.
+/// CN: 通知多点连接开关变化。
+- (void)observerMultipointStatusChangeWithIsEnabled:(BOOL)isEnabled;
+/// EN: Notify multipoint device list and connection states.
+/// CN: 通知多点连接设备列表及连接状态。
+- (void)observerMultipointInfoChangeWithDevices:(NSArray<NSDictionary *> * _Nonnull)devices;
+/// EN: Notify voice recognition enable state change.
+/// CN: 通知语音识别开关变化。
+- (void)observerVoiceRecognitionChangeWithIsEnabled:(BOOL)isEnabled;
+/// EN: Notify remote camera control state.
+/// CN: 通知远程相机控制状态。
+- (void)observerRemoteCameraControlStateWithState:(uint8_t)state;
+/// EN: Notify media count changes (photos, videos, audios).
+/// CN: 通知媒体数量变化（图片、视频、音频）。
+- (void)observerMediaCountDidChangedWithPicCount:(uint32_t)picCount videoCount:(uint32_t)videoCount audioCount:(uint32_t)audioCount;
+/// EN: Notify Wi-Fi state change.
+/// CN: 通知 Wi-Fi 状态变化。
+- (void)observerWifiStateChangedWithState:(enum TSSBEarbudsWiFiState)state;
+/// EN: Notify Wi-Fi address (IP or Hotspot info).
+/// CN: 通知 Wi‑Fi 地址（IP 或热点信息）。
+- (void)observerWifiAddressNotifyWithWifiAddress:(NSString * _Nonnull)wifiAddress;
 @end
 
 #endif

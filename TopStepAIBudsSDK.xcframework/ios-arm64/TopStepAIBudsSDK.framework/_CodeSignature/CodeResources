@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/TopStepAIBudsSDK-Swift.h</key>
 		<data>
-		g1rSE1ghO6BSaSd8fjEwIj0DuGo=
+		dwmJzVks1h8ET36n7lSkndd2kYk=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -14,23 +14,23 @@
 		</data>
 		<key>Modules/TopStepAIBudsSDK.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		605hwqo2wV2tAHLPbcekKvMZm1Y=
+		o0A1/vRun6DSsAR8k44ADtRpcLg=
 		</data>
 		<key>Modules/TopStepAIBudsSDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
-		CDwAvigCxru1TgUlNjOVoO0+hjE=
+		kZyi3/axxCIbCG7BEoYddCY3LPA=
 		</data>
 		<key>Modules/TopStepAIBudsSDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		sM9bKzmD/7gM05wvO43iDwTMOQ0=
+		LAMoB4/QOBn+TrryiX23fRWqgnE=
 		</data>
 		<key>Modules/TopStepAIBudsSDK.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		CDwAvigCxru1TgUlNjOVoO0+hjE=
+		kZyi3/axxCIbCG7BEoYddCY3LPA=
 		</data>
 		<key>Modules/TopStepAIBudsSDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		ogVxDXBd0Z61uBUALE2di9tBumw=
+		G35Wis+1Y3+p3fUmDxyOPUd2WrA=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -43,42 +43,42 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			YguWvam/AnPhgMMaxlvGhMJESH2TIaf0F0bohzD3oKc=
+			LDaiS2tx++aA3eiolobq6Kt4i9YhWm0XdJVHgig4wpo=
 			</data>
 		</dict>
 		<key>Modules/TopStepAIBudsSDK.swiftmodule/arm64-apple-ios.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Y83nj37Cg17BhlBTQy0J6wmWWEngpuoCb2c00fjgdyM=
+			RqGB57Tuz9PWnLXFbK0uukMbHpzGVGzImis+U51F8Dg=
 			</data>
 		</dict>
 		<key>Modules/TopStepAIBudsSDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			v59qi0AK9wAGew2jq15GWh8INVxgxU8p870hLUhzb4o=
+			bd9gBFNEmBuYFBFEqhalHJyOZw88MGBUN0tKlVAf2gk=
 			</data>
 		</dict>
 		<key>Modules/TopStepAIBudsSDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			rJ5qI8Rct1m7sc9Ifc4SJCzUsWSxyF/2xt36f/oimRE=
+			8vgPIHPJtX8iFx8chZUfnTFTuBVcuVEoPhDr5JVMOJQ=
 			</data>
 		</dict>
 		<key>Modules/TopStepAIBudsSDK.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			v59qi0AK9wAGew2jq15GWh8INVxgxU8p870hLUhzb4o=
+			bd9gBFNEmBuYFBFEqhalHJyOZw88MGBUN0tKlVAf2gk=
 			</data>
 		</dict>
 		<key>Modules/TopStepAIBudsSDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Pml5Ma0TFe99xxFsd/qSIiN8KVz5IzoPRT8o4WDE+ao=
+			LR9vvdpSJakuazovqBDDFMQJSZiB7DQwGPj6JCsCUBk=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

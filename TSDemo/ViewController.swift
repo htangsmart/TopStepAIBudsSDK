@@ -120,8 +120,20 @@ class ViewController: UIViewController {
 
 // Listen to device callback data
 extension ViewController: TSSoudbudObserver {
-    func observerPowerChange(leftPower: UInt8?, leftCharging: Bool?, rightPower: UInt8?, rightCharging: Bool?, hubPower: UInt8?, hubCharging: Bool?) {
+    func observerPowerChange(leftPower: NSNumber?, leftCharging: NSNumber?, rightPower: NSNumber?, rightCharging: NSNumber?, hubPower: NSNumber?, hubCharging: NSNumber?) {
         print("[Observer] PowerChange - L: \(String(describing: leftPower)) (charging: \(String(describing: leftCharging))) | R: \(String(describing: rightPower)) (charging: \(String(describing: rightCharging))) | Hub: \(String(describing: hubPower)) (charging: \(String(describing: hubCharging)))")
+    }
+    
+    func observerEQSettingChange(mode: UInt8, gains: [NSNumber]) {
+        print("[Observer] EQSettingChange - mode: \(mode), gains: \(gains)")
+    }
+    
+    func observerMultipointInfoChange(devices: [NSDictionary]) {
+        print("[Observer] MultipointInfoChange - devices: \(devices)")
+    }
+    
+    func observerKeySettingsChange(operations: [NSNumber], functions: [NSNumber]) {
+        print("[Observer] KeySettingsChange - operations: \(operations), functions: \(functions)")
     }
     
     func observerPlayStateChange(isPlaying: Bool) {
@@ -138,10 +150,6 @@ extension ViewController: TSSoudbudObserver {
     
     func observerTWSConnectedChange(isConnected: Bool) {
         print("[Observer] TWSConnectedChange - isConnected: \(isConnected)")
-    }
-    
-    func observerEQSettingChange(mode: UInt8, gains: [Int8]) {
-        print("[Observer] EQSettingChange - mode: \(mode), gains: \(gains)")
     }
     
     func observerDeviceVolumeChange(volume: UInt8) {
@@ -167,12 +175,7 @@ extension ViewController: TSSoudbudObserver {
     func observerBassEngineStatusChange(isEnabled: Bool) {
         print("[Observer] BassEngineStatusChange - isEnabled: \(isEnabled)")
     }
-    
-    func observerKeySettingsChange(settings: [(operation: TopStepAIBudsSDK.TSSBEarbudsDeviceOperationType, function: TopStepAIBudsSDK.TSSBEarbudsKeyFunction)]) {
-        let mapped = settings.map { "(op: \($0.operation.rawValue), func: \($0.function.rawValue))" }
-        print("[Observer] KeySettingsChange - settings: \(mapped)")
-    }
-    
+        
     func observerPromptToneTypeChange(type: UInt8) {
         print("[Observer] PromptToneTypeChange - type: \(type)")
     }
@@ -188,15 +191,7 @@ extension ViewController: TSSoudbudObserver {
     func observerMultipointStatusChange(isEnabled: Bool) {
         print("[Observer] MultipointStatusChange - isEnabled: \(isEnabled)")
     }
-    
-    func observerMultipointInfoChange(devices: [(mac: [UInt8], isConnected: Bool, name: String)]) {
-        let info = devices.map { dev in
-            let macStr = dev.mac.map { String(format: "%02X", $0) }.joined(separator: ":")
-            return "(mac: \(macStr), connected: \(dev.isConnected), name: \(dev.name))"
-        }
-        print("[Observer] MultipointInfoChange - devices: \(info)")
-    }
-    
+        
     func observerVoiceRecognitionChange(isEnabled: Bool) {
         print("[Observer] VoiceRecognitionChange - isEnabled: \(isEnabled)")
     }

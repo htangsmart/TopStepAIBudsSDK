@@ -1,0 +1,4 @@
+framework module TopStepAIBudsSDK {
+  header "TopStepAIBudsSDK-Swift.h"
+  requires objc
+}

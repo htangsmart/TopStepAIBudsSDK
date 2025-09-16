@@ -10707,16 +10707,6 @@
       },
       {
         "kind": "Import",
-        "name": "Foundation",
-        "printedName": "Foundation",
-        "declKind": "Import",
-        "moduleName": "TopStepAIBudsSDK",
-        "declAttributes": [
-          "RawDocComment"
-        ]
-      },
-      {
-        "kind": "Import",
         "name": "UIKit",
         "printedName": "UIKit",
         "declKind": "Import",
@@ -12844,6 +12834,16 @@
         "printedName": "CommonCrypto",
         "declKind": "Import",
         "moduleName": "TopStepAIBudsSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "TopStepAIBudsSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
       },
       {
         "kind": "Import",
@@ -22212,34 +22212,6 @@
       "value": "30"
     },
     {
-      "filePath": "\/Users\/Zhuanz\/Desktop\/soundbuds\/ios\/Runner\/SupportSDKs\/TopStepAIBudsSDK\/TopStepAIBudsSDK\/TSABMate\/TSFileDownloader.swift",
-      "kind": "IntegerLiteral",
-      "offset": 375,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/Zhuanz\/Desktop\/soundbuds\/ios\/Runner\/SupportSDKs\/TopStepAIBudsSDK\/TopStepAIBudsSDK\/TSABMate\/TSFileDownloader.swift",
-      "kind": "IntegerLiteral",
-      "offset": 421,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/Zhuanz\/Desktop\/soundbuds\/ios\/Runner\/SupportSDKs\/TopStepAIBudsSDK\/TopStepAIBudsSDK\/TSABMate\/TSFileDownloader.swift",
-      "kind": "IntegerLiteral",
-      "offset": 644,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/Zhuanz\/Desktop\/soundbuds\/ios\/Runner\/SupportSDKs\/TopStepAIBudsSDK\/TopStepAIBudsSDK\/TSABMate\/TSFileDownloader.swift",
-      "kind": "FloatLiteral",
-      "offset": 790,
-      "length": 3,
-      "value": "3.0"
-    },
-    {
       "filePath": "\/Users\/Zhuanz\/Desktop\/soundbuds\/ios\/Runner\/SupportSDKs\/TopStepAIBudsSDK\/TopStepAIBudsSDK\/TSABMate\/TSSBEarbudsOTAHandler.swift",
       "kind": "IntegerLiteral",
       "offset": 189,
@@ -22665,6 +22637,34 @@
       "offset": 3145,
       "length": 6,
       "value": "\"%02x\""
+    },
+    {
+      "filePath": "\/Users\/Zhuanz\/Desktop\/soundbuds\/ios\/Runner\/SupportSDKs\/TopStepAIBudsSDK\/TopStepAIBudsSDK\/TSABMate\/TSFileDownloader.swift",
+      "kind": "IntegerLiteral",
+      "offset": 375,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/Zhuanz\/Desktop\/soundbuds\/ios\/Runner\/SupportSDKs\/TopStepAIBudsSDK\/TopStepAIBudsSDK\/TSABMate\/TSFileDownloader.swift",
+      "kind": "IntegerLiteral",
+      "offset": 421,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/Zhuanz\/Desktop\/soundbuds\/ios\/Runner\/SupportSDKs\/TopStepAIBudsSDK\/TopStepAIBudsSDK\/TSABMate\/TSFileDownloader.swift",
+      "kind": "IntegerLiteral",
+      "offset": 644,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/Zhuanz\/Desktop\/soundbuds\/ios\/Runner\/SupportSDKs\/TopStepAIBudsSDK\/TopStepAIBudsSDK\/TSABMate\/TSFileDownloader.swift",
+      "kind": "FloatLiteral",
+      "offset": 790,
+      "length": 3,
+      "value": "3.0"
     },
     {
       "filePath": "\/Users\/Zhuanz\/Desktop\/soundbuds\/ios\/Runner\/SupportSDKs\/TopStepAIBudsSDK\/TopStepAIBudsSDK\/TSABMate\/TSSBEarbuds.swift",

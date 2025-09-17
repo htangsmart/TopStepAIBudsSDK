@@ -460,6 +460,15 @@ SWIFT_PROTOCOL("_TtP16TopStepAIBudsSDK12TSBTObserver_")
 @class NSString;
 SWIFT_CLASS("_TtC16TopStepAIBudsSDK16TSDeviceBaseInfo")
 @interface TSDeviceBaseInfo : NSObject
+/// 连接该设备使用的sdk
+@property (nonatomic) enum TPSSDKType sdkType;
+/// 设备厂商类型
+@property (nonatomic) enum TPSDeviceType deviceType;
+/// 设备分类 手表/戒指/耳机…
+@property (nonatomic) enum TPSDeviceCategory deviceCategory;
+@property (nonatomic, copy) NSString * _Nonnull mac;
+@property (nonatomic, copy) NSString * _Nonnull name;
+@property (nonatomic, copy) NSString * _Nonnull uuid;
 - (nonnull instancetype)initWithSdkType:(enum TPSSDKType)sdkType deviceType:(enum TPSDeviceType)deviceType deviceCategory:(enum TPSDeviceCategory)deviceCategory mac:(NSString * _Nonnull)mac name:(NSString * _Nonnull)name uuid:(NSString * _Nonnull)uuid OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");

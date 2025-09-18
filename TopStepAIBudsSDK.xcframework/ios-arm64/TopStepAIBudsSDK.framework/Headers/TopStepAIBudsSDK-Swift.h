@@ -532,9 +532,13 @@ typedef SWIFT_ENUM(NSInteger, TSBTErrorType, open) {
 
 SWIFT_PROTOCOL("_TtP16TopStepAIBudsSDK12TSBTObserver_")
 @protocol TSBTObserver <NSObject>
+@optional
 /// EN: Observe Bluetooth connection state changes of the device
 /// CN: 监听设备蓝牙状态
 - (void)observerDeviceBTStateWithState:(enum TSBTConnectState)state peripheral:(CBPeripheral * _Nonnull)peripheral;
+/// EN: Observe CBCentralManager state changes
+/// CN: 监听CBCentralManager状态
+- (void)observerCentralManagerStateWithState:(CBManagerState)state;
 @end
 
 SWIFT_CLASS("_TtC16TopStepAIBudsSDK16TSDeviceBaseInfo")
@@ -1152,6 +1156,7 @@ SWIFT_CLASS("_TtC16TopStepAIBudsSDK15TSSBWiFiManager")
 /// CN: 耳机事件观察者协议。用于接收状态、配置、媒体、Wi‑Fi、AI 等通知。
 SWIFT_PROTOCOL("_TtP16TopStepAIBudsSDK17TSSoudbudObserver_")
 @protocol TSSoudbudObserver <TSBTObserver>
+@optional
 /// EN: Observe power and charging state changes
 /// CN: 监听电量变化
 /// note:

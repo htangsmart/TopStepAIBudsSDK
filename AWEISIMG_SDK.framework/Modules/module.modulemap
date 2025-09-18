@@ -1,0 +1,6 @@
+framework module AWEISIMG_SDK {
+  umbrella header "AWEISIMG_SDK.h"
+  export *
+
+  module * { export * }
+}

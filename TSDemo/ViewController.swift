@@ -102,15 +102,14 @@ class ViewController: UIViewController {
         
         let currentConnectedDevice = TopStepAIBuds.shared.earbuds
         let command = currentConnectedDevice?.commandManager
-        command?.getDevicePower { error, result in
+        
+        command?.getDevicePower { error, leftPower, leftCharging, rightPower, rightCharging, hubPower, hubCharging in
             
             if let error = error {
             
                 print("getDevicePower fail, reason: \(error.localizedDescription)")
                 return
             }
-            
-            print("devicePower: \(String(describing: result))")
         }
     }
     

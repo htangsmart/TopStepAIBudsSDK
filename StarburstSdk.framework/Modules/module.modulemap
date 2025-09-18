@@ -1,0 +1,6 @@
+framework module StarburstSdk {
+  umbrella header "StarburstSdk.h"
+  export *
+
+  module * { export * }
+}

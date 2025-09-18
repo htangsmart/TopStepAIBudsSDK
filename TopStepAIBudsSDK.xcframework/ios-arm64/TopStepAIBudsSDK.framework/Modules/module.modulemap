@@ -1,4 +1,11 @@
 framework module TopStepAIBudsSDK {
+  umbrella header "TopStepAIBudsSDK.h"
+  export *
+
+  module * { export * }
+}
+
+module TopStepAIBudsSDK.Swift {
   header "TopStepAIBudsSDK-Swift.h"
   requires objc
 }

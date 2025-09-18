@@ -282,6 +282,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
 @import CoreBluetooth;
+@import CoreData;
 @import Foundation;
 @import ObjectiveC;
 #endif
@@ -305,6 +306,38 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 
 #if defined(__OBJC__)
+
+@class NSEntityDescription;
+@class NSManagedObjectContext;
+SWIFT_CLASS_NAMED("AIRecord")
+@interface AIRecord : NSManagedObject
+- (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class NSDate;
+@class NSString;
+@interface AIRecord (SWIFT_EXTENSION(TopStepAIBudsSDK))
+@property (nonatomic, copy) NSDate * _Nullable createdAt;
+@property (nonatomic) double duration;
+@property (nonatomic, copy) NSString * _Nullable fileName;
+@property (nonatomic, copy) NSString * _Nullable filePath;
+@property (nonatomic) int64_t fileSize;
+@property (nonatomic) int16_t fileState;
+@property (nonatomic) int16_t fileType;
+@property (nonatomic, copy) NSString * _Nullable fromLanguage;
+@property (nonatomic) BOOL hasSummary;
+@property (nonatomic) BOOL hasTranslation;
+@property (nonatomic) BOOL isProcessed;
+@property (nonatomic, copy) NSString * _Nullable notes;
+@property (nonatomic, copy) NSString * _Nullable recognize;
+@property (nonatomic, copy) NSString * _Nullable recordID;
+@property (nonatomic) int16_t recordType;
+@property (nonatomic, copy) NSString * _Nullable summary;
+@property (nonatomic, copy) NSString * _Nullable tags;
+@property (nonatomic, copy) NSString * _Nullable toLanguage;
+@property (nonatomic, copy) NSString * _Nullable translate;
+@property (nonatomic, copy) NSDate * _Nullable updatedAt;
+@end
 
 typedef SWIFT_ENUM(NSInteger, TPSDeviceCategory, open) {
 /// 未知
@@ -368,6 +401,53 @@ typedef SWIFT_ENUM(uint8_t, TPSSDKType, open) {
   TPSSDKTypeShenjuwm = 3,
   TPSSDKTypeAbmate = 4,
 };
+
+typedef SWIFT_ENUM(int16_t, TSAIRecordType, open) {
+/// 通话录音
+  TSAIRecordTypeCallRecord = 0,
+/// AI录音
+  TSAIRecordTypeAiRecord = 1,
+/// 同声传译
+  TSAIRecordTypeTransRecord = 2,
+};
+
+typedef SWIFT_ENUM(uint8_t, TSAIState, open) {
+  TSAIStateEChatBegin = 0,
+  TSAIStateEQuestionStart = 1,
+  TSAIStateEQuestionStop = 2,
+  TSAIStateEChatFinished = 3,
+  TSAIStateEChatError = 4,
+};
+
+/// 新协议广播数据信息
+/// EN: New protocol advertisement data information
+/// CN: 新协议广播数据信息
+SWIFT_CLASS("_TtC16TopStepAIBudsSDK13TSAdvDataInfo")
+@interface TSAdvDataInfo : NSObject
+/// 协议版本号
+/// EN: Protocol version number
+/// CN: 协议版本号
+@property (nonatomic) uint8_t protocolVersion;
+/// 产品ID
+/// EN: Product ID
+/// CN: 产品ID
+@property (nonatomic, copy) NSString * _Nonnull productID;
+/// 标志位
+/// EN: Flag byte
+/// CN: 标志位
+@property (nonatomic) uint8_t flag;
+/// 项目号
+/// EN: Project number
+/// CN: 项目号
+@property (nonatomic, copy) NSString * _Nonnull projectNumber;
+/// 子项目号
+/// EN: Sub-project number
+/// CN: 子项目号
+@property (nonatomic) uint8_t subProjectNumber;
+- (nonnull instancetype)initWithProtocolVersion:(uint8_t)protocolVersion productID:(NSString * _Nonnull)productID flag:(uint8_t)flag projectNumber:(NSString * _Nonnull)projectNumber subProjectNumber:(uint8_t)subProjectNumber OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
 
 /// EN: Bluetooth connection state
 /// CN: 蓝牙连接状态
@@ -457,7 +537,6 @@ SWIFT_PROTOCOL("_TtP16TopStepAIBudsSDK12TSBTObserver_")
 - (void)observerDeviceBTStateWithState:(enum TSBTConnectState)state peripheral:(CBPeripheral * _Nonnull)peripheral;
 @end
 
-@class NSString;
 SWIFT_CLASS("_TtC16TopStepAIBudsSDK16TSDeviceBaseInfo")
 @interface TSDeviceBaseInfo : NSObject
 /// 连接该设备使用的sdk
@@ -469,9 +548,21 @@ SWIFT_CLASS("_TtC16TopStepAIBudsSDK16TSDeviceBaseInfo")
 @property (nonatomic, copy) NSString * _Nonnull mac;
 @property (nonatomic, copy) NSString * _Nonnull name;
 @property (nonatomic, copy) NSString * _Nonnull uuid;
+/// 新协议广播数据信息（仅在新协议时有效）
+/// EN: New protocol advertisement data info (valid only for new protocol)
+/// CN: 新协议广播数据信息（仅在新协议时有效）
+@property (nonatomic, strong) TSAdvDataInfo * _Nullable advDataInfo;
 - (nonnull instancetype)initWithSdkType:(enum TPSSDKType)sdkType deviceType:(enum TPSDeviceType)deviceType deviceCategory:(enum TPSDeviceCategory)deviceCategory mac:(NSString * _Nonnull)mac name:(NSString * _Nonnull)name uuid:(NSString * _Nonnull)uuid OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithSdkType:(enum TPSSDKType)sdkType deviceType:(enum TPSDeviceType)deviceType deviceCategory:(enum TPSDeviceCategory)deviceCategory mac:(NSString * _Nonnull)mac name:(NSString * _Nonnull)name uuid:(NSString * _Nonnull)uuid advDataInfo:(TSAdvDataInfo * _Nullable)advDataInfo OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+@class NSURL;
+SWIFT_CLASS("_TtC16TopStepAIBudsSDK16TSGlassesEISTool")
+@interface TSGlassesEISTool : NSObject
++ (void)stabilizeVideoWithInputURL:(NSURL * _Nonnull)inputURL result:(void (^ _Nonnull)(NSString * _Nullable, NSError * _Nullable))result;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 /// EN: Bluetooth command category (packet type)
@@ -575,6 +666,7 @@ enum TSSBRemoteCameraState : uint8_t;
 - (void)getMaxPacketSizeWithResult:(void (^ _Nonnull)(NSError * _Nullable, NSNumber * _Nullable))result;
 /// EN: Get all preset equalizer settings (local list).
 /// CN: 获取所有预设 EQ 设置（本地列表）。
+/// [{“type”:NSNumber(Int),“name”:String,“gains”:[NSNumber(Int8),“isCustom”:NSNumber(bool)]}]
 - (void)getAllEqualizerWithResult:(void (^ _Nonnull)(NSError * _Nullable, NSArray<NSDictionary<NSString *, id> *> * _Nonnull))result;
 /// EN: Get current EQ mode and gains from device.
 /// CN: 从设备获取当前 EQ 模式与增益。
@@ -582,10 +674,9 @@ enum TSSBRemoteCameraState : uint8_t;
 /// { “eqMode”: NSNumber(UInt8), “eqGain”: [NSNumber(Int8)] }
 - (void)getDeviceEqualizerWithResult:(void (^ _Nonnull)(NSError * _Nullable, NSDictionary * _Nullable))result;
 /// EN: Get power and charging states for left/right earbuds and case.
-/// CN: 获取左右耳机与充电仓的电量与充电状态。
-/// Objective‑C 兼容：将返回值改为 NSDictionary
-/// { “leftPower”: NSNumber(UInt8), “leftCharging”: NSNumber(BOOL), … }
-- (void)getDevicePowerWithResult:(void (^ _Nonnull)(NSError * _Nullable, NSDictionary * _Nullable))result;
+/// CN: 获取左右耳机与充电仓的电量Int 0~100与充电状态bool（分离返回值）。
+/// Objective‑C 兼容：使用 NSNumber? 表示 UInt8/Bool
+- (void)getDevicePowerWithResult:(void (^ _Nonnull)(NSError * _Nullable, NSNumber * _Nullable, NSNumber * _Nullable, NSNumber * _Nullable, NSNumber * _Nullable, NSNumber * _Nullable, NSNumber * _Nullable))result;
 /// EN: Get device key operation-function mappings.
 /// CN: 获取设备按键操作与功能映射关系。
 /// Objective‑C 兼容：将返回值改为并行数组字典
@@ -1049,6 +1140,14 @@ typedef SWIFT_ENUM(uint8_t, TSSBRemoteCameraState, open) {
   TSSBRemoteCameraStateTakePhotoFailed = 3,
 };
 
+SWIFT_CLASS("_TtC16TopStepAIBudsSDK15TSSBWiFiManager")
+@interface TSSBWiFiManager : NSObject
++ (void)connectToWifiWithSsid:(NSString * _Nonnull)ssid password:(NSString * _Nonnull)password isweb:(BOOL)isweb result:(void (^ _Nonnull)(BOOL))result;
+/// 调试WiFi连接状态
++ (void)debugWiFiStatus;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
 /// EN: Soundbuds event observer protocol. Receives status/config/media/Wi‑Fi/AI notifications.
 /// CN: 耳机事件观察者协议。用于接收状态、配置、媒体、Wi‑Fi、AI 等通知。
 SWIFT_PROTOCOL("_TtP16TopStepAIBudsSDK17TSSoudbudObserver_")
@@ -1240,6 +1339,100 @@ SWIFT_PROTOCOL("_TtP16TopStepAIBudsSDK17TSSoudbudObserver_")
 - (void)observerSubFirmwareVersionNotifyWithVersion:(NSString * _Nonnull)version;
 @end
 
+SWIFT_CLASS("_TtC16TopStepAIBudsSDK19TSStartBurstManager")
+@interface TSStartBurstManager : NSObject
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TSStartBurstManager * _Nonnull shared;)
++ (TSStartBurstManager * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+@interface TSStartBurstManager (SWIFT_EXTENSION(TopStepAIBudsSDK))
+/// 开始流式生成摘要
+/// 流式摘要，直接返回完成标记与摘要内容
+- (void)summaryWithSplitBy:(NSString * _Nonnull)text recognizeText:(void (^ _Nonnull)(BOOL, NSString * _Nonnull))recognizeText error:(void (^ _Nonnull)(NSError * _Nullable))error;
+/// 停止流式生成摘要
+- (void)cancelSummaryWithSplitByText;
+@end
+
+@interface TSStartBurstManager (SWIFT_EXTENSION(TopStepAIBudsSDK))
+/// 监听893xAI对话状态 0是关闭 1是开启 2是更新isChatting=true  3是更新isChatting=false
+/// 手机拾音AI对话
+/// <ul>
+///   <li>
+///     result: 返回事件需要的字段，question/answer 为可空
+///   </li>
+/// </ul>
+- (void)startPhoneAIChatWithStateChanged:(void (^ _Nonnull)(enum TSAIState))stateChanged result:(void (^ _Nonnull)(NSInteger, NSString * _Nullable, BOOL, NSString * _Nullable, BOOL, BOOL))result error:(void (^ _Nonnull)(NSError * _Nonnull))error;
+- (void)stopPhoneAIChat;
+@end
+
+@interface TSStartBurstManager (SWIFT_EXTENSION(TopStepAIBudsSDK))
+/// 手机拾音并翻译
+- (void)translateByVoiceFromLan:(NSString * _Nullable)fromLan targetLan:(NSString * _Nullable)targetLan recognizeText:(void (^ _Nonnull)(NSString * _Nonnull, NSString * _Nonnull))recognizeText error:(void (^ _Nonnull)(NSError * _Nullable))error;
+/// 停止手机拾音
+- (void)stopTranslateByVoiceWithIsSave:(BOOL)isSave;
+/// 开始流式翻译
+/// 流式翻译，直接返回完成标记与内容
+- (void)translateWithSplitBy:(NSString * _Nonnull)text fromLan:(NSString * _Nullable)fromLan targetLan:(NSString * _Nullable)targetLan recognizeText:(void (^ _Nonnull)(BOOL, NSString * _Nonnull))recognizeText error:(void (^ _Nonnull)(NSError * _Nullable))error;
+/// 停止流式翻译
+- (void)cancelTranslateByTextWithSplit;
+@end
+
+@interface TSStartBurstManager (SWIFT_EXTENSION(TopStepAIBudsSDK))
+/// 修改同声传译参数
+- (void)modifyVoiceTranslateRecordFileWithRecordId:(NSString * _Nonnull)recordId recordName:(NSString * _Nonnull)recordName recognizeText:(NSString * _Nullable)recognizeText translateText:(NSString * _Nullable)translateText summary:(NSString * _Nullable)summary result:(void (^ _Nonnull)(BOOL, NSError * _Nullable))result;
+- (void)modifyAIRecordFileWithRecordName:(NSString * _Nonnull)recordName fileState:(uint16_t)fileState summary:(NSString * _Nullable)summary recognizeText:(NSString * _Nullable)recognizeText result:(void (^ _Nonnull)(BOOL, NSError * _Nullable))result;
+- (void)deleteAIRecordFileWithRecordName:(NSString * _Nonnull)recordName result:(void (^ _Nonnull)(BOOL, NSError * _Nullable))result;
+- (void)renameAIRecordFileWithRecordId:(NSString * _Nonnull)recordId newName:(NSString * _Nonnull)newName result:(void (^ _Nonnull)(BOOL, NSError * _Nullable))result;
+- (void)getAIRecordFileListWithResult:(void (^ _Nonnull)(NSArray<NSDictionary<NSString *, id> *> * _Nonnull))result;
+/// @brief Get AI record file list by record type
+/// @chinese 根据录音类型获取AI录音文件列表
+/// @param recordType
+/// EN: Record type (0: Live, 1: Call)
+/// CN: 录音类型（0: 现场录音, 1: 通话录音）
+/// @param result
+/// EN: Result callback
+/// CN: 结果回调
+- (void)getAIRecordFileListByRecordType:(int16_t)recordType result:(void (^ _Nonnull)(NSArray<NSDictionary<NSString *, id> *> * _Nonnull))result;
+/// @brief Get AI record file list by file state
+/// @chinese 根据转录状态获取AI录音文件列表
+/// @param fileState
+/// EN: File state (0: Not transcribed, 1: Fully transcribed)
+/// CN: 文件状态（0: 未转录, 1: 完全转录）
+/// @param result
+/// EN: Result callback
+/// CN: 结果回调
+- (void)getAIRecordFileListByFileState:(int16_t)fileState result:(void (^ _Nonnull)(NSArray<NSDictionary<NSString *, id> *> * _Nonnull))result;
+@end
+
+@interface TSStartBurstManager (SWIFT_EXTENSION(TopStepAIBudsSDK))
+/// 配置语音活动检测参数（供外部调用，避免外部直接依赖 TSSCOAudioCaptureManager）
+/// 使用 NSNumber? 以便 @objc 兼容 Objective‑C	on the interface boundary
+- (void)configureVoiceActivityDetectionWithSilenceThreshold:(NSNumber * _Nullable)silenceThreshold silenceTimeout:(NSNumber * _Nullable)silenceTimeout enabled:(NSNumber * _Nullable)enabled;
+/// 开启多模态AI对话（眼镜）
+/// \param stateChanged 会话状态变化
+///
+/// \param result 结果回调，返回事件实际需要的字段
+/// dialogId: 本次对话ID
+/// isFinish: 当前这段文本是否结束
+/// answer: AI回复文本
+/// question: 用户提问文本
+/// conversationFinish: 一轮对话是否结束
+///
+/// \param error 错误
+///
+/// \param intent 解析到意图时的回调
+///
+- (void)startMultiAIChatWithStateChanged:(void (^ _Nonnull)(enum TSAIState))stateChanged result:(void (^ _Nonnull)(NSInteger, BOOL, NSString * _Nonnull, NSString * _Nonnull, BOOL))result error:(void (^ _Nonnull)(NSError * _Nonnull))error intent:(void (^ _Nullable)(NSString * _Nonnull, NSDictionary<NSString *, id> * _Nullable, NSString * _Nonnull, NSString * _Nonnull))intent;
+- (void)stopMultiAIChat;
+@end
+
+@interface TSStartBurstManager (SWIFT_EXTENSION(TopStepAIBudsSDK))
+- (void)startAIRecordWithType:(uint8_t)type result:(void (^ _Nonnull)(BOOL, NSString * _Nonnull))result error:(void (^ _Nonnull)(NSError * _Nullable))error;
+- (void)stopAIRecord:(void (^ _Nonnull)(BOOL, NSError * _Nullable))result;
+@end
+
 SWIFT_CLASS("_TtC16TopStepAIBudsSDK13TopStepAIBuds")
 @interface TopStepAIBuds : NSObject
 /// EN: SDK singleton instance
@@ -1254,6 +1447,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TopStepAIBud
 @property (nonatomic, readonly, strong) id <TSSoudbudObserver> _Nullable observer;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
++ (CBManagerState)getCentralManagerState SWIFT_WARN_UNUSED_RESULT;
 /// EN: Stop scanning for devices.
 /// CN: 停止扫描设备。
 + (void)stopScan;

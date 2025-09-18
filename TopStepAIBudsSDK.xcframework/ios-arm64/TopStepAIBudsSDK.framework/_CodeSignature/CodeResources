@@ -4,9 +4,25 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>Headers/TSCppEISWrapper.h</key>
+		<data>
+		cPTTEBogctFDBUZ0n/o4n9VYtfM=
+		</data>
+		<key>Headers/TSOpusDecoder.h</key>
+		<data>
+		caNRx4ZK1UnV+Ip8Ue5FrlLnGko=
+		</data>
+		<key>Headers/TSSCOAudioCaptureManager.h</key>
+		<data>
+		HBoyhZmdEF5yYLEr6Z4UPXqRZMI=
+		</data>
 		<key>Headers/TopStepAIBudsSDK-Swift.h</key>
 		<data>
-		fYkOFCFmojdUwexQYM5KDgBjagk=
+		aS5XxDfmXGhBDKIfA5Ew3t7yDgw=
+		</data>
+		<key>Headers/TopStepAIBudsSDK.h</key>
+		<data>
+		I0Z5ZIV1BVbU5ONoWZlxyfaE6zk=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -14,78 +30,128 @@
 		</data>
 		<key>Modules/TopStepAIBudsSDK.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		LiVXyWpJY3Tn5ZE3IFczBC3v8vo=
+		lQOyuw75YowvIjeVnFfGkgNpjIo=
 		</data>
 		<key>Modules/TopStepAIBudsSDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
-		g2w3L1xIfcmrt1sGvYvoHpCgs7k=
+		Nx/0tToZ/QHfBTGlj2TmowC2dsk=
 		</data>
 		<key>Modules/TopStepAIBudsSDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		no+rhp5HkpE8po0m1/J04IyLpf4=
+		6jVGQZ4GgI9pNsnQ1rSuTCsx4wg=
 		</data>
 		<key>Modules/TopStepAIBudsSDK.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		g2w3L1xIfcmrt1sGvYvoHpCgs7k=
+		Nx/0tToZ/QHfBTGlj2TmowC2dsk=
 		</data>
 		<key>Modules/TopStepAIBudsSDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		II1zaZrwXrecbATiy2q++NW7GKU=
+		xy7j1rFgO4GelA38F2fCOP7arAU=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		mmapFFkX6/r2yvoPD3hbGCcZREM=
+		R/sfyIysQ59aNTvMWCOCnAUu6EY=
+		</data>
+		<key>TSAIRecord.momd/TSAIRecord.mom</key>
+		<data>
+		AEtYk3zHK1ejkUtf1RYnZ+AudBs=
+		</data>
+		<key>TSAIRecord.momd/VersionInfo.plist</key>
+		<data>
+		ew26l+/6Q+OJx/KUC+tzHPjpAgA=
 		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>Headers/TSCppEISWrapper.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			bXVDKsnv6lU+ewX8zAxtBTu2aOd7Nir21bFbvHV5HNA=
+			</data>
+		</dict>
+		<key>Headers/TSOpusDecoder.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Jg8iIZmNRAPTRHV/VziPlrh14X41Qen0Yz/sS3Lyohk=
+			</data>
+		</dict>
+		<key>Headers/TSSCOAudioCaptureManager.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			E1MsPSeVGobKL2BhvPn4dfuzok8oK4srQ5/+4CiCNuo=
+			</data>
+		</dict>
 		<key>Headers/TopStepAIBudsSDK-Swift.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ei4+cpOJ2fgY1bNU7jS1A7HtnGPg2kmIy/xVXnigLME=
+			K9EHE4nKskCxAjmjzj10TX5zU0vbZdnzpAUiorWDkb4=
+			</data>
+		</dict>
+		<key>Headers/TopStepAIBudsSDK.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Uhed+Oyb7r99OTcLAUgA3H0GiwR8sa5RyNb+PDgwQWA=
 			</data>
 		</dict>
 		<key>Modules/TopStepAIBudsSDK.swiftmodule/arm64-apple-ios.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			uYWiU4CqNtXeh+P3xJ+TVVqb6mUUBnT+/Qi/qheJ58E=
+			aJJNzZX5pXQfHuc3NKlKDI5k9Hg0H3G6CUJAxoZTdfo=
 			</data>
 		</dict>
 		<key>Modules/TopStepAIBudsSDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Fa5F56xMBSOvUuPd04YyDPDD6G2JdepId6OlQnD5Hz0=
+			tWSnOORtwF0CNjEPN3GD0nT0kw3bvCQXYq9qIF/jSuM=
 			</data>
 		</dict>
 		<key>Modules/TopStepAIBudsSDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			B7Irdv6BODR9NNtUltMaLkMw9hr/R9lGSvJwfKvsGQc=
+			Y2zItx5uCWdDQA1Ey5k83LCZux50SqGtrIGMOO06IC0=
 			</data>
 		</dict>
 		<key>Modules/TopStepAIBudsSDK.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Fa5F56xMBSOvUuPd04YyDPDD6G2JdepId6OlQnD5Hz0=
+			tWSnOORtwF0CNjEPN3GD0nT0kw3bvCQXYq9qIF/jSuM=
 			</data>
 		</dict>
 		<key>Modules/TopStepAIBudsSDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			XoAQGo8fcd/si+IiVddONdH5KLS1FlKlHtRASuVtEvE=
+			nWro5c/nFJkNRXjTlkiy4zSVpaWONJ+MghKuppVC8rc=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			WiYC4e1pazTwosdRS7pAzstJpWb7O1N88aYqyB4YJx8=
+			a9pYX5DP46me94Km5Ro6wgrGhO4y8sKdVVrTGyz9+YY=
+			</data>
+		</dict>
+		<key>TSAIRecord.momd/TSAIRecord.mom</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			o8IJxmVRF8XXO8MXlHqT6pRXmdkoCQeGqjgAILOewvg=
+			</data>
+		</dict>
+		<key>TSAIRecord.momd/VersionInfo.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			3Chup6AueeMhQwG5VxWlLIv1Se4mCwS1vuP6ljY63/k=
 			</data>
 		</dict>
 	</dict>

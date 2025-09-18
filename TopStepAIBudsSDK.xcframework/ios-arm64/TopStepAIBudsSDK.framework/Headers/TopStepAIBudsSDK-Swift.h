@@ -461,10 +461,17 @@ typedef SWIFT_ENUM(NSInteger, TSBTConnectState, open) {
 };
 
 @class CBPeripheral;
+@class TSDeviceBaseInfo;
 @class CBService;
 @class CBCharacteristic;
 SWIFT_CLASS("_TtC16TopStepAIBudsSDK10TSBTDevice")
 @interface TSBTDevice : NSObject <CBPeripheralDelegate>
+/// EN: Current connected peripheral
+/// CN: 当前设备
+@property (nonatomic, readonly, strong) CBPeripheral * _Nonnull peripheral;
+/// EN: Basic information of current device
+/// CN: 当前设备信息
+@property (nonatomic, readonly, strong) TSDeviceBaseInfo * _Nonnull deviceInfo;
 /// EN: Called after discovering services on the peripheral.
 /// CN: 发现外设的服务后回调。
 - (void)peripheral:(CBPeripheral * _Nonnull)peripheral didDiscoverServices:(NSError * _Nullable)error;

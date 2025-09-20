@@ -328,12 +328,10 @@ SWIFT_CLASS_NAMED("AIRecord")
 @property (nonatomic) BOOL hasSummary;
 @property (nonatomic) BOOL hasTranslation;
 @property (nonatomic) BOOL isProcessed;
-@property (nonatomic, copy) NSString * _Nullable notes;
-@property (nonatomic, copy) NSString * _Nullable recognize;
 @property (nonatomic, copy) NSString * _Nullable recordID;
 @property (nonatomic) int16_t recordType;
+@property (nonatomic, copy) NSString * _Nullable recognize;
 @property (nonatomic, copy) NSString * _Nullable summary;
-@property (nonatomic, copy) NSString * _Nullable tags;
 @property (nonatomic, copy) NSString * _Nullable toLanguage;
 @property (nonatomic, copy) NSString * _Nullable translate;
 @property (nonatomic, copy) NSDate * _Nullable updatedAt;
@@ -759,6 +757,18 @@ enum TSSBRemoteCameraState : uint8_t;
 /// EN: Start video recording.
 /// CN: 开始录像。
 - (void)takeVideoRecordWithResult:(void (^ _Nonnull)(BOOL, NSError * _Nullable))result;
+/// EN:
+/// CN: 播放音乐。
+- (void)musicPlayWithResult:(void (^ _Nonnull)(NSError * _Nullable))result;
+/// EN:
+/// CN: 下一首。
+- (void)musicNextWithResult:(void (^ _Nonnull)(NSError * _Nullable))result;
+/// EN:
+/// CN: 上一首。
+- (void)musicPreviousWithResult:(void (^ _Nonnull)(NSError * _Nullable))result;
+/// EN:
+/// CN: 音乐暂停播放。
+- (void)musicPauseWithResult:(void (^ _Nonnull)(NSError * _Nullable))result;
 /// EN: Increase volume by one step.
 /// CN: 音量增加一级。
 - (void)volumeUpWithResult:(void (^ _Nonnull)(NSError * _Nullable))result;
@@ -1392,6 +1402,28 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TSStartBurst
 @end
 
 @interface TSStartBurstManager (SWIFT_EXTENSION(TopStepAIBudsSDK))
+/// 配置语音活动检测参数（供外部调用，避免外部直接依赖 TSSCOAudioCaptureManager）
+/// 使用 NSNumber? 以便 @objc 兼容 Objective‑C	on the interface boundary
+- (void)configureVoiceActivityDetectionWithSilenceThreshold:(NSNumber * _Nullable)silenceThreshold silenceTimeout:(NSNumber * _Nullable)silenceTimeout enabled:(NSNumber * _Nullable)enabled;
+/// 开启多模态AI对话（眼镜）
+/// \param stateChanged 会话状态变化
+///
+/// \param result 结果回调，返回事件实际需要的字段
+/// dialogId: 本次对话ID
+/// isFinish: 当前这段文本是否结束
+/// answer: AI回复文本
+/// question: 用户提问文本
+/// conversationFinish: 一轮对话是否结束
+///
+/// \param error 错误
+///
+/// \param intent 解析到意图时的回调
+///
+- (void)startMultiAIChatWithStateChanged:(void (^ _Nonnull)(enum TSAIState))stateChanged result:(void (^ _Nonnull)(NSInteger, BOOL, NSString * _Nonnull, NSString * _Nonnull, BOOL))result error:(void (^ _Nonnull)(NSError * _Nonnull))error intent:(void (^ _Nullable)(NSString * _Nonnull, NSDictionary<NSString *, id> * _Nullable, NSString * _Nonnull, NSString * _Nonnull))intent;
+- (void)stopMultiAIChat;
+@end
+
+@interface TSStartBurstManager (SWIFT_EXTENSION(TopStepAIBudsSDK))
 /// 修改同声传译参数
 - (void)modifyVoiceTranslateRecordFileWithRecordId:(NSString * _Nonnull)recordId recordName:(NSString * _Nonnull)recordName recognizeText:(NSString * _Nullable)recognizeText translateText:(NSString * _Nullable)translateText summary:(NSString * _Nullable)summary result:(void (^ _Nonnull)(BOOL, NSError * _Nullable))result;
 - (void)modifyAIRecordFileWithRecordName:(NSString * _Nonnull)recordName fileState:(uint16_t)fileState summary:(NSString * _Nullable)summary recognizeText:(NSString * _Nullable)recognizeText result:(void (^ _Nonnull)(BOOL, NSError * _Nullable))result;
@@ -1419,30 +1451,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TSStartBurst
 @end
 
 @interface TSStartBurstManager (SWIFT_EXTENSION(TopStepAIBudsSDK))
-/// 配置语音活动检测参数（供外部调用，避免外部直接依赖 TSSCOAudioCaptureManager）
-/// 使用 NSNumber? 以便 @objc 兼容 Objective‑C	on the interface boundary
-- (void)configureVoiceActivityDetectionWithSilenceThreshold:(NSNumber * _Nullable)silenceThreshold silenceTimeout:(NSNumber * _Nullable)silenceTimeout enabled:(NSNumber * _Nullable)enabled;
-/// 开启多模态AI对话（眼镜）
-/// \param stateChanged 会话状态变化
-///
-/// \param result 结果回调，返回事件实际需要的字段
-/// dialogId: 本次对话ID
-/// isFinish: 当前这段文本是否结束
-/// answer: AI回复文本
-/// question: 用户提问文本
-/// conversationFinish: 一轮对话是否结束
-///
-/// \param error 错误
-///
-/// \param intent 解析到意图时的回调
-///
-- (void)startMultiAIChatWithStateChanged:(void (^ _Nonnull)(enum TSAIState))stateChanged result:(void (^ _Nonnull)(NSInteger, BOOL, NSString * _Nonnull, NSString * _Nonnull, BOOL))result error:(void (^ _Nonnull)(NSError * _Nonnull))error intent:(void (^ _Nullable)(NSString * _Nonnull, NSDictionary<NSString *, id> * _Nullable, NSString * _Nonnull, NSString * _Nonnull))intent;
-- (void)stopMultiAIChat;
-@end
-
-@interface TSStartBurstManager (SWIFT_EXTENSION(TopStepAIBudsSDK))
 - (void)startAIRecordWithType:(uint8_t)type result:(void (^ _Nonnull)(BOOL, NSString * _Nonnull))result error:(void (^ _Nonnull)(NSError * _Nullable))error;
-- (void)stopAIRecord:(void (^ _Nonnull)(BOOL, NSError * _Nullable))result;
+- (void)stopAIRecordWithType:(uint8_t)type :(void (^ _Nonnull)(BOOL, NSError * _Nullable, NSString * _Nullable))result;
 @end
 
 SWIFT_CLASS("_TtC16TopStepAIBudsSDK13TopStepAIBuds")
@@ -1486,7 +1496,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TopStepAIBud
 /// CN: 通知从片固件版本变更。
 - (void)observerSubFirmwareVersionNotifyWithVersion:(NSString * _Nonnull)version;
 /// EN: Notify AI chat image data.
-/// CN: 通知 AI 对话图片数据。
+/// CN: 通知 AI 对话图片数据。图片格式为JPEG
 - (void)observerAIChatImageNotifyWithImageData:(NSData * _Nonnull)imageData;
 /// EN: Notify device support state for call recording.
 /// CN: 通知设备是否支持通话录音。
@@ -1531,7 +1541,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TopStepAIBud
 /// CN: 通知低音增强开关变化。
 - (void)observerBassEngineStatusChangeWithIsEnabled:(BOOL)isEnabled;
 /// EN: Notify AI record data stream.
-/// CN: 通知 AI 录音数据流。
+/// CN: 通知 AI 录音数据流。opus数据 16kHz 单声道 裸数据 按每80字节为1帧进行解析。SDK会自动解析成wav音频数据并保存到本地。可通过TSStartBurstManager.shared.getAIRecordFileList获取本地文件。
 - (void)observerAIRecordNotifyWithRecordData:(NSData * _Nullable)recordData;
 /// EN: Notify AI state data.
 /// CN: 通知 AI 状态数据。

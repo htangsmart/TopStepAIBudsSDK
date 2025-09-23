@@ -4,6 +4,7 @@
 #import "TSCppEISWrapper.h"
 #import "TSOpusDecoder.h"
 #import "TSSCOAudioCaptureManager.h"
+#import "TSVoiceActivityDetector.h"
 
 // 例如你的新文件：#import "TSExampleService.h"
 

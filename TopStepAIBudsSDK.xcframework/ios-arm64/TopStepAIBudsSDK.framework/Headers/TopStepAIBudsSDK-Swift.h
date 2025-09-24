@@ -417,6 +417,7 @@ typedef SWIFT_ENUM(uint8_t, TSAIState, open) {
   TSAIStateEChatError = 4,
 };
 
+enum TSAdvSPPSelection : uint8_t;
 /// 新协议广播数据信息
 /// EN: New protocol advertisement data information
 /// CN: 新协议广播数据信息
@@ -442,10 +443,33 @@ SWIFT_CLASS("_TtC16TopStepAIBudsSDK13TSAdvDataInfo")
 /// EN: Sub-project number
 /// CN: 子项目号
 @property (nonatomic) uint8_t subProjectNumber;
+/// 是否需要安全认证（flag bit0）0-不需要 1-需要
+@property (nonatomic) BOOL secureRequired;
+/// 是否支持 CTKD（flag bit1）0-不支持 1-支持
+@property (nonatomic) BOOL ctkdSupported;
+/// SPP UUID 选择（flag bit4）0-默认UUID 1-替代UUID
+@property (nonatomic) enum TSAdvSPPSelection sppUUIDSelection;
+/// 是否优先使用 BLE（flag bit5）0-按 SPP/GATT 优先 1-总是优先 BLE
+@property (nonatomic) BOOL preferBle;
 - (nonnull instancetype)initWithProtocolVersion:(uint8_t)protocolVersion productID:(NSString * _Nonnull)productID flag:(uint8_t)flag projectNumber:(NSString * _Nonnull)projectNumber subProjectNumber:(uint8_t)subProjectNumber OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
+@interface TSAdvDataInfo (SWIFT_EXTENSION(TopStepAIBudsSDK))
+/// 解码并填充标志位字段
+/// \param flag 标志位字节
+///
+- (void)decodeFlagBits:(uint8_t)flag;
+@end
+
+/// SPP UUID 选择（来自新协议 flag 的 bit4）
+typedef SWIFT_ENUM(uint8_t, TSAdvSPPSelection, open) {
+/// 0 - 选择默认 UUID
+  TSAdvSPPSelectionDefaultUUID = 0,
+/// 1 - 选择替代 UUID
+  TSAdvSPPSelectionAlternativeUUID = 1,
+};
 
 /// EN: Bluetooth connection state
 /// CN: 蓝牙连接状态
@@ -657,6 +681,7 @@ enum TSSBEarbudsDeviceOperationType : uint8_t;
 enum TSSBEarbudsKeyFunction : uint8_t;
 @class NSData;
 enum TSSBRemoteCameraState : uint8_t;
+enum DeviceCallStatus : uint8_t;
 @interface TSSBEarbudsCommMannger (SWIFT_EXTENSION(TopStepAIBudsSDK))
 /// EN: Get device supported maximum packet size.
 /// CN: 获取设备支持的最大数据包大小。
@@ -833,7 +858,19 @@ enum TSSBRemoteCameraState : uint8_t;
 /// @param status
 /// 开启/关闭 0关闭 1开启
 - (void)controlABMetaRecordWithRecordType:(uint8_t)recordType status:(uint8_t)status result:(void (^ _Nonnull)(BOOL, NSError * _Nullable))result;
+/// 获取设备通话状态
+- (void)getDeviceCallStatusWithResult:(void (^ _Nonnull)(enum DeviceCallStatus, NSError * _Nullable))result;
+/// app通知设备再次发起鉴权
+/// authenticationType 00保留 01豆包 02骆方案（离线语音唤醒）
+- (void)deviceAuthentication:(uint8_t)authenticationType result:(void (^ _Nonnull)(NSError * _Nullable))result;
 @end
+
+typedef SWIFT_ENUM(uint8_t, DeviceCallStatus, open) {
+  DeviceCallStatusNone = 0,
+  DeviceCallStatusRinging = 1,
+  DeviceCallStatusTalking = 2,
+  DeviceCallStatusThreeWayRinging = 3,
+};
 
 /// EN: Bluetooth command codes for earbuds protocol
 /// CN: 耳机协议的蓝牙指令码
@@ -924,6 +961,8 @@ typedef SWIFT_ENUM(uint8_t, TSSBEarbudsCommandType, open) {
   TSSBEarbudsCommandTypeAiChatImageNotify = 0xE3,
 /// 启动摄像头并立刻开始录像
   TSSBEarbudsCommandTypeTakeVideoRecord = 0xE4,
+/// app通知设备再次发起鉴权
+  TSSBEarbudsCommandTypeDeviceAuthentication = 0xF4,
 };
 
 /// EN: Device information TLV type definitions
@@ -1017,6 +1056,8 @@ typedef SWIFT_ENUM(uint8_t, TSSBEarbudsDeviceInfoType, open) {
   TSSBEarbudsDeviceInfoTypeVoiceCommamdSupport = 0x87,
 /// 音乐的播放源
   TSSBEarbudsDeviceInfoTypeMusicOriginPlace = 0x88,
+/// 当前设备端的通话链路状态
+  TSSBEarbudsDeviceInfoTypeDeviceCallStatus = 0x89,
 };
 
 /// EN: Earbud key operation TLV types
@@ -1451,8 +1492,9 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TSStartBurst
 @end
 
 @interface TSStartBurstManager (SWIFT_EXTENSION(TopStepAIBudsSDK))
+/// 耳机拾音 0现场录音 1通话录音
 - (void)startAIRecordWithType:(uint8_t)type result:(void (^ _Nonnull)(BOOL, NSString * _Nonnull))result error:(void (^ _Nonnull)(NSError * _Nullable))error;
-- (void)stopAIRecordWithType:(uint8_t)type :(void (^ _Nonnull)(BOOL, NSError * _Nullable, NSString * _Nullable))result;
+- (void)stopAIRecord:(void (^ _Nonnull)(BOOL, NSError * _Nullable, NSString * _Nullable))result;
 @end
 
 SWIFT_CLASS("_TtC16TopStepAIBudsSDK13TopStepAIBuds")

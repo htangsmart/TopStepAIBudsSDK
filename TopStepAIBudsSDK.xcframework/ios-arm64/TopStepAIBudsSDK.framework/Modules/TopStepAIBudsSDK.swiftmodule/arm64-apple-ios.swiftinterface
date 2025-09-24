@@ -22,6 +22,335 @@ import YYModel
 import _Concurrency
 import _StringProcessing
 import _SwiftConcurrencyShims
+extension TopStepAIBudsSDK.TSSBEarbudsCommMannger {
+  @objc dynamic public func getMaxPacketSize(result: @escaping (Foundation.NSError?, Foundation.NSNumber?) -> Swift.Void)
+  @objc dynamic public func getAllEqualizer(result: @escaping (Foundation.NSError?, [Swift.Dictionary<Swift.String, Any>]) -> Swift.Void)
+  @objc dynamic public func getDeviceEqualizer(result: @escaping (Foundation.NSError?, Foundation.NSDictionary?) -> Swift.Void)
+  @objc dynamic public func getDevicePower(result: @escaping (_ error: Foundation.NSError?, _ leftPower: Foundation.NSNumber?, _ leftCharging: Foundation.NSNumber?, _ rightPower: Foundation.NSNumber?, _ rightCharging: Foundation.NSNumber?, _ hubPower: Foundation.NSNumber?, _ hubCharging: Foundation.NSNumber?) -> Swift.Void)
+  @objc dynamic public func getDeviceKeySettings(result: @escaping (Foundation.NSError?, Foundation.NSDictionary?) -> Swift.Void)
+  @objc dynamic public func getIsSupportTWS(result: @escaping (Foundation.NSError?, Swift.Bool) -> Swift.Void)
+  @objc dynamic public func getIsTWSConnected(result: @escaping (Foundation.NSError?, Swift.Bool) -> Swift.Void)
+  @objc dynamic public func getMainFirmwareVersion(result: @escaping (Foundation.NSError?, Swift.String?) -> Swift.Void)
+  @objc dynamic public func getSubFirmwareVersion(result: @escaping (Foundation.NSError?, Swift.String?) -> Swift.Void)
+  @objc dynamic public func setDeviceEqualizer(mode: Swift.UInt8, gains: [Foundation.NSNumber], result: @escaping (Foundation.NSError?) -> Swift.Void)
+  @objc dynamic public func setANC(mode: TopStepAIBudsSDK.TSSBEarbudsAncMode, result: @escaping (Foundation.NSError?) -> Swift.Void)
+  @objc dynamic public func setWorkMode(mode: TopStepAIBudsSDK.TSSBEarbudsWorkMode, result: @escaping (Foundation.NSError?) -> Swift.Void)
+  @objc dynamic public func resetDevice(result: @escaping (Foundation.NSError?) -> Swift.Void)
+  @objc dynamic public func setDeviceOperation(operation: TopStepAIBudsSDK.TSSBEarbudsDeviceOperationType, function: TopStepAIBudsSDK.TSSBEarbudsKeyFunction, result: @escaping (Foundation.NSError?) -> Swift.Void)
+  @objc dynamic public func findDevice(start: Swift.Bool, result: @escaping (Foundation.NSError?) -> Swift.Void)
+  @objc dynamic public func getSupportLanguages(result: @escaping (Foundation.Data?, (any Swift.Error)?) -> Swift.Void)
+  @objc dynamic public func setCurrentLanguages(languageCode: Swift.Int, result: @escaping (Swift.Bool, (any Swift.Error)?) -> Swift.Void)
+  @objc dynamic public func queryABMateDeviceinfo(result: @escaping ([Swift.String : Any]?, (any Swift.Error)?) -> Swift.Void)
+  @objc dynamic public func updateCameraState(cameraState: TopStepAIBudsSDK.TSSBRemoteCameraState, result: @escaping (Swift.Bool, (any Swift.Error)?) -> Swift.Void)
+  @objc dynamic public func startABMateOTA(filePath: Swift.String?, updateVersion: Swift.String?, fileSize: Foundation.NSNumber?, fileMD5: Swift.String?, prcVersion: Swift.String?, progress: @escaping (_ progress: Swift.Int) -> Swift.Void, result: @escaping (_ complete: Swift.Bool, _ error: (any Swift.Error)?) -> Swift.Void)
+  @objc dynamic public func queryABMateStorageInfo(result: @escaping (_ usedSpace: Foundation.NSNumber, _ residueSpace: Foundation.NSNumber, _ error: (any Swift.Error)?) -> Swift.Void)
+  @objc dynamic public func queryABMateMediaCount(result: @escaping (_ isSuccess: Swift.Bool, _ error: (any Swift.Error)?) -> Swift.Void)
+  @objc dynamic public func startABMateAudioRecord(result: @escaping (_ isSuccess: Swift.Bool, _ error: (any Swift.Error)?) -> Swift.Void)
+  @objc dynamic public func shutDownABMateRecord(result: @escaping (_ code: Swift.Int, _ error: (any Swift.Error)?) -> Swift.Void)
+  @objc dynamic public func takePhoto(model: Swift.UInt8, result: @escaping (_ isSuccess: Swift.Bool, _ error: (any Swift.Error)?) -> Swift.Void)
+  @objc dynamic public func takeVideoRecord(result: @escaping (_ isSuccess: Swift.Bool, _ error: (any Swift.Error)?) -> Swift.Void)
+  @objc dynamic public func musicPlay(result: @escaping (_ error: (any Swift.Error)?) -> Swift.Void)
+  @objc dynamic public func musicNext(result: @escaping (_ error: (any Swift.Error)?) -> Swift.Void)
+  @objc dynamic public func musicPrevious(result: @escaping (_ error: (any Swift.Error)?) -> Swift.Void)
+  @objc dynamic public func musicPause(result: @escaping (_ error: (any Swift.Error)?) -> Swift.Void)
+  @objc dynamic public func volumeUp(result: @escaping (_ error: (any Swift.Error)?) -> Swift.Void)
+  @objc dynamic public func volumeDown(result: @escaping (_ error: (any Swift.Error)?) -> Swift.Void)
+  @objc dynamic public func volumeMute(mute: Swift.Bool, result: @escaping (_ error: (any Swift.Error)?) -> Swift.Void)
+  @objc dynamic public func volumeChange(volume: Swift.UInt8, result: @escaping (_ error: (any Swift.Error)?) -> Swift.Void)
+  @objc dynamic public func aiChatStateChange(open: Swift.Bool, result: @escaping (_ error: (any Swift.Error)?) -> Swift.Void)
+  @objc dynamic public func shutdownDevice(result: @escaping (_ error: (any Swift.Error)?) -> Swift.Void)
+  @objc dynamic public func voiceRecognitionSetting(payload: Swift.UInt8, result: @escaping (_ isSuccess: Swift.Bool, _ error: (any Swift.Error)?) -> Swift.Void)
+  @objc dynamic public func setSystemWiFi(model: Foundation.NSNumber?, channel: Foundation.NSNumber?, ssid: Swift.String?, password: Swift.String?, result: @escaping (_ code: Swift.Int, _ error: (any Swift.Error)?) -> Swift.Void)
+  @objc dynamic public func startFileTransfer(result: @escaping (_ code: Swift.Int, _ error: (any Swift.Error)?) -> Swift.Void)
+  @objc dynamic public func setABMateStandardTime(timestamp: Swift.UInt32, timezoneMinutes: Swift.Int16, result: @escaping (_ resultCode: Swift.UInt8, _ error: (any Swift.Error)?) -> Swift.Void)
+  @objc dynamic public func controlABMetaRecord(recordType: Swift.UInt8, status: Swift.UInt8, result: @escaping (_ isSuccess: Swift.Bool, _ error: (any Swift.Error)?) -> Swift.Void)
+  @objc public enum DeviceCallStatus : Swift.UInt8 {
+    case none = 0
+    case ringing = 1
+    case talking = 2
+    case threeWayRinging = 3
+    public init?(rawValue: Swift.UInt8)
+    public typealias RawValue = Swift.UInt8
+    public var rawValue: Swift.UInt8 {
+      get
+    }
+  }
+  @objc dynamic public func getDeviceCallStatus(result: @escaping (_ callStatus: TopStepAIBudsSDK.TSSBEarbudsCommMannger.DeviceCallStatus, _ error: (any Swift.Error)?) -> Swift.Void)
+  @objc dynamic public func deviceAuthentication(_ authenticationType: Swift.UInt8 = 0x01, result: @escaping (_ error: (any Swift.Error)?) -> Swift.Void)
+}
+@objc public enum TSSBBTCommandType : Swift.UInt8 {
+  case request = 1
+  case response = 2
+  case notify = 3
+  public init?(rawValue: Swift.UInt8)
+  public typealias RawValue = Swift.UInt8
+  public var rawValue: Swift.UInt8 {
+    get
+  }
+}
+@objc public enum TSSBEarbudsCommandType : Swift.UInt8 {
+  case eq = 0x20
+  case musicControl = 0x21
+  case deviceOperation = 0x22
+  case autoShutdown = 0x23
+  case factoryReset = 0x24
+  case workMode = 0x25
+  case inEarDetect = 0x26
+  case deviceInfo = 0x27
+  case deviceInfoNotify = 0x28
+  case promptTone = 0x29
+  case findDevice = 0x2A
+  case autoAnswer = 0x2B
+  case ancMode = 0x2C
+  case bluetoothName = 0x2D
+  case ledMode = 0x2E
+  case clearPairRecord = 0x2F
+  case ancGain = 0x30
+  case transparencyGain = 0x31
+  case soundEffect3D = 0x32
+  case multipoint = 0x33
+  case voiceRecognition = 0x34
+  case anc = 0x35
+  case bassEngine = 0x36
+  case remoteCamera = 0xF3
+  case otaAllowedRequest = 0xA0
+  case beginOTARequest = 0xA1
+  case subseqOTARequest = 0xA2
+  case otaStateNofity = 0xA3
+  case setAIChatState = 0xb0
+  case controlAIRecord = 0xb1
+  case startCameraAndTakephoto = 0xE1
+  case shutDownRecord = 0xE2
+  case startAudioRecord = 0xE5
+  case wifiSetting = 0xE6
+  case startFileTransfer = 0xE7
+  case wifitStateChanged = 0xEC
+  case getStorageInfo = 0xEA
+  case getMediaCount = 0xEF
+  case setStandardTime = 0xF0
+  case aiRecordDataNotify = 0xb2
+  case subFirmwareVersion = 0xE9
+  case aiChatImageNotify = 0xE3
+  case takeVideoRecord = 0xE4
+  case deviceAuthentication = 0xF4
+  public init?(rawValue: Swift.UInt8)
+  public typealias RawValue = Swift.UInt8
+  public var rawValue: Swift.UInt8 {
+    get
+  }
+}
+@objc public enum TSSBEarbudsDeviceInfoType : Swift.UInt8 {
+  case devicePower = 0x01
+  case mainFirmwareVersion = 0x02
+  case bluetoothName = 0x03
+  case eqSetting = 0x04
+  case keySettings = 0x05
+  case deviceVolume = 0x06
+  case playState = 0x07
+  case workMode = 0x08
+  case inEarStatus = 0x09
+  case promptToneType = 0x0A
+  case autoAnswer = 0x0B
+  case ancMode = 0x0C
+  case isTWS = 0x0D
+  case twsConnected = 0x0E
+  case ledSwitch = 0x0F
+  case fwChecksum = 0x10
+  case ancGain = 0x11
+  case transparencyGain = 0x12
+  case ancGainNum = 0x13
+  case transparencyGainNum = 0x14
+  case allEqSettings = 0x15
+  case mainSide = 0x16
+  case productColor = 0x17
+  case soundEffect3D = 0x18
+  case multipointStatus = 0x19
+  case multipointInfo = 0x1A
+  case voiceRecognition = 0x1C
+  case ancFadeStatus = 0x1D
+  case bassEngineStatus = 0x1E
+  case bassEngineValue = 0x1F
+  case bassEngineRange = 0x20
+  case deviceCapabilities = 0xFE
+  case maxPacketSize = 0xFF
+  case compartmentMacAddress = 0x25
+  case isSupportCallRecord = 0x26
+  case antiJitterSupport = 0x80
+  case localPlaySupport = 0x81
+  case playDuration = 0x82
+  case audioRecordDuration = 0x83
+  case languagesSupport = 0x84
+  case deviceSerialNum = 0x85
+  case deviceModel = 0x86
+  case voiceCommamdSupport = 0x87
+  case musicOriginPlace = 0x88
+  case deviceCallStatus = 0x89
+  public init?(rawValue: Swift.UInt8)
+  public typealias RawValue = Swift.UInt8
+  public var rawValue: Swift.UInt8 {
+    get
+  }
+}
+@objc public enum TSSBEarbudsMusicControlType : Swift.UInt8 {
+  case volume = 0x01
+  case play = 0x02
+  case pause = 0x03
+  case previous = 0x04
+  case next = 0x05
+  case up = 0x06
+  case down = 0x07
+  case mute = 0x08
+  public init?(rawValue: Swift.UInt8)
+  public typealias RawValue = Swift.UInt8
+  public var rawValue: Swift.UInt8 {
+    get
+  }
+}
+@objc public enum TSSBEarbudsDeviceOperationType : Swift.UInt8 {
+  case leftShortPress = 0x01
+  case rightShortPress = 0x02
+  case leftDoubleClick = 0x03
+  case rightDoubleClick = 0x04
+  case leftTripleClick = 0x05
+  case rightTripleClick = 0x06
+  case leftLongPress = 0x07
+  case rightLongPress = 0x08
+  public init?(rawValue: Swift.UInt8)
+  public typealias RawValue = Swift.UInt8
+  public var rawValue: Swift.UInt8 {
+    get
+  }
+}
+@objc public enum TSSBEarbudsKeyFunction : Swift.UInt8 {
+  case none = 0
+  case redial = 1
+  case voiceAssistant = 2
+  case previous = 3
+  case next = 4
+  case volumeUp = 5
+  case volumeDown = 6
+  case playPause = 7
+  case gameMode = 8
+  case ancSetting = 9
+  case takePhotoSetting = 10
+  case continuousShooting = 11
+  case startOrStopRecording = 12
+  case startOrStopAudioRecord = 13
+  case LocalOrBTPlaySwitch = 14
+  public init?(rawValue: Swift.UInt8)
+  public typealias RawValue = Swift.UInt8
+  public var rawValue: Swift.UInt8 {
+    get
+  }
+}
+@objc public enum TSSBEarbudsAncMode : Swift.UInt8 {
+  case normal = 0
+  case noiseCancellation = 1
+  case transparency = 2
+  public init?(rawValue: Swift.UInt8)
+  public typealias RawValue = Swift.UInt8
+  public var rawValue: Swift.UInt8 {
+    get
+  }
+}
+@objc public enum TSSBEarbudsWorkMode : Swift.UInt8 {
+  case normal = 0
+  case game = 1
+  public init?(rawValue: Swift.UInt8)
+  public typealias RawValue = Swift.UInt8
+  public var rawValue: Swift.UInt8 {
+    get
+  }
+}
+@objc public enum TSSBEarbudsProductColor : Swift.UInt8 {
+  case white = 1
+  case cyan = 2
+  public init?(rawValue: Swift.UInt8)
+  public typealias RawValue = Swift.UInt8
+  public var rawValue: Swift.UInt8 {
+    get
+  }
+}
+@objc public enum TSSBRemoteCameraState : Swift.UInt8 {
+  case exitCamera = 0
+  case enterCamera = 1
+  case takePhotoSuccess = 2
+  case takePhotoFailed = 3
+  public init?(rawValue: Swift.UInt8)
+  public typealias RawValue = Swift.UInt8
+  public var rawValue: Swift.UInt8 {
+    get
+  }
+}
+@objc public enum TSSBEarbudsWiFiSettingType : Swift.UInt8 {
+  case wifiModel = 0x01
+  case wifiSsid = 0x02
+  case wifiPassword = 0x03
+  case wifiChannel = 0x04
+  public init?(rawValue: Swift.UInt8)
+  public typealias RawValue = Swift.UInt8
+  public var rawValue: Swift.UInt8 {
+    get
+  }
+}
+@objc public enum TSSBEarbudsWiFiState : Swift.UInt8 {
+  case hotPotClose = 0
+  case hotPotOpen = 1
+  case wifiDirectOpen = 2
+  case wifiDirectConnected = 3
+  case wifiDirectFailed = 4
+  case wifiDirectTimeout = 5
+  public init?(rawValue: Swift.UInt8)
+  public typealias RawValue = Swift.UInt8
+  public var rawValue: Swift.UInt8 {
+    get
+  }
+}
+@objc public protocol TSBTObserver : ObjectiveC.NSObjectProtocol {
+  @objc optional func observerDeviceBTState(state: TopStepAIBudsSDK.TSBTConnectState, peripheral: CoreBluetooth.CBPeripheral)
+  @objc optional func observerCentralManagerState(state: CoreBluetooth.CBManagerState)
+}
+@objc public protocol TSSoudbudObserver : TopStepAIBudsSDK.TSBTObserver {
+  @objc optional func observerPowerChange(leftPower: Foundation.NSNumber?, leftCharging: Foundation.NSNumber?, rightPower: Foundation.NSNumber?, rightCharging: Foundation.NSNumber?, hubPower: Foundation.NSNumber?, hubCharging: Foundation.NSNumber?)
+  @objc optional func observerPlayStateChange(isPlaying: Swift.Bool)
+  @objc optional func observerWorkModeChange(workMode: TopStepAIBudsSDK.TSSBEarbudsWorkMode)
+  @objc optional func observerInEarStatusChange(leftInEar: Swift.Bool, rightInEar: Swift.Bool)
+  @objc optional func observerTWSConnectedChange(isConnected: Swift.Bool)
+  @objc optional func observerEQSettingChange(mode: Swift.UInt8, gains: [Foundation.NSNumber])
+  @objc optional func observerDeviceVolumeChange(volume: Swift.UInt8)
+  @objc optional func observerANCModeChange(mode: TopStepAIBudsSDK.TSSBEarbudsAncMode)
+  @objc optional func observerANCGainChange(gain: Swift.UInt8)
+  @objc optional func observerTransparencyGainChange(gain: Swift.UInt8)
+  @objc optional func observerSoundEffect3DChange(isEnabled: Swift.Bool)
+  @objc optional func observerBassEngineStatusChange(isEnabled: Swift.Bool)
+  @objc optional func observerKeySettingsChange(operations: [Foundation.NSNumber], functions: [Foundation.NSNumber])
+  @objc optional func observerPromptToneTypeChange(type: Swift.UInt8)
+  @objc optional func observerLEDSwitchChange(isOn: Swift.Bool)
+  @objc optional func observerMainSideChange(isLeft: Swift.Bool)
+  @objc optional func observerMultipointStatusChange(isEnabled: Swift.Bool)
+  @objc optional func observerMultipointInfoChange(devices: [Foundation.NSDictionary])
+  @objc optional func observerVoiceRecognitionChange(isEnabled: Swift.Bool)
+  @objc optional func observerRemoteCameraControlState(state: Swift.UInt8)
+  @objc optional func observerMediaCountDidChanged(picCount: Swift.UInt32, videoCount: Swift.UInt32, audioCount: Swift.UInt32)
+  @objc optional func observerWifiStateChanged(state: TopStepAIBudsSDK.TSSBEarbudsWiFiState)
+  @objc optional func observerWifiAddressNotify(wifiAddress: Swift.String)
+  @objc optional func observerAIRecordNotify(recordData: Foundation.Data?)
+  @objc optional func observerAIStateNotify(status: Foundation.Data)
+  @objc optional func observerIsSupportCallRecordNotify(status: Swift.Bool)
+  @objc optional func observerAIChatImageNotify(imageData: Foundation.Data)
+  @objc optional func observerSubFirmwareVersionNotify(version: Swift.String)
+}
+@_hasMissingDesignatedInitializers @objc public class TSSBEarbuds : TopStepAIBudsSDK.TSBTDevice {
+  @objc public var commandManager: TopStepAIBudsSDK.TSSBEarbudsCommMannger {
+    get
+  }
+  @objc override public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didDiscoverServices error: (any Swift.Error)?)
+  @objc override public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didDiscoverCharacteristicsFor service: CoreBluetooth.CBService, error: (any Swift.Error)?)
+  @objc override public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didUpdateNotificationStateFor characteristic: CoreBluetooth.CBCharacteristic, error: (any Swift.Error)?)
+  @objc override public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didWriteValueFor characteristic: CoreBluetooth.CBCharacteristic, error: (any Swift.Error)?)
+  @objc override public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didUpdateValueFor characteristic: CoreBluetooth.CBCharacteristic, error: (any Swift.Error)?)
+  @objc deinit
+}
 extension Foundation.NSNotification.Name {
   public static let TSBTManagerDidUpdateState: Foundation.Notification.Name
 }
@@ -88,8 +417,24 @@ extension Foundation.NSNotification.Name {
   @objc public var flag: Swift.UInt8
   @objc public var projectNumber: Swift.String
   @objc public var subProjectNumber: Swift.UInt8
+  @objc public var secureRequired: Swift.Bool
+  @objc public var ctkdSupported: Swift.Bool
+  @objc public var sppUUIDSelection: TopStepAIBudsSDK.TSAdvSPPSelection
+  @objc public var preferBle: Swift.Bool
   @objc public init(protocolVersion: Swift.UInt8, productID: Swift.String, flag: Swift.UInt8, projectNumber: Swift.String, subProjectNumber: Swift.UInt8)
   @objc deinit
+}
+@objc public enum TSAdvSPPSelection : Swift.UInt8 {
+  case defaultUUID = 0
+  case alternativeUUID = 1
+  public init?(rawValue: Swift.UInt8)
+  public typealias RawValue = Swift.UInt8
+  public var rawValue: Swift.UInt8 {
+    get
+  }
+}
+extension TopStepAIBudsSDK.TSAdvDataInfo {
+  @objc dynamic public func decodeFlagBits(_ flag: Swift.UInt8)
 }
 @objc public class TSDeviceBaseInfo : ObjectiveC.NSObject {
   @objc public var sdkType: TopStepAIBudsSDK.TPSSDKType
@@ -212,48 +557,12 @@ extension TopStepAIBudsSDK.TopStepAIBuds : TopStepAIBudsSDK.TSSoudbudObserver {
   public static func makeScanError(type: TopStepAIBudsSDK.TSBTErrorType) -> Foundation.NSError
   @objc deinit
 }
-extension TopStepAIBudsSDK.TSSBEarbudsCommMannger {
-  @objc dynamic public func getMaxPacketSize(result: @escaping (Foundation.NSError?, Foundation.NSNumber?) -> Swift.Void)
-  @objc dynamic public func getAllEqualizer(result: @escaping (Foundation.NSError?, [Swift.Dictionary<Swift.String, Any>]) -> Swift.Void)
-  @objc dynamic public func getDeviceEqualizer(result: @escaping (Foundation.NSError?, Foundation.NSDictionary?) -> Swift.Void)
-  @objc dynamic public func getDevicePower(result: @escaping (_ error: Foundation.NSError?, _ leftPower: Foundation.NSNumber?, _ leftCharging: Foundation.NSNumber?, _ rightPower: Foundation.NSNumber?, _ rightCharging: Foundation.NSNumber?, _ hubPower: Foundation.NSNumber?, _ hubCharging: Foundation.NSNumber?) -> Swift.Void)
-  @objc dynamic public func getDeviceKeySettings(result: @escaping (Foundation.NSError?, Foundation.NSDictionary?) -> Swift.Void)
-  @objc dynamic public func getIsSupportTWS(result: @escaping (Foundation.NSError?, Swift.Bool) -> Swift.Void)
-  @objc dynamic public func getIsTWSConnected(result: @escaping (Foundation.NSError?, Swift.Bool) -> Swift.Void)
-  @objc dynamic public func getMainFirmwareVersion(result: @escaping (Foundation.NSError?, Swift.String?) -> Swift.Void)
-  @objc dynamic public func getSubFirmwareVersion(result: @escaping (Foundation.NSError?, Swift.String?) -> Swift.Void)
-  @objc dynamic public func setDeviceEqualizer(mode: Swift.UInt8, gains: [Foundation.NSNumber], result: @escaping (Foundation.NSError?) -> Swift.Void)
-  @objc dynamic public func setANC(mode: TopStepAIBudsSDK.TSSBEarbudsAncMode, result: @escaping (Foundation.NSError?) -> Swift.Void)
-  @objc dynamic public func setWorkMode(mode: TopStepAIBudsSDK.TSSBEarbudsWorkMode, result: @escaping (Foundation.NSError?) -> Swift.Void)
-  @objc dynamic public func resetDevice(result: @escaping (Foundation.NSError?) -> Swift.Void)
-  @objc dynamic public func setDeviceOperation(operation: TopStepAIBudsSDK.TSSBEarbudsDeviceOperationType, function: TopStepAIBudsSDK.TSSBEarbudsKeyFunction, result: @escaping (Foundation.NSError?) -> Swift.Void)
-  @objc dynamic public func findDevice(start: Swift.Bool, result: @escaping (Foundation.NSError?) -> Swift.Void)
-  @objc dynamic public func getSupportLanguages(result: @escaping (Foundation.Data?, (any Swift.Error)?) -> Swift.Void)
-  @objc dynamic public func setCurrentLanguages(languageCode: Swift.Int, result: @escaping (Swift.Bool, (any Swift.Error)?) -> Swift.Void)
-  @objc dynamic public func queryABMateDeviceinfo(result: @escaping ([Swift.String : Any]?, (any Swift.Error)?) -> Swift.Void)
-  @objc dynamic public func updateCameraState(cameraState: TopStepAIBudsSDK.TSSBRemoteCameraState, result: @escaping (Swift.Bool, (any Swift.Error)?) -> Swift.Void)
-  @objc dynamic public func startABMateOTA(filePath: Swift.String?, updateVersion: Swift.String?, fileSize: Foundation.NSNumber?, fileMD5: Swift.String?, prcVersion: Swift.String?, progress: @escaping (_ progress: Swift.Int) -> Swift.Void, result: @escaping (_ complete: Swift.Bool, _ error: (any Swift.Error)?) -> Swift.Void)
-  @objc dynamic public func queryABMateStorageInfo(result: @escaping (_ usedSpace: Foundation.NSNumber, _ residueSpace: Foundation.NSNumber, _ error: (any Swift.Error)?) -> Swift.Void)
-  @objc dynamic public func queryABMateMediaCount(result: @escaping (_ isSuccess: Swift.Bool, _ error: (any Swift.Error)?) -> Swift.Void)
-  @objc dynamic public func startABMateAudioRecord(result: @escaping (_ isSuccess: Swift.Bool, _ error: (any Swift.Error)?) -> Swift.Void)
-  @objc dynamic public func shutDownABMateRecord(result: @escaping (_ code: Swift.Int, _ error: (any Swift.Error)?) -> Swift.Void)
-  @objc dynamic public func takePhoto(model: Swift.UInt8, result: @escaping (_ isSuccess: Swift.Bool, _ error: (any Swift.Error)?) -> Swift.Void)
-  @objc dynamic public func takeVideoRecord(result: @escaping (_ isSuccess: Swift.Bool, _ error: (any Swift.Error)?) -> Swift.Void)
-  @objc dynamic public func musicPlay(result: @escaping (_ error: (any Swift.Error)?) -> Swift.Void)
-  @objc dynamic public func musicNext(result: @escaping (_ error: (any Swift.Error)?) -> Swift.Void)
-  @objc dynamic public func musicPrevious(result: @escaping (_ error: (any Swift.Error)?) -> Swift.Void)
-  @objc dynamic public func musicPause(result: @escaping (_ error: (any Swift.Error)?) -> Swift.Void)
-  @objc dynamic public func volumeUp(result: @escaping (_ error: (any Swift.Error)?) -> Swift.Void)
-  @objc dynamic public func volumeDown(result: @escaping (_ error: (any Swift.Error)?) -> Swift.Void)
-  @objc dynamic public func volumeMute(mute: Swift.Bool, result: @escaping (_ error: (any Swift.Error)?) -> Swift.Void)
-  @objc dynamic public func volumeChange(volume: Swift.UInt8, result: @escaping (_ error: (any Swift.Error)?) -> Swift.Void)
-  @objc dynamic public func aiChatStateChange(open: Swift.Bool, result: @escaping (_ error: (any Swift.Error)?) -> Swift.Void)
-  @objc dynamic public func shutdownDevice(result: @escaping (_ error: (any Swift.Error)?) -> Swift.Void)
-  @objc dynamic public func voiceRecognitionSetting(payload: Swift.UInt8, result: @escaping (_ isSuccess: Swift.Bool, _ error: (any Swift.Error)?) -> Swift.Void)
-  @objc dynamic public func setSystemWiFi(model: Foundation.NSNumber?, channel: Foundation.NSNumber?, ssid: Swift.String?, password: Swift.String?, result: @escaping (_ code: Swift.Int, _ error: (any Swift.Error)?) -> Swift.Void)
-  @objc dynamic public func startFileTransfer(result: @escaping (_ code: Swift.Int, _ error: (any Swift.Error)?) -> Swift.Void)
-  @objc dynamic public func setABMateStandardTime(timestamp: Swift.UInt32, timezoneMinutes: Swift.Int16, result: @escaping (_ resultCode: Swift.UInt8, _ error: (any Swift.Error)?) -> Swift.Void)
-  @objc dynamic public func controlABMetaRecord(recordType: Swift.UInt8, status: Swift.UInt8, result: @escaping (_ isSuccess: Swift.Bool, _ error: (any Swift.Error)?) -> Swift.Void)
+@_hasMissingDesignatedInitializers @objc public class TSSBEarbudsCommMannger : ObjectiveC.NSObject {
+  @objc public var peripheral: CoreBluetooth.CBPeripheral
+  @objc public var deviceInfo: TopStepAIBudsSDK.TSDeviceBaseInfo
+  @objc public static var MAX_PACKET_SIZE: Swift.Int
+  public func getDeviceNecessaryInfo(result: @escaping (Foundation.NSError?) -> Swift.Void)
+  @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc public class TSBTDevice : ObjectiveC.NSObject, CoreBluetooth.CBPeripheralDelegate {
   @objc public var peripheral: CoreBluetooth.CBPeripheral {
@@ -269,306 +578,10 @@ extension TopStepAIBudsSDK.TSSBEarbudsCommMannger {
   @objc public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didUpdateValueFor characteristic: CoreBluetooth.CBCharacteristic, error: (any Swift.Error)?)
   @objc deinit
 }
-@objc public enum TSSBBTCommandType : Swift.UInt8 {
-  case request = 1
-  case response = 2
-  case notify = 3
-  public init?(rawValue: Swift.UInt8)
-  public typealias RawValue = Swift.UInt8
-  public var rawValue: Swift.UInt8 {
-    get
-  }
-}
-@objc public enum TSSBEarbudsCommandType : Swift.UInt8 {
-  case eq = 0x20
-  case musicControl = 0x21
-  case deviceOperation = 0x22
-  case autoShutdown = 0x23
-  case factoryReset = 0x24
-  case workMode = 0x25
-  case inEarDetect = 0x26
-  case deviceInfo = 0x27
-  case deviceInfoNotify = 0x28
-  case promptTone = 0x29
-  case findDevice = 0x2A
-  case autoAnswer = 0x2B
-  case ancMode = 0x2C
-  case bluetoothName = 0x2D
-  case ledMode = 0x2E
-  case clearPairRecord = 0x2F
-  case ancGain = 0x30
-  case transparencyGain = 0x31
-  case soundEffect3D = 0x32
-  case multipoint = 0x33
-  case voiceRecognition = 0x34
-  case anc = 0x35
-  case bassEngine = 0x36
-  case remoteCamera = 0xF3
-  case otaAllowedRequest = 0xA0
-  case beginOTARequest = 0xA1
-  case subseqOTARequest = 0xA2
-  case otaStateNofity = 0xA3
-  case setAIChatState = 0xb0
-  case controlAIRecord = 0xb1
-  case startCameraAndTakephoto = 0xE1
-  case shutDownRecord = 0xE2
-  case startAudioRecord = 0xE5
-  case wifiSetting = 0xE6
-  case startFileTransfer = 0xE7
-  case wifitStateChanged = 0xEC
-  case getStorageInfo = 0xEA
-  case getMediaCount = 0xEF
-  case setStandardTime = 0xF0
-  case aiRecordDataNotify = 0xb2
-  case subFirmwareVersion = 0xE9
-  case aiChatImageNotify = 0xE3
-  case takeVideoRecord = 0xE4
-  public init?(rawValue: Swift.UInt8)
-  public typealias RawValue = Swift.UInt8
-  public var rawValue: Swift.UInt8 {
-    get
-  }
-}
-@objc public enum TSSBEarbudsDeviceInfoType : Swift.UInt8 {
-  case devicePower = 0x01
-  case mainFirmwareVersion = 0x02
-  case bluetoothName = 0x03
-  case eqSetting = 0x04
-  case keySettings = 0x05
-  case deviceVolume = 0x06
-  case playState = 0x07
-  case workMode = 0x08
-  case inEarStatus = 0x09
-  case promptToneType = 0x0A
-  case autoAnswer = 0x0B
-  case ancMode = 0x0C
-  case isTWS = 0x0D
-  case twsConnected = 0x0E
-  case ledSwitch = 0x0F
-  case fwChecksum = 0x10
-  case ancGain = 0x11
-  case transparencyGain = 0x12
-  case ancGainNum = 0x13
-  case transparencyGainNum = 0x14
-  case allEqSettings = 0x15
-  case mainSide = 0x16
-  case productColor = 0x17
-  case soundEffect3D = 0x18
-  case multipointStatus = 0x19
-  case multipointInfo = 0x1A
-  case voiceRecognition = 0x1C
-  case ancFadeStatus = 0x1D
-  case bassEngineStatus = 0x1E
-  case bassEngineValue = 0x1F
-  case bassEngineRange = 0x20
-  case deviceCapabilities = 0xFE
-  case maxPacketSize = 0xFF
-  case compartmentMacAddress = 0x25
-  case isSupportCallRecord = 0x26
-  case antiJitterSupport = 0x80
-  case localPlaySupport = 0x81
-  case playDuration = 0x82
-  case audioRecordDuration = 0x83
-  case languagesSupport = 0x84
-  case deviceSerialNum = 0x85
-  case deviceModel = 0x86
-  case voiceCommamdSupport = 0x87
-  case musicOriginPlace = 0x88
-  public init?(rawValue: Swift.UInt8)
-  public typealias RawValue = Swift.UInt8
-  public var rawValue: Swift.UInt8 {
-    get
-  }
-}
-@objc public enum TSSBEarbudsMusicControlType : Swift.UInt8 {
-  case volume = 0x01
-  case play = 0x02
-  case pause = 0x03
-  case previous = 0x04
-  case next = 0x05
-  case up = 0x06
-  case down = 0x07
-  case mute = 0x08
-  public init?(rawValue: Swift.UInt8)
-  public typealias RawValue = Swift.UInt8
-  public var rawValue: Swift.UInt8 {
-    get
-  }
-}
-@objc public enum TSSBEarbudsDeviceOperationType : Swift.UInt8 {
-  case leftShortPress = 0x01
-  case rightShortPress = 0x02
-  case leftDoubleClick = 0x03
-  case rightDoubleClick = 0x04
-  case leftTripleClick = 0x05
-  case rightTripleClick = 0x06
-  case leftLongPress = 0x07
-  case rightLongPress = 0x08
-  public init?(rawValue: Swift.UInt8)
-  public typealias RawValue = Swift.UInt8
-  public var rawValue: Swift.UInt8 {
-    get
-  }
-}
-@objc public enum TSSBEarbudsKeyFunction : Swift.UInt8 {
-  case none = 0
-  case redial = 1
-  case voiceAssistant = 2
-  case previous = 3
-  case next = 4
-  case volumeUp = 5
-  case volumeDown = 6
-  case playPause = 7
-  case gameMode = 8
-  case ancSetting = 9
-  case takePhotoSetting = 10
-  case continuousShooting = 11
-  case startOrStopRecording = 12
-  case startOrStopAudioRecord = 13
-  case LocalOrBTPlaySwitch = 14
-  public init?(rawValue: Swift.UInt8)
-  public typealias RawValue = Swift.UInt8
-  public var rawValue: Swift.UInt8 {
-    get
-  }
-}
-@objc public enum TSSBEarbudsAncMode : Swift.UInt8 {
-  case normal = 0
-  case noiseCancellation = 1
-  case transparency = 2
-  public init?(rawValue: Swift.UInt8)
-  public typealias RawValue = Swift.UInt8
-  public var rawValue: Swift.UInt8 {
-    get
-  }
-}
-@objc public enum TSSBEarbudsWorkMode : Swift.UInt8 {
-  case normal = 0
-  case game = 1
-  public init?(rawValue: Swift.UInt8)
-  public typealias RawValue = Swift.UInt8
-  public var rawValue: Swift.UInt8 {
-    get
-  }
-}
-@objc public enum TSSBEarbudsProductColor : Swift.UInt8 {
-  case white = 1
-  case cyan = 2
-  public init?(rawValue: Swift.UInt8)
-  public typealias RawValue = Swift.UInt8
-  public var rawValue: Swift.UInt8 {
-    get
-  }
-}
-@objc public enum TSSBRemoteCameraState : Swift.UInt8 {
-  case exitCamera = 0
-  case enterCamera = 1
-  case takePhotoSuccess = 2
-  case takePhotoFailed = 3
-  public init?(rawValue: Swift.UInt8)
-  public typealias RawValue = Swift.UInt8
-  public var rawValue: Swift.UInt8 {
-    get
-  }
-}
-@objc public enum TSSBEarbudsWiFiSettingType : Swift.UInt8 {
-  case wifiModel = 0x01
-  case wifiSsid = 0x02
-  case wifiPassword = 0x03
-  case wifiChannel = 0x04
-  public init?(rawValue: Swift.UInt8)
-  public typealias RawValue = Swift.UInt8
-  public var rawValue: Swift.UInt8 {
-    get
-  }
-}
-@objc public enum TSSBEarbudsWiFiState : Swift.UInt8 {
-  case hotPotClose = 0
-  case hotPotOpen = 1
-  case wifiDirectOpen = 2
-  case wifiDirectConnected = 3
-  case wifiDirectFailed = 4
-  case wifiDirectTimeout = 5
-  public init?(rawValue: Swift.UInt8)
-  public typealias RawValue = Swift.UInt8
-  public var rawValue: Swift.UInt8 {
-    get
-  }
-}
-@objc public enum TSBTConnectState : Swift.Int, @unchecked Swift.Sendable {
-  case disconnected = 0
-  case connecting = 1
-  case connected = 2
-  case disconnecting = 3
-  case failed = 4
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
-}
-@_inheritsConvenienceInitializers @objc public class TSSBWiFiManager : ObjectiveC.NSObject {
-  @objc public static func connectToWifi(ssid: Swift.String, password: Swift.String, isweb: Swift.Bool, result: @escaping (_ isSuccess: Swift.Bool) -> Swift.Void)
-  @objc public static func debugWiFiStatus()
-  @objc override dynamic public init()
-  @objc deinit
-}
-@_hasMissingDesignatedInitializers @objc public class TSSBEarbuds : TopStepAIBudsSDK.TSBTDevice {
-  @objc public var commandManager: TopStepAIBudsSDK.TSSBEarbudsCommMannger {
-    get
-  }
-  @objc override public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didDiscoverServices error: (any Swift.Error)?)
-  @objc override public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didDiscoverCharacteristicsFor service: CoreBluetooth.CBService, error: (any Swift.Error)?)
-  @objc override public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didUpdateNotificationStateFor characteristic: CoreBluetooth.CBCharacteristic, error: (any Swift.Error)?)
-  @objc override public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didWriteValueFor characteristic: CoreBluetooth.CBCharacteristic, error: (any Swift.Error)?)
-  @objc override public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didUpdateValueFor characteristic: CoreBluetooth.CBCharacteristic, error: (any Swift.Error)?)
-  @objc deinit
-}
 @_inheritsConvenienceInitializers @objc public class TSGlassesEISTool : ObjectiveC.NSObject {
   @objc public static func stabilizeVideo(inputURL: Foundation.URL, result: @escaping (Swift.String?, (any Swift.Error)?) -> Swift.Void)
   @objc override dynamic public init()
   @objc deinit
-}
-@_hasMissingDesignatedInitializers @objc public class TSSBEarbudsCommMannger : ObjectiveC.NSObject {
-  @objc public var peripheral: CoreBluetooth.CBPeripheral
-  @objc public var deviceInfo: TopStepAIBudsSDK.TSDeviceBaseInfo
-  @objc public static var MAX_PACKET_SIZE: Swift.Int
-  public func getDeviceNecessaryInfo(result: @escaping (Foundation.NSError?) -> Swift.Void)
-  @objc deinit
-}
-@objc public protocol TSBTObserver : ObjectiveC.NSObjectProtocol {
-  @objc optional func observerDeviceBTState(state: TopStepAIBudsSDK.TSBTConnectState, peripheral: CoreBluetooth.CBPeripheral)
-  @objc optional func observerCentralManagerState(state: CoreBluetooth.CBManagerState)
-}
-@objc public protocol TSSoudbudObserver : TopStepAIBudsSDK.TSBTObserver {
-  @objc optional func observerPowerChange(leftPower: Foundation.NSNumber?, leftCharging: Foundation.NSNumber?, rightPower: Foundation.NSNumber?, rightCharging: Foundation.NSNumber?, hubPower: Foundation.NSNumber?, hubCharging: Foundation.NSNumber?)
-  @objc optional func observerPlayStateChange(isPlaying: Swift.Bool)
-  @objc optional func observerWorkModeChange(workMode: TopStepAIBudsSDK.TSSBEarbudsWorkMode)
-  @objc optional func observerInEarStatusChange(leftInEar: Swift.Bool, rightInEar: Swift.Bool)
-  @objc optional func observerTWSConnectedChange(isConnected: Swift.Bool)
-  @objc optional func observerEQSettingChange(mode: Swift.UInt8, gains: [Foundation.NSNumber])
-  @objc optional func observerDeviceVolumeChange(volume: Swift.UInt8)
-  @objc optional func observerANCModeChange(mode: TopStepAIBudsSDK.TSSBEarbudsAncMode)
-  @objc optional func observerANCGainChange(gain: Swift.UInt8)
-  @objc optional func observerTransparencyGainChange(gain: Swift.UInt8)
-  @objc optional func observerSoundEffect3DChange(isEnabled: Swift.Bool)
-  @objc optional func observerBassEngineStatusChange(isEnabled: Swift.Bool)
-  @objc optional func observerKeySettingsChange(operations: [Foundation.NSNumber], functions: [Foundation.NSNumber])
-  @objc optional func observerPromptToneTypeChange(type: Swift.UInt8)
-  @objc optional func observerLEDSwitchChange(isOn: Swift.Bool)
-  @objc optional func observerMainSideChange(isLeft: Swift.Bool)
-  @objc optional func observerMultipointStatusChange(isEnabled: Swift.Bool)
-  @objc optional func observerMultipointInfoChange(devices: [Foundation.NSDictionary])
-  @objc optional func observerVoiceRecognitionChange(isEnabled: Swift.Bool)
-  @objc optional func observerRemoteCameraControlState(state: Swift.UInt8)
-  @objc optional func observerMediaCountDidChanged(picCount: Swift.UInt32, videoCount: Swift.UInt32, audioCount: Swift.UInt32)
-  @objc optional func observerWifiStateChanged(state: TopStepAIBudsSDK.TSSBEarbudsWiFiState)
-  @objc optional func observerWifiAddressNotify(wifiAddress: Swift.String)
-  @objc optional func observerAIRecordNotify(recordData: Foundation.Data?)
-  @objc optional func observerAIStateNotify(status: Foundation.Data)
-  @objc optional func observerIsSupportCallRecordNotify(status: Swift.Bool)
-  @objc optional func observerAIChatImageNotify(imageData: Foundation.Data)
-  @objc optional func observerSubFirmwareVersionNotify(version: Swift.String)
 }
 @objc public enum TSAIRecordType : Swift.Int16 {
   case callRecord = 0
@@ -627,7 +640,7 @@ public enum TSIntentType : Swift.String {
 }
 extension TopStepAIBudsSDK.TSStartBurstManager {
   @objc dynamic public func startAIRecord(type: Swift.UInt8, result: @escaping (_ iscomplete: Swift.Bool, _ asrResult: Swift.String) -> Swift.Void, error: @escaping ((any Swift.Error)?) -> Swift.Void)
-  @objc dynamic public func stopAIRecord(type: Swift.UInt8, _ result: @escaping (_ isSuccess: Swift.Bool, _ error: (any Swift.Error)?, _ filePath: Swift.String?) -> Swift.Void)
+  @objc dynamic public func stopAIRecord(_ result: @escaping (_ isSuccess: Swift.Bool, _ error: (any Swift.Error)?, _ filePath: Swift.String?) -> Swift.Void)
 }
 extension TopStepAIBudsSDK.TSStartBurstManager {
   @objc dynamic public func configureVoiceActivityDetection(silenceThreshold: Foundation.NSNumber?, silenceTimeout: Foundation.NSNumber?, enabled: Foundation.NSNumber?)
@@ -656,6 +669,24 @@ extension TopStepAIBudsSDK.TSStartBurstManager {
   @objc dynamic public func getAIRecordFileList(result: @escaping ([[Swift.String : Any]]) -> Swift.Void)
   @objc dynamic public func getAIRecordFileList(byRecordType recordType: Swift.Int16, result: @escaping ([[Swift.String : Any]]) -> Swift.Void)
   @objc dynamic public func getAIRecordFileList(byFileState fileState: Swift.Int16, result: @escaping ([[Swift.String : Any]]) -> Swift.Void)
+}
+@objc public enum TSBTConnectState : Swift.Int, @unchecked Swift.Sendable {
+  case disconnected = 0
+  case connecting = 1
+  case connected = 2
+  case disconnecting = 3
+  case failed = 4
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc public class TSSBWiFiManager : ObjectiveC.NSObject {
+  @objc public static func connectToWifi(ssid: Swift.String, password: Swift.String, isweb: Swift.Bool, result: @escaping (_ isSuccess: Swift.Bool) -> Swift.Void)
+  @objc public static func debugWiFiStatus()
+  @objc override dynamic public init()
+  @objc deinit
 }
 @_inheritsConvenienceInitializers @objc(AIRecord) public class AIRecord : CoreData.NSManagedObject {
   @objc override dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
@@ -739,30 +770,18 @@ extension TopStepAIBudsSDK.AIRecord {
 extension TopStepAIBudsSDK.AIRecord : Swift.Identifiable {
   public typealias ID = Swift.ObjectIdentifier
 }
+extension TopStepAIBudsSDK.TSSBEarbudsCommMannger.DeviceCallStatus : Swift.Equatable {}
+extension TopStepAIBudsSDK.TSSBEarbudsCommMannger.DeviceCallStatus : Swift.Hashable {}
+extension TopStepAIBudsSDK.TSSBEarbudsCommMannger.DeviceCallStatus : Swift.RawRepresentable {}
+extension TopStepAIBudsSDK.TSSBBTCommandType : Swift.Equatable {}
+extension TopStepAIBudsSDK.TSSBBTCommandType : Swift.Hashable {}
+extension TopStepAIBudsSDK.TSSBBTCommandType : Swift.RawRepresentable {}
 extension TopStepAIBudsSDK.TSSBEarbudsCommandType : Swift.Equatable {}
 extension TopStepAIBudsSDK.TSSBEarbudsCommandType : Swift.Hashable {}
 extension TopStepAIBudsSDK.TSSBEarbudsCommandType : Swift.RawRepresentable {}
 extension TopStepAIBudsSDK.TSSBEarbudsDeviceInfoType : Swift.Equatable {}
 extension TopStepAIBudsSDK.TSSBEarbudsDeviceInfoType : Swift.Hashable {}
 extension TopStepAIBudsSDK.TSSBEarbudsDeviceInfoType : Swift.RawRepresentable {}
-extension TopStepAIBudsSDK.TPSSDKType : Swift.Equatable {}
-extension TopStepAIBudsSDK.TPSSDKType : Swift.Hashable {}
-extension TopStepAIBudsSDK.TPSSDKType : Swift.RawRepresentable {}
-extension TopStepAIBudsSDK.TPSDeviceType : Swift.Equatable {}
-extension TopStepAIBudsSDK.TPSDeviceType : Swift.Hashable {}
-extension TopStepAIBudsSDK.TPSDeviceType : Swift.RawRepresentable {}
-extension TopStepAIBudsSDK.TPSDeviceConnectStyle : Swift.Equatable {}
-extension TopStepAIBudsSDK.TPSDeviceConnectStyle : Swift.Hashable {}
-extension TopStepAIBudsSDK.TPSDeviceConnectStyle : Swift.RawRepresentable {}
-extension TopStepAIBudsSDK.TPSDeviceCategory : Swift.Equatable {}
-extension TopStepAIBudsSDK.TPSDeviceCategory : Swift.Hashable {}
-extension TopStepAIBudsSDK.TPSDeviceCategory : Swift.RawRepresentable {}
-extension TopStepAIBudsSDK.TSBTErrorType : Swift.Equatable {}
-extension TopStepAIBudsSDK.TSBTErrorType : Swift.Hashable {}
-extension TopStepAIBudsSDK.TSBTErrorType : Swift.RawRepresentable {}
-extension TopStepAIBudsSDK.TSSBBTCommandType : Swift.Equatable {}
-extension TopStepAIBudsSDK.TSSBBTCommandType : Swift.Hashable {}
-extension TopStepAIBudsSDK.TSSBBTCommandType : Swift.RawRepresentable {}
 extension TopStepAIBudsSDK.TSSBEarbudsMusicControlType : Swift.Equatable {}
 extension TopStepAIBudsSDK.TSSBEarbudsMusicControlType : Swift.Hashable {}
 extension TopStepAIBudsSDK.TSSBEarbudsMusicControlType : Swift.RawRepresentable {}
@@ -790,9 +809,24 @@ extension TopStepAIBudsSDK.TSSBEarbudsWiFiSettingType : Swift.RawRepresentable {
 extension TopStepAIBudsSDK.TSSBEarbudsWiFiState : Swift.Equatable {}
 extension TopStepAIBudsSDK.TSSBEarbudsWiFiState : Swift.Hashable {}
 extension TopStepAIBudsSDK.TSSBEarbudsWiFiState : Swift.RawRepresentable {}
-extension TopStepAIBudsSDK.TSBTConnectState : Swift.Equatable {}
-extension TopStepAIBudsSDK.TSBTConnectState : Swift.Hashable {}
-extension TopStepAIBudsSDK.TSBTConnectState : Swift.RawRepresentable {}
+extension TopStepAIBudsSDK.TPSSDKType : Swift.Equatable {}
+extension TopStepAIBudsSDK.TPSSDKType : Swift.Hashable {}
+extension TopStepAIBudsSDK.TPSSDKType : Swift.RawRepresentable {}
+extension TopStepAIBudsSDK.TPSDeviceType : Swift.Equatable {}
+extension TopStepAIBudsSDK.TPSDeviceType : Swift.Hashable {}
+extension TopStepAIBudsSDK.TPSDeviceType : Swift.RawRepresentable {}
+extension TopStepAIBudsSDK.TPSDeviceConnectStyle : Swift.Equatable {}
+extension TopStepAIBudsSDK.TPSDeviceConnectStyle : Swift.Hashable {}
+extension TopStepAIBudsSDK.TPSDeviceConnectStyle : Swift.RawRepresentable {}
+extension TopStepAIBudsSDK.TPSDeviceCategory : Swift.Equatable {}
+extension TopStepAIBudsSDK.TPSDeviceCategory : Swift.Hashable {}
+extension TopStepAIBudsSDK.TPSDeviceCategory : Swift.RawRepresentable {}
+extension TopStepAIBudsSDK.TSAdvSPPSelection : Swift.Equatable {}
+extension TopStepAIBudsSDK.TSAdvSPPSelection : Swift.Hashable {}
+extension TopStepAIBudsSDK.TSAdvSPPSelection : Swift.RawRepresentable {}
+extension TopStepAIBudsSDK.TSBTErrorType : Swift.Equatable {}
+extension TopStepAIBudsSDK.TSBTErrorType : Swift.Hashable {}
+extension TopStepAIBudsSDK.TSBTErrorType : Swift.RawRepresentable {}
 extension TopStepAIBudsSDK.TSAIRecordType : Swift.Equatable {}
 extension TopStepAIBudsSDK.TSAIRecordType : Swift.Hashable {}
 extension TopStepAIBudsSDK.TSAIRecordType : Swift.RawRepresentable {}
@@ -802,3 +836,6 @@ extension TopStepAIBudsSDK.TSAIState : Swift.RawRepresentable {}
 extension TopStepAIBudsSDK.TSIntentType : Swift.Equatable {}
 extension TopStepAIBudsSDK.TSIntentType : Swift.Hashable {}
 extension TopStepAIBudsSDK.TSIntentType : Swift.RawRepresentable {}
+extension TopStepAIBudsSDK.TSBTConnectState : Swift.Equatable {}
+extension TopStepAIBudsSDK.TSBTConnectState : Swift.Hashable {}
+extension TopStepAIBudsSDK.TSBTConnectState : Swift.RawRepresentable {}

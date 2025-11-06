@@ -24,6 +24,6 @@
 @property (nonatomic, assign) BOOL conversationFinish;/// 对话是否结束
 @property (nonatomic, strong) StarburstTranslateResult *translateResult;///翻译结果
 @property (nonatomic, strong) StarburstAsrTtsResult *ttsResult;///tts音频流
-
+@property (nonatomic, assign) NSInteger playAudioSampleRate;
 @end
 

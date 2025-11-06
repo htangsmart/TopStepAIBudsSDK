@@ -20,7 +20,7 @@
 ///   - voiceCallBack: AI语音回复回调
 ///   - stateChange: 状态回调
 ///   - finished：录音地址回调
-- (void)setupPhoneChatWith:(StarburstVoiceChatConfig*)config textCallback:(void (^)(StarbaustVoiceChatModel*))textCallBack  responseVoice:(void (^)(NSInteger dialogId,NSData*data,BOOL finish))voiceCallBack stateChange:(void(^)(StarburstCode code))stateChange finished:(void(^)(NSString *filePath))path;
+- (void)setupPhoneChatWith:(StarburstVoiceChatConfig*)config textCallback:(void (^)(StarbaustVoiceChatModel*))textCallBack  responseVoice:(void (^)(NSInteger dialogId,NSData*data,BOOL finish,NSInteger sampleRate))voiceCallBack stateChange:(void(^)(StarburstCode code))stateChange finished:(void(^)(NSString *filePath))path;
 
 /// 开始对话
 - (void)start;

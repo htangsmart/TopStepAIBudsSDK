@@ -55,6 +55,14 @@
 @property (nonatomic, strong) NSString *fromLanguage;/// 语⾔编码
 @property (nonatomic, strong) NSString *toLanguage;/// ⽬标语⾔编码
 @property (nonatomic, assign) BOOL summary;/// 是否进行总结，默认false
+/// 是否区分说话人，默认 NO
+@property (nonatomic, assign) BOOL speakerSeparate;  // Android: speakerSeparate
+/// 是否启用 ITN（数值/时间等标准化），默认 YES
+@property (nonatomic, assign) BOOL enableItn;        // Android: enableItn=true
+/// 端点检测窗口大小（VAD 终点判定），与服务端约定
+//@property (nonatomic, assign) NSInteger endWindowSize; // Android: endWindowSize
+/// 翻译增强，默认 NO
+@property (nonatomic, assign) BOOL enableTranslateImprove; // Android: enableTranslateImprove
 @property (nonatomic, assign) BOOL speakerSplit;/// 是否区分说话人，默认false
 @end
 

@@ -6,19 +6,19 @@
 	<dict>
 		<key>Headers/StarbaustVoiceChatModel.h</key>
 		<data>
-		rlhRRm+Nqve5Bg9WF31PYaLEz4k=
+		O8K7t0c5zyFzqsMRLB06Q9rMy98=
 		</data>
 		<key>Headers/StarburstAsrConfig.h</key>
 		<data>
-		O5iJsUMPvwiRYlgGCgXp4TmAllQ=
+		pHAaMG85za2/Dfcwupol0xkHJtQ=
 		</data>
 		<key>Headers/StarburstAsrModel.h</key>
 		<data>
-		rKYFBUqJ99j/qsgzrbEawIOkRVc=
+		YMyp9i53bEO3diakJf+v5x2v2a0=
 		</data>
 		<key>Headers/StarburstConfig.h</key>
 		<data>
-		asYOZO9uJq9k2YMxuC3lo7G3iq4=
+		s3KYCCc8Cq0RWmlyfW7qe20T0c8=
 		</data>
 		<key>Headers/StarburstFileAsrModel.h</key>
 		<data>
@@ -30,7 +30,7 @@
 		</data>
 		<key>Headers/StarburstPhoneSdk.h</key>
 		<data>
-		Qyvk+mUwCA6e59P6MqEGlKXAoV4=
+		rwT9UO4f4YJAdgYM9SUrQo6cW0M=
 		</data>
 		<key>Headers/StarburstSdk.h</key>
 		<data>
@@ -38,7 +38,7 @@
 		</data>
 		<key>Headers/StarburstSdkManager.h</key>
 		<data>
-		CreN2LzG/Jfkoq3gfpZjM/DgcX8=
+		Yxsd/yymWtlUXyyqjzINzvEdmR4=
 		</data>
 		<key>Headers/StarburstStreamModel.h</key>
 		<data>
@@ -54,7 +54,7 @@
 		</data>
 		<key>Headers/StartburstGlassChat.h</key>
 		<data>
-		utqD1cN73IP2Kj6ThbunMmpf3S8=
+		EKmAva0NghWkD5BgB3v2JyOqcQo=
 		</data>
 		<key>Headers/StartburstGlassesSdk.h</key>
 		<data>
@@ -62,11 +62,11 @@
 		</data>
 		<key>Headers/StartburstMixSdk.h</key>
 		<data>
-		bemNunuDBWDRu5cPpr/qtzb51HE=
+		CLg1FGxHPySPI5qCJH4N1zAZIw4=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		UHUTj8YWS5m6Fxw73ee8ZkzBMPg=
+		LYDkUlG3+K2ItUesIisY3Luuk1c=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -83,44 +83,44 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			rlhRRm+Nqve5Bg9WF31PYaLEz4k=
+			O8K7t0c5zyFzqsMRLB06Q9rMy98=
 			</data>
 			<key>hash2</key>
 			<data>
-			ZAgbVoF1KblnHETV1p5aeWSmkPmdH6IgmPYBELQdnW8=
+			Te3DhLKFm7g9Cqh68BOLUikve5gURqN9RWUPumoYzZY=
 			</data>
 		</dict>
 		<key>Headers/StarburstAsrConfig.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			O5iJsUMPvwiRYlgGCgXp4TmAllQ=
+			pHAaMG85za2/Dfcwupol0xkHJtQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			9ieYYQ/XtFmG0peIjWVyt2juVka68xC3vcJqEwQ8qHM=
+			b8cK7m3NKml2AwnJdXMyWxv7Xm7/aDNmGdt1eXDKS2Y=
 			</data>
 		</dict>
 		<key>Headers/StarburstAsrModel.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			rKYFBUqJ99j/qsgzrbEawIOkRVc=
+			YMyp9i53bEO3diakJf+v5x2v2a0=
 			</data>
 			<key>hash2</key>
 			<data>
-			E2t49OYvFx8xvxPah2lzFg+vtxpxtt1FNFRGMaccPRI=
+			r5bjhqHYbfX3MyhkjDOmAbqeXjuBI9fSoQRq/L0POEU=
 			</data>
 		</dict>
 		<key>Headers/StarburstConfig.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			asYOZO9uJq9k2YMxuC3lo7G3iq4=
+			s3KYCCc8Cq0RWmlyfW7qe20T0c8=
 			</data>
 			<key>hash2</key>
 			<data>
-			Z172xFK23zUwBI/6jvEsawsWrGfqcH1Y3rZCo7pGCk8=
+			q5+7n+PJt+RNcfGHp6EMO49CqhiFTaqcIZQbeDtZcTk=
 			</data>
 		</dict>
 		<key>Headers/StarburstFileAsrModel.h</key>
@@ -149,11 +149,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Qyvk+mUwCA6e59P6MqEGlKXAoV4=
+			rwT9UO4f4YJAdgYM9SUrQo6cW0M=
 			</data>
 			<key>hash2</key>
 			<data>
-			U7UlFVbYvM2vSO810pr82LySA9HeLA4uMBh6PnCY5aE=
+			kAdf5gAAX2xUk1XeiyxZjeGRvGhNe10TZexUz4PhxWU=
 			</data>
 		</dict>
 		<key>Headers/StarburstSdk.h</key>
@@ -171,11 +171,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			CreN2LzG/Jfkoq3gfpZjM/DgcX8=
+			Yxsd/yymWtlUXyyqjzINzvEdmR4=
 			</data>
 			<key>hash2</key>
 			<data>
-			0MmnrI2of9HPHCGpVJqFe3dV8+NjSnC0aYIHumzYRxg=
+			r4QZG1qTezVeaJk0Vrb1+rHrcsuu7uksPttlyUqVAXA=
 			</data>
 		</dict>
 		<key>Headers/StarburstStreamModel.h</key>
@@ -215,11 +215,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			utqD1cN73IP2Kj6ThbunMmpf3S8=
+			EKmAva0NghWkD5BgB3v2JyOqcQo=
 			</data>
 			<key>hash2</key>
 			<data>
-			VaH6J5gUMxZ8Whr9yIF3iefTz8SKIWwpyY9dq3mMWYk=
+			YIfvJ+AmQws0QANocYZxmOahypPKgbsEZXeR6wEInTA=
 			</data>
 		</dict>
 		<key>Headers/StartburstGlassesSdk.h</key>
@@ -237,11 +237,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			bemNunuDBWDRu5cPpr/qtzb51HE=
+			CLg1FGxHPySPI5qCJH4N1zAZIw4=
 			</data>
 			<key>hash2</key>
 			<data>
-			S6yNxpkYJSgoOVUAyuIhC8ourDLd4Pu6tKFnRkM+Me0=
+			Z6H7+vUoMzMfpR9r7joECzicS9kOX4b/rqZb0fOMoaU=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

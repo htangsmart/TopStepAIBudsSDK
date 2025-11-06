@@ -1,0 +1,11 @@
+framework module TopStepABMateSDK {
+  umbrella header "TopStepABMateSDK-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module TopStepABMateSDK.Swift {
+  header "TopStepABMateSDK-Swift.h"
+  requires objc
+}

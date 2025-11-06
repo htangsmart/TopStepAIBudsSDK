@@ -13,7 +13,6 @@ target 'TSDemo' do
   pod 'RxCocoa', '6.8.0'
   pod 'RxRelay', '6.8.0'
   pod 'ReactiveObjC', '3.1.1'
-  pod 'YYModel', '1.0.4'
   pod 'libopus', '1.1'
   
   # TopStep AI Buds SDK

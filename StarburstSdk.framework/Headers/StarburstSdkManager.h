@@ -28,6 +28,9 @@ typedef NS_OPTIONS(NSInteger,StarburstCode) {
     StarburstCode_UnAuth = 60000,///未鉴权
 };
 
+typedef void (^AudioIntensityInputCallback)(NSArray<NSNumber*> *left,
+                                            NSArray<NSNumber*> *right,
+                                            NSTimeInterval timestampMs);
 
 @interface StarburstSdk : NSObject
 //@property (nonatomic, strong)void (^authSuccessCallback)(void);/// 鉴权成功回调
@@ -141,7 +144,7 @@ typedef NS_OPTIONS(NSInteger,StarburstCode) {
 ///   - voiceCallBack: AI语音回复回调
 ///   - stateChange: 状态回调
 ///   - finished：录音地址回调
-- (void)setupVoiceChatWith:(StarburstVoiceChatConfig*)config start:(void (^)(NSInteger dialogId))startCallback textCallback:(void (^)(StarbaustVoiceChatModel*))textCallBack  responseVoice:(void (^)(NSInteger dialogId,NSData*data,BOOL finish))voiceCallBack stateChange:(void(^)(StarburstCode code))stateChange finished:(void(^)(NSString *filePath))path;
+- (void)setupVoiceChatWith:(StarburstVoiceChatConfig*)config start:(void (^)(NSInteger dialogId))startCallback textCallback:(void (^)(StarbaustVoiceChatModel*))textCallBack  responseVoice:(void (^)(NSInteger dialogId,NSData*data,BOOL finish, NSInteger sampleRate))voiceCallBack stateChange:(void(^)(StarburstCode code))stateChange finished:(void(^)(NSString *filePath))path;
 
 /// 终止voice chat对话
 - (void)stopVoiceChat:(NSInteger)dialogId;
@@ -160,7 +163,7 @@ typedef NS_OPTIONS(NSInteger,StarburstCode) {
 
 
 //不可用
-- (void)setupPhoneChatWith:(StarburstVoiceChatConfig*)config start:(void (^)(NSInteger dialogId))startCallback textCallback:(void (^)(StarbaustVoiceChatModel*))textCallBack  responseVoice:(void (^)(NSInteger dialogId,NSData*data,BOOL finish))voiceCallBack stateChange:(void(^)(StarburstCode code))stateChange finished:(void(^)(NSString *filePath))path;
+- (void)setupPhoneChatWith:(StarburstVoiceChatConfig*)config start:(void (^)(NSInteger dialogId))startCallback textCallback:(void (^)(StarbaustVoiceChatModel*))textCallBack  responseVoice:(void (^)(NSInteger dialogId,NSData*data,BOOL finish,NSInteger sampleRate))voiceCallBack stateChange:(void(^)(StarburstCode code))stateChange finished:(void(^)(NSString *filePath))path;
 //不可用
 - (void)startPhoneChat:(int)vadType;
 //不可用
@@ -169,5 +172,6 @@ typedef NS_OPTIONS(NSInteger,StarburstCode) {
 - (void)registerWithProductKey:(NSString *)productKey productSecret:(NSString *)productSecret deviceName:(NSString *)deviceName random:(NSString *)random finished:(void (^)(NSString *deviceSecret,NSError *error))finished;
 //不可用
 - (void)connectWithProductKey:(NSString *)productKey  deviceName:(NSString *)deviceName deviceSecret:(NSString *)deviceSecret finished:(void (^)(BOOL isSuccess,NSError *error))finished;
+- (void)setInputAudioIntensityCallback:(AudioIntensityInputCallback)callback;
 @end
 

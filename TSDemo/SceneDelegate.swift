@@ -2,21 +2,46 @@
 //  SceneDelegate.swift
 //  TSDemo
 //
-//  Created by luigi on 2025/9/12.
+//  场景代理 - Scene Delegate
+//  处理应用启动逻辑，判断是否有缓存设备并跳转到相应页面
+//  Handles app launch logic, determines if there's cached device and navigates to appropriate page
 //
 
 import UIKit
+import TopStepABMateSDK
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
+    // MARK: - Scene Lifecycle
+    /// 场景连接时调用 - Called when scene connects
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        
+        // 初始化窗口 - Initialize window
+        window = UIWindow(windowScene: windowScene)
+        
+        // 初始化SDK日志 - Initialize SDK logs
+        TopStepAIBuds.logsOpen(true)
+        
+        // 判断是否有缓存设备 - Check if there's cached device
+        let rootViewController: UIViewController
+        
+        if let cachedDevice = DeviceCacheManager.shared.getCachedDevice() {
+            // 有缓存设备，进入设备连接页面自动重连 - Has cached device, enter connection page for auto-reconnect
+            print("✅ 检测到缓存设备，进入自动重连 - Cached device detected, entering auto-reconnect")
+            let connectionVC = DeviceConnectionViewController(deviceInfo: cachedDevice, isAutoReconnect: true)
+            rootViewController = UINavigationController(rootViewController: connectionVC)
+        } else {
+            // 无缓存设备，进入设备选择页面 - No cached device, enter device selection page
+            print("ℹ️ 无缓存设备，进入设备选择页面 - No cached device, entering device selection page")
+            let scanVC = ScanViewController()
+            rootViewController = UINavigationController(rootViewController: scanVC)
+        }
+        
+        window?.rootViewController = rootViewController
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -16,14 +16,13 @@ including device connection, audio processing, and fitness tracking capabilities
   s.swift_version = '5.0'
 
   # 主framework文件
-  s.vendored_frameworks = 'TopStepAIBudsSDK.xcframework', 'AWEISIMG_SDK.framework','StarburstSdk.framework'
+  s.vendored_frameworks = 'TopStepABMateSDK.xcframework', 'AWEISIMG_SDK.framework','StarburstSdk.framework'
 
   # TopStepAIBudsSDK.framework 通过 @rpath 动态链接这些框架，需要单独安装
   s.dependency 'RxSwift', '6.8.0'
   s.dependency 'RxCocoa', '6.8.0'
   s.dependency 'RxRelay', '6.8.0'
   s.dependency 'ReactiveObjC', '3.1.1'
-  s.dependency 'YYModel', '1.0.4'
   s.dependency 'libopus', '1.1'
   # 火山SDK需要
   s.dependency 'SocketRocket'

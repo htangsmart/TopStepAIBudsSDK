@@ -1,7 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 6.1.2 effective-5.10 (swiftlang-6.1.2.1.2 clang-1700.0.13.5)
+// swift-compiler-version: Apple Swift version 6.2.1 effective-5.10 (swiftlang-6.2.1.4.8 clang-1700.4.4.1)
 // swift-module-flags: -target arm64-apple-ios13.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name TopStepABMateSDK
-// swift-module-flags-ignorable: -no-verify-emitted-module-interface -interface-compiler-version 6.1.2
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2.1
 import AVFoundation
 import SystemConfiguration.CaptiveNetwork
 import CommonCrypto
@@ -31,7 +31,9 @@ extension Foundation.NSNotification.Name {
   case shenjuwm = 3
   case abmate = 4
   public static func sdkTypeWith(deviceType: TopStepABMateSDK.TPSDeviceType) -> TopStepABMateSDK.TPSSDKType
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.UInt8)
+  #endif
   public typealias RawValue = Swift.UInt8
   public var rawValue: Swift.UInt8 {
     get
@@ -51,7 +53,9 @@ extension Foundation.NSNotification.Name {
   case sjC001 = 0xC001
   case zkZC = 0x5A43
   case zk4206 = 0x4206
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.UInt)
+  #endif
   public typealias RawValue = Swift.UInt
   public var rawValue: Swift.UInt {
     get
@@ -60,7 +64,9 @@ extension Foundation.NSNotification.Name {
 @objc public enum TPSDeviceConnectStyle : Swift.Int {
   case GATT = 1
   case BLE = 2
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
+  #endif
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
@@ -75,7 +81,9 @@ extension Foundation.NSNotification.Name {
   case CHARGINGCASE = 4
   case SOUNDBUD = 5
   public static func categoryWith(type: TopStepABMateSDK.TPSDeviceType) -> TopStepABMateSDK.TPSDeviceCategory
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
+  #endif
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
@@ -97,7 +105,9 @@ extension Foundation.NSNotification.Name {
 @objc public enum TSAdvSPPSelection : Swift.UInt8 {
   case defaultUUID = 0
   case alternativeUUID = 1
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.UInt8)
+  #endif
   public typealias RawValue = Swift.UInt8
   public var rawValue: Swift.UInt8 {
     get
@@ -115,7 +125,9 @@ extension TopStepABMateSDK.TSAdvDataInfo {
   @objc public var uuid: Swift.String
   @objc public var advDataInfo: TopStepABMateSDK.TSAdvDataInfo?
   @objc public init(sdkType: TopStepABMateSDK.TPSSDKType, deviceType: TopStepABMateSDK.TPSDeviceType, deviceCategory: TopStepABMateSDK.TPSDeviceCategory, mac: Swift.String, name: Swift.String, uuid: Swift.String)
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public init(sdkType: TopStepABMateSDK.TPSSDKType, deviceType: TopStepABMateSDK.TPSDeviceType, deviceCategory: TopStepABMateSDK.TPSDeviceCategory, mac: Swift.String, name: Swift.String, uuid: Swift.String, advDataInfo: TopStepABMateSDK.TSAdvDataInfo?)
+  #endif
   @objc override dynamic public var description: Swift.String {
     @objc get
   }
@@ -135,20 +147,31 @@ extension TopStepABMateSDK.TSAdvDataInfo {
   public static func logsOpen(_ open: Swift.Bool, _ debug: Swift.Bool = false)
   @objc public static func getCentralManagerState() -> CoreBluetooth.CBManagerState
   @objc public static func stopScan()
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public static func scanDevice(result: @escaping (Foundation.NSError?, TopStepABMateSDK.TSDeviceBaseInfo?, CoreBluetooth.CBPeripheral?) -> Swift.Void, timeout: Foundation.TimeInterval = 60)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public static func findGATTDevice(uuid: Swift.String, servicesID: Swift.String, result: @escaping (Foundation.NSError?, CoreBluetooth.CBPeripheral?) -> Swift.Void, timeout: Foundation.TimeInterval = 45)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public static func findDevice(uuid: Swift.String, result: @escaping (Foundation.NSError?, TopStepABMateSDK.TSDeviceBaseInfo?, CoreBluetooth.CBPeripheral?) -> Swift.Void, timeout: Foundation.TimeInterval = 30)
+  #endif
   @objc public static func disconnectDevice()
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public static func connectDevice(uuid: Swift.String, connectStyle: TopStepABMateSDK.TPSDeviceConnectStyle = .BLE, category: TopStepABMateSDK.TPSDeviceCategory, userId: Swift.String?, deviceObserver: (any TopStepABMateSDK.TSSoudbudObserver)?, result: @escaping (TopStepABMateSDK.TSBTConnectState, Foundation.NSError?, TopStepABMateSDK.TSDeviceBaseInfo?, CoreBluetooth.CBPeripheral?) -> Swift.Void)
+  #endif
   @objc deinit
 }
 extension TopStepABMateSDK.TopStepAIBuds : TopStepABMateSDK.TSSoudbudObserver {
   @objc final public func observerSubFirmwareVersionNotify(version: Swift.String)
   @objc final public func observerAIChatImageNotify(imageData: Foundation.Data)
   @objc final public func observerIsSupportCallRecordNotify(status: Swift.Bool)
-  @objc final public func observerDeviceBTState(state: TopStepABMateSDK.TSBTConnectState, peripheral: CoreBluetooth.CBPeripheral)
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc final public func observerAIAuthentication(error: (any Swift.Error)?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc final public func observerPowerChange(leftPower: Foundation.NSNumber?, leftCharging: Foundation.NSNumber?, rightPower: Foundation.NSNumber?, rightCharging: Foundation.NSNumber?, hubPower: Foundation.NSNumber?, hubCharging: Foundation.NSNumber?)
+  #endif
   @objc final public func observerPlayStateChange(isPlaying: Swift.Bool)
   @objc final public func observerWorkModeChange(workMode: TopStepABMateSDK.TSSBEarbudsWorkMode)
   @objc final public func observerInEarStatusChange(leftInEar: Swift.Bool, rightInEar: Swift.Bool)
@@ -160,7 +183,9 @@ extension TopStepABMateSDK.TopStepAIBuds : TopStepABMateSDK.TSSoudbudObserver {
   @objc final public func observerTransparencyGainChange(gain: Swift.UInt8)
   @objc final public func observerSoundEffect3DChange(isEnabled: Swift.Bool)
   @objc final public func observerBassEngineStatusChange(isEnabled: Swift.Bool)
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc final public func observerAIRecordNotify(recordData: Foundation.Data?)
+  #endif
   @objc final public func observerAIStateNotify(status: Foundation.Data)
   @objc final public func observerKeySettingsChange(operations: [Foundation.NSNumber], functions: [Foundation.NSNumber])
   @objc final public func observerPromptToneTypeChange(type: Swift.UInt8)
@@ -178,6 +203,7 @@ extension TopStepABMateSDK.TopStepAIBuds : TopStepABMateSDK.TSSoudbudObserver {
   @objc final public func observerIsSupportDeviceVolumeNotify(isSupport: TopStepABMateSDK.TSSBEarbudsDeviceVolumeSupport)
   @objc final public func observerDeviceVolumeSettingNotify(systemVolume: Swift.UInt8, mediaVolume: Swift.UInt8, callVolume: Swift.UInt8)
   @objc final public func observerDeviceMediaPlaybackStatus(isPlaying: Swift.Bool)
+  @objc final public func observerDeviceStorageSpaceNotify(usedSpaceMb: Swift.UInt32, freeSpaceMb: Swift.UInt32)
 }
 @objc public class TopStepAIBudsUser : ObjectiveC.NSObject {
   @objc final public let userId: Swift.String
@@ -188,7 +214,9 @@ extension TopStepABMateSDK.TopStepAIBuds : TopStepABMateSDK.TSSoudbudObserver {
   case request = 1
   case response = 2
   case notify = 3
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.UInt8)
+  #endif
   public typealias RawValue = Swift.UInt8
   public var rawValue: Swift.UInt8 {
     get
@@ -198,7 +226,9 @@ extension TopStepABMateSDK.TopStepAIBuds : TopStepABMateSDK.TSSoudbudObserver {
   case normal = 0
   case noiseCancellation = 1
   case transparency = 2
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.UInt8)
+  #endif
   public typealias RawValue = Swift.UInt8
   public var rawValue: Swift.UInt8 {
     get
@@ -207,7 +237,9 @@ extension TopStepABMateSDK.TopStepAIBuds : TopStepABMateSDK.TSSoudbudObserver {
 @objc public enum TSSBEarbudsWorkMode : Swift.UInt8 {
   case normal = 0
   case game = 1
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.UInt8)
+  #endif
   public typealias RawValue = Swift.UInt8
   public var rawValue: Swift.UInt8 {
     get
@@ -216,7 +248,9 @@ extension TopStepABMateSDK.TopStepAIBuds : TopStepABMateSDK.TSSoudbudObserver {
 @objc public enum TSSBEarbudsProductColor : Swift.UInt8 {
   case white = 1
   case cyan = 2
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.UInt8)
+  #endif
   public typealias RawValue = Swift.UInt8
   public var rawValue: Swift.UInt8 {
     get
@@ -227,7 +261,34 @@ extension TopStepABMateSDK.TopStepAIBuds : TopStepABMateSDK.TSSoudbudObserver {
   case enterCamera = 1
   case takePhotoSuccess = 2
   case takePhotoFailed = 3
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.UInt8)
+  #endif
+  public typealias RawValue = Swift.UInt8
+  public var rawValue: Swift.UInt8 {
+    get
+  }
+}
+@objc public enum TSSBEarbudsDeviceWorkState : Swift.UInt8 {
+  case reserved = 0
+  case initializing = 1
+  case btOrBleWaitingForConnection = 2
+  case btOrBleConnectedIdle = 3
+  case btOrBleDisconnectedIdle = 4
+  case calling = 5
+  case playingLocalMusic = 6
+  case aiConversing = 7
+  case restoringFactorySettings = 8
+  case takingPhoto = 9
+  case aiTakingPhoto = 10
+  case recordingVideo = 11
+  case recordingAudio = 12
+  case fileTransferring = 13
+  case streaming = 14
+  case ota = 15
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.UInt8)
+  #endif
   public typealias RawValue = Swift.UInt8
   public var rawValue: Swift.UInt8 {
     get
@@ -238,7 +299,9 @@ extension TopStepABMateSDK.TopStepAIBuds : TopStepABMateSDK.TSSoudbudObserver {
   case wifiSsid = 0x02
   case wifiPassword = 0x03
   case wifiChannel = 0x04
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.UInt8)
+  #endif
   public typealias RawValue = Swift.UInt8
   public var rawValue: Swift.UInt8 {
     get
@@ -251,7 +314,9 @@ extension TopStepABMateSDK.TopStepAIBuds : TopStepABMateSDK.TSSoudbudObserver {
   case wifiDirectConnected = 3
   case wifiDirectFailed = 4
   case wifiDirectTimeout = 5
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.UInt8)
+  #endif
   public typealias RawValue = Swift.UInt8
   public var rawValue: Swift.UInt8 {
     get
@@ -263,7 +328,9 @@ extension TopStepABMateSDK.TopStepAIBuds : TopStepABMateSDK.TSSoudbudObserver {
   case connected = 2
   case disconnecting = 3
   case failed = 4
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
+  #endif
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
@@ -276,11 +343,21 @@ extension TopStepABMateSDK.TopStepAIBuds : TopStepABMateSDK.TSSoudbudObserver {
   @objc public var deviceInfo: TopStepABMateSDK.TSDeviceBaseInfo {
     get
   }
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didDiscoverServices error: (any Swift.Error)?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didDiscoverCharacteristicsFor service: CoreBluetooth.CBService, error: (any Swift.Error)?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didUpdateNotificationStateFor characteristic: CoreBluetooth.CBCharacteristic, error: (any Swift.Error)?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didWriteValueFor characteristic: CoreBluetooth.CBCharacteristic, error: (any Swift.Error)?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didUpdateValueFor characteristic: CoreBluetooth.CBCharacteristic, error: (any Swift.Error)?)
+  #endif
   @objc deinit
 }
 @objc public enum TSBTErrorType : Swift.Int {
@@ -332,7 +409,9 @@ extension TopStepABMateSDK.TopStepAIBuds : TopStepABMateSDK.TSSoudbudObserver {
   public var errorMessage: Swift.String {
     get
   }
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
+  #endif
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
@@ -340,19 +419,28 @@ extension TopStepABMateSDK.TopStepAIBuds : TopStepABMateSDK.TSSoudbudObserver {
 }
 @_hasMissingDesignatedInitializers public class TSBTError {
   public static let domain: Swift.String
+  #if compiler(>=5.3) && $NonescapableTypes
   public static func makeError(type: TopStepABMateSDK.TSBTErrorType, message: Swift.String? = nil) -> Foundation.NSError
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   public static func makeAuthorizationError(status: CoreBluetooth.CBManagerAuthorization) -> Foundation.NSError?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   public static func makeStateError(state: CoreBluetooth.CBManagerState) -> Foundation.NSError?
+  #endif
   public static func makeScanError(type: TopStepABMateSDK.TSBTErrorType) -> Foundation.NSError
   @objc deinit
 }
 @objc public protocol TSBTObserver : ObjectiveC.NSObjectProtocol {
-  @objc optional func observerDeviceBTState(state: TopStepABMateSDK.TSBTConnectState, peripheral: CoreBluetooth.CBPeripheral)
   @objc optional func observerCentralManagerState(state: CoreBluetooth.CBManagerState)
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc optional func observerAIAuthentication(error: (any Swift.Error)?)
+  #endif
 }
 @objc public protocol TSSoudbudObserver : TopStepABMateSDK.TSBTObserver {
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc optional func observerPowerChange(leftPower: Foundation.NSNumber?, leftCharging: Foundation.NSNumber?, rightPower: Foundation.NSNumber?, rightCharging: Foundation.NSNumber?, hubPower: Foundation.NSNumber?, hubCharging: Foundation.NSNumber?)
+  #endif
   @objc optional func observerPlayStateChange(isPlaying: Swift.Bool)
   @objc optional func observerWorkModeChange(workMode: TopStepABMateSDK.TSSBEarbudsWorkMode)
   @objc optional func observerInEarStatusChange(leftInEar: Swift.Bool, rightInEar: Swift.Bool)
@@ -375,7 +463,9 @@ extension TopStepABMateSDK.TopStepAIBuds : TopStepABMateSDK.TSSoudbudObserver {
   @objc optional func observerMediaCountDidChanged(picCount: Swift.UInt32, videoCount: Swift.UInt32, audioCount: Swift.UInt32)
   @objc optional func observerWifiStateChanged(state: TopStepABMateSDK.TSSBEarbudsWiFiState)
   @objc optional func observerWifiAddressNotify(wifiAddress: Swift.String)
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc optional func observerAIRecordNotify(recordData: Foundation.Data?)
+  #endif
   @objc optional func observerAIStateNotify(status: Foundation.Data)
   @objc optional func observerIsSupportCallRecordNotify(status: Swift.Bool)
   @objc optional func observerAIChatImageNotify(imageData: Foundation.Data)
@@ -385,15 +475,20 @@ extension TopStepABMateSDK.TopStepAIBuds : TopStepABMateSDK.TSSoudbudObserver {
   @objc optional func observerIsSupportDeviceVolumeNotify(isSupport: TopStepABMateSDK.TSSBEarbudsDeviceVolumeSupport)
   @objc optional func observerDeviceVolumeSettingNotify(systemVolume: Swift.UInt8, mediaVolume: Swift.UInt8, callVolume: Swift.UInt8)
   @objc optional func observerDeviceMediaPlaybackStatus(isPlaying: Swift.Bool)
+  @objc optional func observerDeviceStorageSpaceNotify(usedSpaceMb: Swift.UInt32, freeSpaceMb: Swift.UInt32)
 }
 @_inheritsConvenienceInitializers @objc public class TSGlassesEISTool : ObjectiveC.NSObject {
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public static func stabilizeVideo(inputURL: Foundation.URL, result: @escaping (Swift.String?, (any Swift.Error)?) -> Swift.Void)
+  #endif
   @objc override dynamic public init()
   @objc deinit
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class TSImageEnhancer : ObjectiveC.NSObject {
   @objc public static let shared: TopStepABMateSDK.TSImageEnhancer
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public func enhanceImageQuality(originalImageData: Foundation.Data, scaleFactor: CoreFoundation.CGFloat = 2.0) -> Foundation.Data?
+  #endif
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class TSLog : ObjectiveC.NSObject {
@@ -415,11 +510,21 @@ extension TopStepABMateSDK.TopStepAIBuds : TopStepABMateSDK.TSSoudbudObserver {
   }
   public func handleDisconnected()
   @objc deinit
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc override public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didDiscoverServices error: (any Swift.Error)?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc override public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didDiscoverCharacteristicsFor service: CoreBluetooth.CBService, error: (any Swift.Error)?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc override public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didUpdateNotificationStateFor characteristic: CoreBluetooth.CBCharacteristic, error: (any Swift.Error)?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc override public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didWriteValueFor characteristic: CoreBluetooth.CBCharacteristic, error: (any Swift.Error)?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc override public func peripheral(_ peripheral: CoreBluetooth.CBPeripheral, didUpdateValueFor characteristic: CoreBluetooth.CBCharacteristic, error: (any Swift.Error)?)
+  #endif
 }
 @objc public enum TSSBEarbudsCommand : Swift.UInt8 {
   case eq = 0x20
@@ -468,7 +573,9 @@ extension TopStepABMateSDK.TopStepAIBuds : TopStepABMateSDK.TSSoudbudObserver {
   case deviceAuthentication = 0xF4
   case deviceWorkState = 0xF6
   case deviceDebug = 0xFC
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.UInt8)
+  #endif
   public typealias RawValue = Swift.UInt8
   public var rawValue: Swift.UInt8 {
     get
@@ -524,7 +631,9 @@ extension TopStepABMateSDK.TopStepAIBuds : TopStepABMateSDK.TSSoudbudObserver {
   case isSupportDeviceVolume = 0x8D
   case deviceVolumeSetting = 0x8E
   case deviceMediaPlaybackStatus = 0x8F
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.UInt8)
+  #endif
   public typealias RawValue = Swift.UInt8
   public var rawValue: Swift.UInt8 {
     get
@@ -539,7 +648,9 @@ extension TopStepABMateSDK.TopStepAIBuds : TopStepABMateSDK.TSSoudbudObserver {
   case up = 0x06
   case down = 0x07
   case mute = 0x08
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.UInt8)
+  #endif
   public typealias RawValue = Swift.UInt8
   public var rawValue: Swift.UInt8 {
     get
@@ -554,7 +665,9 @@ extension TopStepABMateSDK.TopStepAIBuds : TopStepABMateSDK.TSSoudbudObserver {
   case rightTripleClick = 0x06
   case leftLongPress = 0x07
   case rightLongPress = 0x08
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.UInt8)
+  #endif
   public typealias RawValue = Swift.UInt8
   public var rawValue: Swift.UInt8 {
     get
@@ -576,7 +689,9 @@ extension TopStepABMateSDK.TopStepAIBuds : TopStepABMateSDK.TSSoudbudObserver {
   case startOrStopRecording = 12
   case startOrStopAudioRecord = 13
   case LocalOrBTPlaySwitch = 14
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.UInt8)
+  #endif
   public typealias RawValue = Swift.UInt8
   public var rawValue: Swift.UInt8 {
     get
@@ -586,7 +701,9 @@ extension TopStepABMateSDK.TopStepAIBuds : TopStepABMateSDK.TSSoudbudObserver {
   case notSupport = 0
   case supportSystemVolumeAndMediaVolumeAndCallVolume = 1
   case supportSystemVolumeAndMediaVolumeAndCallVolumeAndLocalPlayVolume = 2
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.UInt8)
+  #endif
   public typealias RawValue = Swift.UInt8
   public var rawValue: Swift.UInt8 {
     get
@@ -597,7 +714,9 @@ extension TopStepABMateSDK.TopStepAIBuds : TopStepABMateSDK.TSSoudbudObserver {
   case ringing = 1
   case inCall = 2
   case thirdPartyCallRinging = 3
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.UInt8)
+  #endif
   public typealias RawValue = Swift.UInt8
   public var rawValue: Swift.UInt8 {
     get
@@ -607,79 +726,183 @@ extension TopStepABMateSDK.TopStepAIBuds : TopStepABMateSDK.TSSoudbudObserver {
   case systemVolume = 0
   case mediaVolume = 1
   case callVolume = 2
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.UInt8)
+  #endif
   public typealias RawValue = Swift.UInt8
   public var rawValue: Swift.UInt8 {
     get
   }
 }
 extension TopStepABMateSDK.TSSBEarbudsCommMannger {
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func getMaxPacketSize(result: @escaping (Foundation.NSError?, Foundation.NSNumber?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func getAllEqualizer(result: @escaping (Foundation.NSError?, [Swift.Dictionary<Swift.String, Any>]) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func getDeviceEqualizer(result: @escaping (Foundation.NSError?, Foundation.NSDictionary?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func getDevicePower(result: @escaping (_ error: Foundation.NSError?, _ leftPower: Foundation.NSNumber?, _ leftCharging: Foundation.NSNumber?, _ rightPower: Foundation.NSNumber?, _ rightCharging: Foundation.NSNumber?, _ hubPower: Foundation.NSNumber?, _ hubCharging: Foundation.NSNumber?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func getDeviceKeySettings(result: @escaping (Foundation.NSError?, Foundation.NSDictionary?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func getIsSupportTWS(result: @escaping (Foundation.NSError?, Swift.Bool) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func getIsTWSConnected(result: @escaping (Foundation.NSError?, Swift.Bool) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func getMainFirmwareVersion(result: @escaping (Foundation.NSError?, Swift.String?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func getSubFirmwareVersion(result: @escaping (Foundation.NSError?, Swift.String?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func setDeviceEqualizer(mode: Swift.UInt8, gains: [Foundation.NSNumber], result: @escaping (Foundation.NSError?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func setANC(mode: TopStepABMateSDK.TSSBEarbudsAncMode, result: @escaping (Foundation.NSError?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func setWorkMode(mode: TopStepABMateSDK.TSSBEarbudsWorkMode, result: @escaping (Foundation.NSError?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func resetDevice(result: @escaping (Foundation.NSError?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func setDeviceOperation(operation: TopStepABMateSDK.TSSBEarbudsDeviceOperationType, function: TopStepABMateSDK.TSSBEarbudsKeyFunction, result: @escaping (Foundation.NSError?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func findDevice(start: Swift.Bool, result: @escaping (Foundation.NSError?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func getSupportLanguages(result: @escaping (Foundation.Data?, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func getCurrentLanguage(result: @escaping (Foundation.Data?, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func setCurrentLanguages(languageCode: Swift.Int, result: @escaping (Swift.Bool, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func queryABMateDeviceinfo(result: @escaping ([Swift.String : Any]?, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func updateCameraState(cameraState: TopStepABMateSDK.TSSBRemoteCameraState, result: @escaping (Swift.Bool, (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func startABMateOTA(filePath: Swift.String?, updateVersion: Swift.String?, fileSize: Foundation.NSNumber?, fileMD5: Swift.String?, prcVersion: Swift.String?, progress: @escaping (_ progress: Swift.Int) -> Swift.Void, result: @escaping (_ complete: Swift.Bool, _ error: (any Swift.Error)?) -> Swift.Void)
-  @objc dynamic public func queryABMateStorageInfo(result: @escaping (_ usedSpace: Foundation.NSNumber, _ residueSpace: Foundation.NSNumber, _ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc dynamic public func queryABMateStorageInfo(result: @escaping (_ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func queryABMateMediaCount(result: @escaping (_ isSuccess: Swift.Bool, _ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func startABMateAudioRecord(result: @escaping (_ isSuccess: Swift.Bool, _ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func shutDownABMateRecord(result: @escaping (_ code: Swift.Int, _ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func takePhoto(model: Swift.UInt8, result: @escaping (_ isSuccess: Swift.Bool, _ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func takeVideoRecord(result: @escaping (_ isSuccess: Swift.Bool, _ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func musicPlay(result: @escaping (_ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func musicNext(result: @escaping (_ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func musicPrevious(result: @escaping (_ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func musicPause(result: @escaping (_ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func volumeUp(result: @escaping (_ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func volumeDown(result: @escaping (_ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func volumeMute(mute: Swift.Bool, result: @escaping (_ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func volumeChange(volume: Swift.UInt8, result: @escaping (_ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func aiChatStateChange(open: Swift.Bool, result: @escaping (_ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func shutdownDevice(result: @escaping (_ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func voiceRecognitionSetting(payload: Swift.UInt8, result: @escaping (_ isSuccess: Swift.Bool, _ error: (any Swift.Error)?) -> Swift.Void)
-  @objc dynamic public func getDeviceWorkState(result: @escaping (_ workState: Swift.UInt8, _ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc dynamic public func getDeviceWorkState(result: @escaping (_ workState: TopStepABMateSDK.TSSBEarbudsDeviceWorkState, _ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func setSystemWiFi(model: Foundation.NSNumber?, channel: Foundation.NSNumber?, ssid: Swift.String?, password: Swift.String?, result: @escaping (_ code: Swift.Int, _ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func startFileTransfer(result: @escaping (_ code: Swift.Int, _ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func setABMateStandardTime(timestamp: Swift.UInt32, timezoneMinutes: Swift.Int16, result: @escaping (_ resultCode: Swift.UInt8, _ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func controlABMetaRecord(recordType: Swift.UInt8, status: Swift.UInt8, result: @escaping (_ isSuccess: Swift.Bool, _ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
   @objc public enum DeviceCallStatus : Swift.UInt8 {
     case none = 0
     case ringing = 1
     case talking = 2
     case threeWayRinging = 3
+    #if compiler(>=5.3) && $NonescapableTypes
     public init?(rawValue: Swift.UInt8)
+    #endif
     public typealias RawValue = Swift.UInt8
     public var rawValue: Swift.UInt8 {
       get
     }
   }
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func getDeviceCallStatus(result: @escaping (_ callStatus: TopStepABMateSDK.TSSBEarbudsCommMannger.DeviceCallStatus, _ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func deviceAuthentication(_ authenticationType: Swift.UInt8 = 0x01, result: @escaping (_ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func getIsSupportDeviceVolume(result: @escaping (_ isSupport: TopStepABMateSDK.TSSBEarbudsDeviceVolumeSupport, _ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func getDeviceVolume(result: @escaping (_ systemVolume: Swift.UInt8, _ mediaVolume: Swift.UInt8, _ callVolume: Swift.UInt8, _ error: (any Swift.Error)?) -> Swift.Void)
-  @objc dynamic public func setSingleDeviceVolume(type: TopStepABMateSDK.TSSBEarbudsDeviceVolumeSettingType, volume: Swift.UInt8, result: @escaping (_ error: (any Swift.Error)?) -> Swift.Void)
-  @objc dynamic public func setAllDeviceVolume(systemVolume: Swift.UInt8, mediaVolume: Swift.UInt8, callVolume: Swift.UInt8, result: @escaping (_ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc dynamic public func setSingleDeviceVolume(type: TopStepABMateSDK.TSSBEarbudsDeviceVolumeSettingType, volume: Swift.UInt8, result: @escaping (_ systemVolume: Swift.UInt8, _ mediaVolume: Swift.UInt8, _ callVolume: Swift.UInt8, _ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc dynamic public func setAllDeviceVolume(systemVolume: Swift.UInt8, mediaVolume: Swift.UInt8, callVolume: Swift.UInt8, result: @escaping (_ systemVolume: Swift.UInt8, _ mediaVolume: Swift.UInt8, _ callVolume: Swift.UInt8, _ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
 }
 @_hasMissingDesignatedInitializers @objc public class TSSBEarbudsCommMannger : ObjectiveC.NSObject {
   @objc public var peripheral: CoreBluetooth.CBPeripheral
   @objc public var deviceInfo: TopStepABMateSDK.TSDeviceBaseInfo
   @objc public static var MAX_PACKET_SIZE: Swift.Int
+  #if compiler(>=5.3) && $NonescapableTypes
   public func getDeviceNecessaryInfo(result: @escaping (Foundation.NSError?) -> Swift.Void)
+  #endif
   public func handleDeviceDisconnected()
   @objc deinit
 }
@@ -690,18 +913,30 @@ extension TopStepABMateSDK.TSSBEarbudsCommMannger {
   @objc deinit
 }
 extension TopStepABMateSDK.TSStartBurstManager {
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func configureVoiceActivityDetection(silenceThreshold: Foundation.NSNumber?, silenceTimeout: Foundation.NSNumber?, enabled: Foundation.NSNumber?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func startABMetaMultiAIChat(result: @escaping (_ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func stopABMetaMultiAIChat(result: @escaping (_ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func startMultiAIChat(stateChanged: @escaping (_ aiState: TopStepABMateSDK.TSAIState) -> Swift.Void, result: @escaping (_ dialogId: Swift.Int, _ isFinish: Swift.Bool, _ answer: Swift.String, _ question: Swift.String, _ conversationFinish: Swift.Bool) -> Swift.Void, error: @escaping (any Swift.Error) -> Swift.Void, intent: @escaping ([Swift.String : Any]?) -> Swift.Void)
+  #endif
   @objc dynamic public func stopMultiAIChat(stateChanged: @escaping (_ aiState: TopStepABMateSDK.TSAIState) -> Swift.Void)
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func setSpeechRecognitionMode(mode: Swift.Bool, result: @escaping (_ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
 }
 @objc public enum TSAIRecordType : Swift.Int16 {
   case callRecord = 0
   case aiRecord = 1
   case transRecord = 2
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int16)
+  #endif
   public typealias RawValue = Swift.Int16
   public var rawValue: Swift.Int16 {
     get
@@ -718,7 +953,9 @@ extension TopStepABMateSDK.TSAIRecordType : Swift.CustomStringConvertible {
   case eQuestionStop
   case eChatFinished
   case eChatError
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.UInt8)
+  #endif
   public typealias RawValue = Swift.UInt8
   public var rawValue: Swift.UInt8 {
     get
@@ -742,7 +979,9 @@ public enum TSIntentType : Swift.String {
   case musicPrev
   case musicStop
   case deviceBattery
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
+  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
@@ -753,118 +992,166 @@ public enum TSIntentType : Swift.String {
   @objc deinit
 }
 extension TopStepABMateSDK.TSStartBurstManager {
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func startAIRecord(type: Swift.UInt8, result: @escaping (_ iscomplete: Swift.Bool, _ asrResult: Swift.String) -> Swift.Void, error: @escaping ((any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func stopAIRecord(_ result: @escaping (_ isSuccess: Swift.Bool, _ error: (any Swift.Error)?, _ filePath: Swift.String?) -> Swift.Void)
+  #endif
 }
 extension TopStepABMateSDK.TSStartBurstManager {
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func startPhoneAIChat(stateChanged: @escaping (_ aiState: TopStepABMateSDK.TSAIState) -> Swift.Void, result: @escaping (_ dialogId: Swift.Int, _ question: Swift.String?, _ isQuestionFinish: Swift.Bool, _ answer: Swift.String?, _ isAnswerFinish: Swift.Bool, _ conversationFinish: Swift.Bool) -> Swift.Void, error: @escaping (any Swift.Error) -> Swift.Void)
+  #endif
   @objc dynamic public func stopPhoneAIChat()
 }
 extension TopStepABMateSDK.TSStartBurstManager {
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func translateByVoice(fromLan: Swift.String?, targetLan: Swift.String?, recognizeText: @escaping (_ question: Swift.Dictionary<Swift.String, Any>, _ answer: Swift.Dictionary<Swift.String, Any>) -> Swift.Void, ttsCallback: @escaping (_ ttsData: Swift.Dictionary<Swift.String, Any>) -> Swift.Void, error: @escaping ((any Swift.Error)?) -> Swift.Void)
+  #endif
   @objc dynamic public func stopTranslateByVoice(isSave: Swift.Bool)
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func translateWithSplit(by text: Swift.String, fromLan: Swift.String?, targetLan: Swift.String?, recognizeText: @escaping (_ isComplete: Swift.Bool, _ content: Swift.String) -> Swift.Void, error: @escaping ((any Swift.Error)?) -> Swift.Void)
+  #endif
   @objc dynamic public func cancelTranslateByTextWithSplit()
 }
 extension TopStepABMateSDK.TSStartBurstManager {
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func summaryWithSplit(by text: Swift.String, recognizeText: @escaping (_ isComplete: Swift.Bool, _ summary: Swift.String) -> Swift.Void, error: @escaping ((any Swift.Error)?) -> Swift.Void)
+  #endif
   @objc dynamic public func cancelSummaryWithSplitByText()
 }
 extension TopStepABMateSDK.TSStartBurstManager {
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func modifyVoiceTranslateRecordFile(recordId: Swift.String, recordName: Swift.String, recognizeText: Swift.String?, translateText: Swift.String?, summary: Swift.String?, result: @escaping (_ isSuccess: Swift.Bool, _ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func modifyAIRecordFile(recordName: Swift.String, fileState: Swift.UInt16, summary: Swift.String?, recognizeText: Swift.String?, result: @escaping (_ isSuccess: Swift.Bool, _ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func deleteAIRecordFile(recordName: Swift.String, result: @escaping (_ isSuccess: Swift.Bool, _ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func renameAIRecordFile(recordId: Swift.String, newName: Swift.String, result: @escaping (_ isSuccess: Swift.Bool, _ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
   @objc dynamic public func getAIRecordFileList(result: @escaping ([[Swift.String : Any]]) -> Swift.Void)
   @objc dynamic public func getAIRecordFileList(byRecordType recordType: Swift.Int16, result: @escaping ([[Swift.String : Any]]) -> Swift.Void)
   @objc dynamic public func getAIRecordFileList(byFileState fileState: Swift.Int16, result: @escaping ([[Swift.String : Any]]) -> Swift.Void)
 }
-@_inheritsConvenienceInitializers @objc(AIRecord) public class AIRecord : CoreData.NSManagedObject {
-  @objc override dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
+public typealias AIRecordCoreDataClassSet = Foundation.NSSet
+@_inheritsConvenienceInitializers @objc(AIRecord) nonisolated public class AIRecord : CoreData.NSManagedObject {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc override nonisolated dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
+  #endif
   @objc deinit
 }
+public typealias AIRecordCoreDataPropertiesSet = Foundation.NSSet
 extension TopStepABMateSDK.AIRecord {
   @nonobjc public class func fetchRequest() -> CoreData.NSFetchRequest<TopStepABMateSDK.AIRecord>
-  @objc @NSManaged dynamic public var createdAt: Foundation.Date? {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var createdAt: Foundation.Date? {
     @objc get
     @objc set
   }
-  @objc @NSManaged dynamic public var duration: Swift.Double {
+  #endif
+  @objc @NSManaged nonisolated dynamic public var duration: Swift.Double {
     @objc get
     @objc set
   }
-  @objc @NSManaged dynamic public var userId: Swift.String? {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var userId: Swift.String? {
     @objc get
     @objc set
   }
-  @objc @NSManaged dynamic public var fileName: Swift.String? {
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var fileName: Swift.String? {
     @objc get
     @objc set
   }
-  @objc @NSManaged dynamic public var filePath: Swift.String? {
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var filePath: Swift.String? {
     @objc get
     @objc set
   }
-  @objc @NSManaged dynamic public var fileSize: Swift.Int64 {
+  #endif
+  @objc @NSManaged nonisolated dynamic public var fileSize: Swift.Int64 {
     @objc get
     @objc set
   }
-  @objc @NSManaged dynamic public var fileState: Swift.Int16 {
+  @objc @NSManaged nonisolated dynamic public var fileState: Swift.Int16 {
     @objc get
     @objc set
   }
-  @objc @NSManaged dynamic public var fileType: Swift.Int16 {
+  @objc @NSManaged nonisolated dynamic public var fileType: Swift.Int16 {
     @objc get
     @objc set
   }
-  @objc @NSManaged dynamic public var fromLanguage: Swift.String? {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var fromLanguage: Swift.String? {
     @objc get
     @objc set
   }
-  @objc @NSManaged dynamic public var hasSummary: Swift.Bool {
+  #endif
+  @objc @NSManaged nonisolated dynamic public var hasSummary: Swift.Bool {
     @objc get
     @objc set
   }
-  @objc @NSManaged dynamic public var hasTranslation: Swift.Bool {
+  @objc @NSManaged nonisolated dynamic public var hasTranslation: Swift.Bool {
     @objc get
     @objc set
   }
-  @objc @NSManaged dynamic public var isProcessed: Swift.Bool {
+  @objc @NSManaged nonisolated dynamic public var isProcessed: Swift.Bool {
     @objc get
     @objc set
   }
-  @objc @NSManaged dynamic public var recordID: Swift.String? {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var recordID: Swift.String? {
     @objc get
     @objc set
   }
-  @objc @NSManaged dynamic public var recordType: Swift.Int16 {
+  #endif
+  @objc @NSManaged nonisolated dynamic public var recordType: Swift.Int16 {
     @objc get
     @objc set
   }
-  @objc @NSManaged dynamic public var recognize: Swift.String? {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var recognize: Swift.String? {
     @objc get
     @objc set
   }
-  @objc @NSManaged dynamic public var summary: Swift.String? {
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var summary: Swift.String? {
     @objc get
     @objc set
   }
-  @objc @NSManaged dynamic public var toLanguage: Swift.String? {
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var toLanguage: Swift.String? {
     @objc get
     @objc set
   }
-  @objc @NSManaged dynamic public var translate: Swift.String? {
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var translate: Swift.String? {
     @objc get
     @objc set
   }
-  @objc @NSManaged dynamic public var updatedAt: Foundation.Date? {
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var updatedAt: Foundation.Date? {
     @objc get
     @objc set
   }
+  #endif
 }
 extension TopStepABMateSDK.AIRecord : Swift.Identifiable {
   public typealias ID = Swift.ObjectIdentifier
 }
+public typealias TSAIRecordFoundationFrameworkSet = Foundation.NSSet
+public typealias TSAIRecordCoreDataFrameworkManagedObject = CoreData.NSManagedObject
 extension TopStepABMateSDK.TPSSDKType : Swift.Equatable {}
 extension TopStepABMateSDK.TPSSDKType : Swift.Hashable {}
 extension TopStepABMateSDK.TPSSDKType : Swift.RawRepresentable {}
@@ -895,6 +1182,9 @@ extension TopStepABMateSDK.TSSBEarbudsProductColor : Swift.RawRepresentable {}
 extension TopStepABMateSDK.TSSBRemoteCameraState : Swift.Equatable {}
 extension TopStepABMateSDK.TSSBRemoteCameraState : Swift.Hashable {}
 extension TopStepABMateSDK.TSSBRemoteCameraState : Swift.RawRepresentable {}
+extension TopStepABMateSDK.TSSBEarbudsDeviceWorkState : Swift.Equatable {}
+extension TopStepABMateSDK.TSSBEarbudsDeviceWorkState : Swift.Hashable {}
+extension TopStepABMateSDK.TSSBEarbudsDeviceWorkState : Swift.RawRepresentable {}
 extension TopStepABMateSDK.TSSBEarbudsWiFiSettingType : Swift.Equatable {}
 extension TopStepABMateSDK.TSSBEarbudsWiFiSettingType : Swift.Hashable {}
 extension TopStepABMateSDK.TSSBEarbudsWiFiSettingType : Swift.RawRepresentable {}

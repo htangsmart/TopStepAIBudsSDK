@@ -104,6 +104,24 @@ class DeviceObserver: NSObject, TSSoudbudObserver {
     /// 语音识别开关 - Voice recognition switch
     let voiceRecognitionEnabled = BehaviorRelay<Bool>(value: false)
     
+    /// 按键操作映射 - Key operation mapping
+    let keyOperationMap = BehaviorRelay<[TSSBEarbudsDeviceOperationType: TSSBEarbudsKeyFunction]>(value: [:])
+    
+    /// 提示音类型 - Prompt tone type
+    let promptToneType = BehaviorRelay<UInt8?>(value: nil)
+    
+    /// 远程相机状态 - Remote camera state
+    let remoteCameraState = BehaviorRelay<TSSBRemoteCameraState?>(value: nil)
+    
+    /// 存储空间信息（已用/剩余，单位 MB）
+    let storageSpace = BehaviorRelay<(used: UInt32, free: UInt32)?>(value: nil)
+    
+    /// 媒体文件数量统计
+    let mediaCount = BehaviorRelay<(pic: UInt32, video: UInt32, audio: UInt32)?>(value: nil)
+    
+    /// 设备工作状态原始值
+    let deviceWorkStateRaw = BehaviorRelay<UInt8?>(value: nil)
+    
     // MARK: - RxSwift Properties (WiFi & AI)
     /// WiFi 状态 - WiFi state
     let wifiState = BehaviorRelay<TSSBEarbudsWiFiState?>(value: nil)
@@ -113,6 +131,9 @@ class DeviceObserver: NSObject, TSSoudbudObserver {
     
     /// 是否支持通话录音 - Support call recording
     let supportCallRecord = BehaviorRelay<Bool>(value: false)
+    
+    /// 设备支持功能 - Device support function
+    let supportFunction = BehaviorRelay<DeviceSupportFunction>(value: DeviceSupportFunction())
     
     // MARK: - Initialization
     override init() {
@@ -323,6 +344,18 @@ extension DeviceObserver {
     /// Observe key settings changes
     func observerKeySettingsChange(operations: [NSNumber], functions: [NSNumber]) {
         DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            var mapping: [TSSBEarbudsDeviceOperationType: TSSBEarbudsKeyFunction] = [:]
+            for (operationValue, functionValue) in zip(operations, functions) {
+                guard
+                    let operation = TSSBEarbudsDeviceOperationType(rawValue: operationValue.uint8Value),
+                    let function = TSSBEarbudsKeyFunction(rawValue: functionValue.uint8Value)
+                else { continue }
+                mapping[operation] = function
+            }
+            if !mapping.isEmpty {
+                self.keyOperationMap.accept(mapping)
+            }
             print("⌨️ [DeviceObserver] 按键设置 - Key Settings: operations=\(operations), functions=\(functions)")
         }
     }
@@ -331,6 +364,7 @@ extension DeviceObserver {
     /// Observe prompt tone type changes
     func observerPromptToneTypeChange(type: UInt8) {
         DispatchQueue.main.async { [weak self] in
+            self?.promptToneType.accept(type)
             print("🔔 [DeviceObserver] 提示音类型 - Prompt Tone Type: \(type)")
         }
     }
@@ -383,7 +417,21 @@ extension DeviceObserver {
     /// Observe remote camera control state
     func observerRemoteCameraControlState(state: UInt8) {
         DispatchQueue.main.async { [weak self] in
+            if let cameraState = TSSBRemoteCameraState(rawValue: state) {
+                self?.remoteCameraState.accept(cameraState)
+            } else {
+                self?.remoteCameraState.accept(nil)
+            }
             print("📷 [DeviceObserver] 远程相机控制 - Remote Camera Control: state=\(state)")
+        }
+    }
+    
+    /// 监听设备存储空间信息
+    /// Observe device storage space
+    @objc func observerDeviceStorageSpaceNotify(usedSpaceMb: UInt32, freeSpaceMb: UInt32) {
+        DispatchQueue.main.async { [weak self] in
+            self?.storageSpace.accept((usedSpaceMb, freeSpaceMb))
+            print("💾 [DeviceObserver] 存储空间 - Storage: 已用=\(usedSpaceMb)MB, 剩余=\(freeSpaceMb)MB")
         }
     }
     
@@ -391,6 +439,7 @@ extension DeviceObserver {
     /// Observe media count changes
     func observerMediaCountDidChanged(picCount: UInt32, videoCount: UInt32, audioCount: UInt32) {
         DispatchQueue.main.async { [weak self] in
+            self?.mediaCount.accept((picCount, videoCount, audioCount))
             print("📁 [DeviceObserver] 媒体数量 - Media Count: 图片/Images=\(picCount), 视频/Videos=\(videoCount), 音频/Audios=\(audioCount)")
         }
     }
@@ -453,6 +502,15 @@ extension DeviceObserver {
         DispatchQueue.main.async { [weak self] in
             self?.subFirmwareVersion.accept(version)
             print("📱 [DeviceObserver] 子固件版本 - Sub Firmware Version: \(version)")
+        }
+    }
+    
+    /// 监听设备工作状态通知
+    /// Observe device work state notification
+    func observerDeviceWorkStateNotify(state: UInt8) {
+        DispatchQueue.main.async { [weak self] in
+            self?.deviceWorkStateRaw.accept(state)
+            print("⚙️ [DeviceObserver] 工作状态通知 - Work State Notify: \(state)")
         }
     }
 }

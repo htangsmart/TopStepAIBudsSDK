@@ -424,6 +424,14 @@ class DeviceDetailViewController: UIViewController {
                 }
             }
         }
+        
+        // 查询设备支持功能 - Query device support function
+        DeviceSupportFunctionManager.shared.querySupportFunction(device: device) { [weak self] supportFunction in
+            DispatchQueue.main.async {
+                self?.observer.supportFunction.accept(supportFunction)
+                print("✅ 设备支持功能已更新 - Device support function updated")
+            }
+        }
     }
     
     // MARK: - Button Actions

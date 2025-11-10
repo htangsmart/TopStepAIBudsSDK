@@ -3,8 +3,7 @@
 //  TSDemo
 //
 //  设备功能列表页面 - Device Function List View Controller
-//  展示设备功能列表（暂时空实现）
-//  Displays device function list (temporarily empty implementation)
+//  展示功能列表并跳转到相应的占位页面
 //
 
 import UIKit
@@ -12,7 +11,14 @@ import TopStepABMateSDK
 
 /// 设备功能列表视图控制器
 /// Device function list view controller
-class DeviceFunctionListViewController: UIViewController {
+final class DeviceFunctionListViewController: UIViewController {
+    
+    // MARK: - Types
+    private struct FunctionItem {
+        let title: String
+        let subtitle: String
+        let action: () -> Void
+    }
     
     // MARK: - Properties
     /// 已连接的设备对象 - Connected device object
@@ -21,25 +27,10 @@ class DeviceFunctionListViewController: UIViewController {
     /// 设备监听器 - Device observer
     private let observer: DeviceObserver
     
-    // MARK: - UI Components
-    /// 提示标签 - Hint label
-    private let hintLabel: UILabel = {
-        let label = UILabel()
-        label.text = "功能列表页面\nFunction List Page\n\n此页面功能待实现\nThis page is to be implemented"
-        label.font = .systemFont(ofSize: 16)
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        label.textColor = .secondaryLabel
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private let tableView = UITableView(frame: .zero, style: .insetGrouped)
+    private var items: [FunctionItem] = []
     
     // MARK: - Initialization
-    /// 初始化方法
-    /// Initializer
-    /// - Parameters:
-    ///   - device: 已连接的设备对象 - Connected device object
-    ///   - observer: 设备监听器 - Device observer
     init(device: TSSBEarbuds, observer: DeviceObserver) {
         self.device = device
         self.observer = observer
@@ -54,27 +45,63 @@ class DeviceFunctionListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        
-        // 打印设备信息用于调试 - Print device info for debugging
-        print("📱 功能列表页面 - Function List Page")
-        print("   设备 - Device: \(device)")
-        print("   监听器 - Observer: \(observer)")
+        buildItems()
+        print("📱 功能列表页面 - Function List Page | device: \(device)")
     }
     
-    // MARK: - UI Setup
-    /// 设置UI界面 - Setup UI
+    // MARK: - Setup
     private func setupUI() {
         view.backgroundColor = .systemBackground
         title = "功能列表"
-        
-        view.addSubview(hintLabel)
-        
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "FunctionCell")
+        view.addSubview(tableView)
         NSLayoutConstraint.activate([
-            hintLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            hintLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            hintLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
-            hintLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24)
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+    
+    private func buildItems() {
+        items = [
+            FunctionItem(title: "设备指令发送", subtitle: "发送控制指令至设备 | Device Command") { [weak self] in
+                guard let self = self else { return }
+                let vc = DeviceCommandViewController(device: self.device, observer: self.observer)
+                self.navigationController?.pushViewController(vc, animated: true)
+            },
+            FunctionItem(title: "数据导入", subtitle: "导入历史数据 | Data Import") { [weak self] in
+                guard let self = self else { return }
+                let vc = DeviceDataImportViewController(device: self.device, observer: self.observer)
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        ]
     }
 }
 
+// MARK: - UITableViewDataSource & UITableViewDelegate
+extension DeviceFunctionListViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return items.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FunctionCell", for: indexPath)
+        let item = items[indexPath.row]
+        var content = UIListContentConfiguration.subtitleCell()
+        content.text = item.title
+        content.secondaryText = item.subtitle
+        cell.contentConfiguration = content
+        cell.accessoryType = .disclosureIndicator
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let item = items[indexPath.row]
+        item.action()
+    }
+}

@@ -4943,43 +4943,6 @@
           },
           {
             "kind": "Function",
-            "name": "observerDeviceBTState",
-            "printedName": "observerDeviceBTState(state:peripheral:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "TSBTConnectState",
-                "printedName": "TopStepABMateSDK.TSBTConnectState",
-                "usr": "c:@M@TopStepABMateSDK@E@TSBTConnectState"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "CBPeripheral",
-                "printedName": "CoreBluetooth.CBPeripheral",
-                "usr": "c:objc(cs)CBPeripheral"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "c:@CM@TopStepABMateSDK@objc(cs)TopStepAIBuds(im)observerDeviceBTStateWithState:peripheral:",
-            "mangledName": "$s16TopStepABMateSDK0aB6AIBudsC21observerDeviceBTState5state10peripheralyAA16TSBTConnectStateO_So12CBPeripheralCtF",
-            "moduleName": "TopStepABMateSDK",
-            "objc_name": "observerDeviceBTStateWithState:peripheral:",
-            "declAttributes": [
-              "Final",
-              "ObjC",
-              "AccessControl",
-              "RawDocComment"
-            ],
-            "isFromExtension": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
             "name": "observerAIAuthentication",
             "printedName": "observerAIAuthentication(error:)",
             "children": [
@@ -6097,6 +6060,43 @@
             "mangledName": "$s16TopStepABMateSDK0aB6AIBudsC33observerDeviceMediaPlaybackStatus9isPlayingySb_tF",
             "moduleName": "TopStepABMateSDK",
             "objc_name": "observerDeviceMediaPlaybackStatusWithIsPlaying:",
+            "declAttributes": [
+              "Final",
+              "ObjC",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "observerDeviceStorageSpaceNotify",
+            "printedName": "observerDeviceStorageSpaceNotify(usedSpaceMb:freeSpaceMb:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UInt32",
+                "printedName": "Swift.UInt32",
+                "usr": "s:s6UInt32V"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UInt32",
+                "printedName": "Swift.UInt32",
+                "usr": "s:s6UInt32V"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@TopStepABMateSDK@objc(cs)TopStepAIBuds(im)observerDeviceStorageSpaceNotifyWithUsedSpaceMb:freeSpaceMb:",
+            "mangledName": "$s16TopStepABMateSDK0aB6AIBudsC32observerDeviceStorageSpaceNotify04usedI2Mb04freeiL0ys6UInt32V_AHtF",
+            "moduleName": "TopStepABMateSDK",
+            "objc_name": "observerDeviceStorageSpaceNotifyWithUsedSpaceMb:freeSpaceMb:",
             "declAttributes": [
               "Final",
               "ObjC",
@@ -7749,6 +7749,819 @@
       },
       {
         "kind": "TypeDecl",
+        "name": "TSSBEarbudsDeviceWorkState",
+        "printedName": "TSSBEarbudsDeviceWorkState",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "reserved",
+            "printedName": "reserved",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(TopStepABMateSDK.TSSBEarbudsDeviceWorkState.Type) -> TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TSSBEarbudsDeviceWorkState",
+                    "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                    "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TSSBEarbudsDeviceWorkState",
+                        "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                        "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState@TSSBEarbudsDeviceWorkStateReserved",
+            "mangledName": "$s16TopStepABMateSDK26TSSBEarbudsDeviceWorkStateO8reservedyA2CmF",
+            "moduleName": "TopStepABMateSDK",
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "fixedbinaryorder": 0
+          },
+          {
+            "kind": "Var",
+            "name": "initializing",
+            "printedName": "initializing",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(TopStepABMateSDK.TSSBEarbudsDeviceWorkState.Type) -> TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TSSBEarbudsDeviceWorkState",
+                    "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                    "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TSSBEarbudsDeviceWorkState",
+                        "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                        "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState@TSSBEarbudsDeviceWorkStateInitializing",
+            "mangledName": "$s16TopStepABMateSDK26TSSBEarbudsDeviceWorkStateO12initializingyA2CmF",
+            "moduleName": "TopStepABMateSDK",
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "fixedbinaryorder": 1
+          },
+          {
+            "kind": "Var",
+            "name": "btOrBleWaitingForConnection",
+            "printedName": "btOrBleWaitingForConnection",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(TopStepABMateSDK.TSSBEarbudsDeviceWorkState.Type) -> TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TSSBEarbudsDeviceWorkState",
+                    "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                    "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TSSBEarbudsDeviceWorkState",
+                        "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                        "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState@TSSBEarbudsDeviceWorkStateBtOrBleWaitingForConnection",
+            "mangledName": "$s16TopStepABMateSDK26TSSBEarbudsDeviceWorkStateO27btOrBleWaitingForConnectionyA2CmF",
+            "moduleName": "TopStepABMateSDK",
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "fixedbinaryorder": 2
+          },
+          {
+            "kind": "Var",
+            "name": "btOrBleConnectedIdle",
+            "printedName": "btOrBleConnectedIdle",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(TopStepABMateSDK.TSSBEarbudsDeviceWorkState.Type) -> TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TSSBEarbudsDeviceWorkState",
+                    "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                    "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TSSBEarbudsDeviceWorkState",
+                        "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                        "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState@TSSBEarbudsDeviceWorkStateBtOrBleConnectedIdle",
+            "mangledName": "$s16TopStepABMateSDK26TSSBEarbudsDeviceWorkStateO20btOrBleConnectedIdleyA2CmF",
+            "moduleName": "TopStepABMateSDK",
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "fixedbinaryorder": 3
+          },
+          {
+            "kind": "Var",
+            "name": "btOrBleDisconnectedIdle",
+            "printedName": "btOrBleDisconnectedIdle",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(TopStepABMateSDK.TSSBEarbudsDeviceWorkState.Type) -> TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TSSBEarbudsDeviceWorkState",
+                    "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                    "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TSSBEarbudsDeviceWorkState",
+                        "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                        "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState@TSSBEarbudsDeviceWorkStateBtOrBleDisconnectedIdle",
+            "mangledName": "$s16TopStepABMateSDK26TSSBEarbudsDeviceWorkStateO23btOrBleDisconnectedIdleyA2CmF",
+            "moduleName": "TopStepABMateSDK",
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "fixedbinaryorder": 4
+          },
+          {
+            "kind": "Var",
+            "name": "calling",
+            "printedName": "calling",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(TopStepABMateSDK.TSSBEarbudsDeviceWorkState.Type) -> TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TSSBEarbudsDeviceWorkState",
+                    "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                    "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TSSBEarbudsDeviceWorkState",
+                        "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                        "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState@TSSBEarbudsDeviceWorkStateCalling",
+            "mangledName": "$s16TopStepABMateSDK26TSSBEarbudsDeviceWorkStateO7callingyA2CmF",
+            "moduleName": "TopStepABMateSDK",
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "fixedbinaryorder": 5
+          },
+          {
+            "kind": "Var",
+            "name": "playingLocalMusic",
+            "printedName": "playingLocalMusic",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(TopStepABMateSDK.TSSBEarbudsDeviceWorkState.Type) -> TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TSSBEarbudsDeviceWorkState",
+                    "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                    "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TSSBEarbudsDeviceWorkState",
+                        "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                        "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState@TSSBEarbudsDeviceWorkStatePlayingLocalMusic",
+            "mangledName": "$s16TopStepABMateSDK26TSSBEarbudsDeviceWorkStateO17playingLocalMusicyA2CmF",
+            "moduleName": "TopStepABMateSDK",
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "fixedbinaryorder": 6
+          },
+          {
+            "kind": "Var",
+            "name": "aiConversing",
+            "printedName": "aiConversing",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(TopStepABMateSDK.TSSBEarbudsDeviceWorkState.Type) -> TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TSSBEarbudsDeviceWorkState",
+                    "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                    "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TSSBEarbudsDeviceWorkState",
+                        "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                        "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState@TSSBEarbudsDeviceWorkStateAiConversing",
+            "mangledName": "$s16TopStepABMateSDK26TSSBEarbudsDeviceWorkStateO12aiConversingyA2CmF",
+            "moduleName": "TopStepABMateSDK",
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "fixedbinaryorder": 7
+          },
+          {
+            "kind": "Var",
+            "name": "restoringFactorySettings",
+            "printedName": "restoringFactorySettings",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(TopStepABMateSDK.TSSBEarbudsDeviceWorkState.Type) -> TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TSSBEarbudsDeviceWorkState",
+                    "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                    "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TSSBEarbudsDeviceWorkState",
+                        "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                        "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState@TSSBEarbudsDeviceWorkStateRestoringFactorySettings",
+            "mangledName": "$s16TopStepABMateSDK26TSSBEarbudsDeviceWorkStateO24restoringFactorySettingsyA2CmF",
+            "moduleName": "TopStepABMateSDK",
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "fixedbinaryorder": 8
+          },
+          {
+            "kind": "Var",
+            "name": "takingPhoto",
+            "printedName": "takingPhoto",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(TopStepABMateSDK.TSSBEarbudsDeviceWorkState.Type) -> TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TSSBEarbudsDeviceWorkState",
+                    "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                    "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TSSBEarbudsDeviceWorkState",
+                        "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                        "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState@TSSBEarbudsDeviceWorkStateTakingPhoto",
+            "mangledName": "$s16TopStepABMateSDK26TSSBEarbudsDeviceWorkStateO11takingPhotoyA2CmF",
+            "moduleName": "TopStepABMateSDK",
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "fixedbinaryorder": 9
+          },
+          {
+            "kind": "Var",
+            "name": "aiTakingPhoto",
+            "printedName": "aiTakingPhoto",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(TopStepABMateSDK.TSSBEarbudsDeviceWorkState.Type) -> TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TSSBEarbudsDeviceWorkState",
+                    "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                    "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TSSBEarbudsDeviceWorkState",
+                        "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                        "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState@TSSBEarbudsDeviceWorkStateAiTakingPhoto",
+            "mangledName": "$s16TopStepABMateSDK26TSSBEarbudsDeviceWorkStateO13aiTakingPhotoyA2CmF",
+            "moduleName": "TopStepABMateSDK",
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "fixedbinaryorder": 10
+          },
+          {
+            "kind": "Var",
+            "name": "recordingVideo",
+            "printedName": "recordingVideo",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(TopStepABMateSDK.TSSBEarbudsDeviceWorkState.Type) -> TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TSSBEarbudsDeviceWorkState",
+                    "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                    "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TSSBEarbudsDeviceWorkState",
+                        "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                        "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState@TSSBEarbudsDeviceWorkStateRecordingVideo",
+            "mangledName": "$s16TopStepABMateSDK26TSSBEarbudsDeviceWorkStateO14recordingVideoyA2CmF",
+            "moduleName": "TopStepABMateSDK",
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "fixedbinaryorder": 11
+          },
+          {
+            "kind": "Var",
+            "name": "recordingAudio",
+            "printedName": "recordingAudio",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(TopStepABMateSDK.TSSBEarbudsDeviceWorkState.Type) -> TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TSSBEarbudsDeviceWorkState",
+                    "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                    "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TSSBEarbudsDeviceWorkState",
+                        "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                        "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState@TSSBEarbudsDeviceWorkStateRecordingAudio",
+            "mangledName": "$s16TopStepABMateSDK26TSSBEarbudsDeviceWorkStateO14recordingAudioyA2CmF",
+            "moduleName": "TopStepABMateSDK",
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "fixedbinaryorder": 12
+          },
+          {
+            "kind": "Var",
+            "name": "fileTransferring",
+            "printedName": "fileTransferring",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(TopStepABMateSDK.TSSBEarbudsDeviceWorkState.Type) -> TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TSSBEarbudsDeviceWorkState",
+                    "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                    "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TSSBEarbudsDeviceWorkState",
+                        "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                        "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState@TSSBEarbudsDeviceWorkStateFileTransferring",
+            "mangledName": "$s16TopStepABMateSDK26TSSBEarbudsDeviceWorkStateO16fileTransferringyA2CmF",
+            "moduleName": "TopStepABMateSDK",
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "fixedbinaryorder": 13
+          },
+          {
+            "kind": "Var",
+            "name": "streaming",
+            "printedName": "streaming",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(TopStepABMateSDK.TSSBEarbudsDeviceWorkState.Type) -> TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TSSBEarbudsDeviceWorkState",
+                    "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                    "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TSSBEarbudsDeviceWorkState",
+                        "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                        "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState@TSSBEarbudsDeviceWorkStateStreaming",
+            "mangledName": "$s16TopStepABMateSDK26TSSBEarbudsDeviceWorkStateO9streamingyA2CmF",
+            "moduleName": "TopStepABMateSDK",
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "fixedbinaryorder": 14
+          },
+          {
+            "kind": "Var",
+            "name": "ota",
+            "printedName": "ota",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(TopStepABMateSDK.TSSBEarbudsDeviceWorkState.Type) -> TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TSSBEarbudsDeviceWorkState",
+                    "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                    "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TSSBEarbudsDeviceWorkState",
+                        "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                        "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState@TSSBEarbudsDeviceWorkStateOta",
+            "mangledName": "$s16TopStepABMateSDK26TSSBEarbudsDeviceWorkStateO3otayA2CmF",
+            "moduleName": "TopStepABMateSDK",
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "fixedbinaryorder": 15
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(rawValue:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TSSBEarbudsDeviceWorkState",
+                    "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                    "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UInt8",
+                "printedName": "Swift.UInt8",
+                "usr": "s:s5UInt8V"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:16TopStepABMateSDK26TSSBEarbudsDeviceWorkStateO8rawValueACSgs5UInt8V_tcfc",
+            "mangledName": "$s16TopStepABMateSDK26TSSBEarbudsDeviceWorkStateO8rawValueACSgs5UInt8V_tcfc",
+            "moduleName": "TopStepABMateSDK",
+            "implicit": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "rawValue",
+            "printedName": "rawValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UInt8",
+                "printedName": "Swift.UInt8",
+                "usr": "s:s5UInt8V"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:16TopStepABMateSDK26TSSBEarbudsDeviceWorkStateO8rawValues5UInt8Vvp",
+            "mangledName": "$s16TopStepABMateSDK26TSSBEarbudsDeviceWorkStateO8rawValues5UInt8Vvp",
+            "moduleName": "TopStepABMateSDK",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UInt8",
+                    "printedName": "Swift.UInt8",
+                    "usr": "s:s5UInt8V"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16TopStepABMateSDK26TSSBEarbudsDeviceWorkStateO8rawValues5UInt8Vvg",
+                "mangledName": "$s16TopStepABMateSDK26TSSBEarbudsDeviceWorkStateO8rawValues5UInt8Vvg",
+                "moduleName": "TopStepABMateSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState",
+        "mangledName": "$s16TopStepABMateSDK26TSSBEarbudsDeviceWorkStateO",
+        "moduleName": "TopStepABMateSDK",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC",
+          "RawDocComment"
+        ],
+        "enumRawTypeName": "UInt8",
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "RawRepresentable",
+            "printedName": "RawRepresentable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "RawValue",
+                "printedName": "RawValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UInt8",
+                    "printedName": "Swift.UInt8",
+                    "usr": "s:s5UInt8V"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:SY",
+            "mangledName": "$sSY"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
         "name": "TSSBEarbudsWiFiSettingType",
         "printedName": "TSSBEarbudsWiFiSettingType",
         "children": [
@@ -8864,6 +9677,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -11697,45 +12517,6 @@
         "children": [
           {
             "kind": "Function",
-            "name": "observerDeviceBTState",
-            "printedName": "observerDeviceBTState(state:peripheral:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "TSBTConnectState",
-                "printedName": "TopStepABMateSDK.TSBTConnectState",
-                "usr": "c:@M@TopStepABMateSDK@E@TSBTConnectState"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "CBPeripheral",
-                "printedName": "CoreBluetooth.CBPeripheral",
-                "usr": "c:objc(cs)CBPeripheral"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "c:@M@TopStepABMateSDK@objc(pl)TSBTObserver(im)observerDeviceBTStateWithState:peripheral:",
-            "mangledName": "$s16TopStepABMateSDK12TSBTObserverP21observerDeviceBTState5state10peripheralyAA16TSBTConnectStateO_So12CBPeripheralCtF",
-            "moduleName": "TopStepABMateSDK",
-            "genericSig": "<τ_0_0 where τ_0_0 : TopStepABMateSDK.TSBTObserver>",
-            "sugared_genericSig": "<Self where Self : TopStepABMateSDK.TSBTObserver>",
-            "protocolReq": true,
-            "objc_name": "observerDeviceBTStateWithState:peripheral:",
-            "declAttributes": [
-              "Optional",
-              "ObjC",
-              "RawDocComment"
-            ],
-            "reqNewWitnessTableEntry": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
             "name": "observerCentralManagerState",
             "printedName": "observerCentralManagerState(state:)",
             "children": [
@@ -13082,6 +13863,45 @@
             "sugared_genericSig": "<Self where Self : TopStepABMateSDK.TSSoudbudObserver>",
             "protocolReq": true,
             "objc_name": "observerDeviceMediaPlaybackStatusWithIsPlaying:",
+            "declAttributes": [
+              "Optional",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "observerDeviceStorageSpaceNotify",
+            "printedName": "observerDeviceStorageSpaceNotify(usedSpaceMb:freeSpaceMb:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UInt32",
+                "printedName": "Swift.UInt32",
+                "usr": "s:s6UInt32V"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UInt32",
+                "printedName": "Swift.UInt32",
+                "usr": "s:s6UInt32V"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@TopStepABMateSDK@objc(pl)TSSoudbudObserver(im)observerDeviceStorageSpaceNotifyWithUsedSpaceMb:freeSpaceMb:",
+            "mangledName": "$s16TopStepABMateSDK17TSSoudbudObserverP32observerDeviceStorageSpaceNotify04usedJ2Mb04freejM0ys6UInt32V_AHtF",
+            "moduleName": "TopStepABMateSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : TopStepABMateSDK.TSSoudbudObserver>",
+            "sugared_genericSig": "<Self where Self : TopStepABMateSDK.TSSoudbudObserver>",
+            "protocolReq": true,
+            "objc_name": "observerDeviceStorageSpaceNotifyWithUsedSpaceMb:freeSpaceMb:",
             "declAttributes": [
               "Optional",
               "ObjC",
@@ -23545,7 +24365,7 @@
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "(Foundation.NSNumber, Foundation.NSNumber, (any Swift.Error)?) -> ()",
+                "printedName": "((any Swift.Error)?) -> ()",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -23554,43 +24374,24 @@
                   },
                   {
                     "kind": "TypeNominal",
-                    "name": "Tuple",
-                    "printedName": "(Foundation.NSNumber, Foundation.NSNumber, (any Swift.Error)?)",
+                    "name": "Optional",
+                    "printedName": "(any Swift.Error)?",
                     "children": [
                       {
                         "kind": "TypeNominal",
-                        "name": "NSNumber",
-                        "printedName": "Foundation.NSNumber",
-                        "usr": "c:objc(cs)NSNumber"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "NSNumber",
-                        "printedName": "Foundation.NSNumber",
-                        "usr": "c:objc(cs)NSNumber"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Optional",
-                        "printedName": "(any Swift.Error)?",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "Error",
-                            "printedName": "any Swift.Error",
-                            "usr": "s:s5ErrorP"
-                          }
-                        ],
-                        "usr": "s:Sq"
+                        "name": "Error",
+                        "printedName": "any Swift.Error",
+                        "usr": "s:s5ErrorP"
                       }
-                    ]
+                    ],
+                    "usr": "s:Sq"
                   }
                 ]
               }
             ],
             "declKind": "Func",
             "usr": "c:@CM@TopStepABMateSDK@objc(cs)TSSBEarbudsCommMannger(im)queryABMateStorageInfoWithResult:",
-            "mangledName": "$s16TopStepABMateSDK22TSSBEarbudsCommManngerC05queryC11StorageInfo6resultyySo8NSNumberC_AGs5Error_pSgtc_tF",
+            "mangledName": "$s16TopStepABMateSDK22TSSBEarbudsCommManngerC05queryC11StorageInfo6resultyys5Error_pSgc_tF",
             "moduleName": "TopStepABMateSDK",
             "objc_name": "queryABMateStorageInfoWithResult:",
             "declAttributes": [
@@ -24539,7 +25340,7 @@
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "(Swift.UInt8, (any Swift.Error)?) -> ()",
+                "printedName": "(TopStepABMateSDK.TSSBEarbudsDeviceWorkState, (any Swift.Error)?) -> ()",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -24549,13 +25350,13 @@
                   {
                     "kind": "TypeNominal",
                     "name": "Tuple",
-                    "printedName": "(Swift.UInt8, (any Swift.Error)?)",
+                    "printedName": "(TopStepABMateSDK.TSSBEarbudsDeviceWorkState, (any Swift.Error)?)",
                     "children": [
                       {
                         "kind": "TypeNominal",
-                        "name": "UInt8",
-                        "printedName": "Swift.UInt8",
-                        "usr": "s:s5UInt8V"
+                        "name": "TSSBEarbudsDeviceWorkState",
+                        "printedName": "TopStepABMateSDK.TSSBEarbudsDeviceWorkState",
+                        "usr": "c:@M@TopStepABMateSDK@E@TSSBEarbudsDeviceWorkState"
                       },
                       {
                         "kind": "TypeNominal",
@@ -24578,7 +25379,7 @@
             ],
             "declKind": "Func",
             "usr": "c:@CM@TopStepABMateSDK@objc(cs)TSSBEarbudsCommMannger(im)getDeviceWorkStateWithResult:",
-            "mangledName": "$s16TopStepABMateSDK22TSSBEarbudsCommManngerC18getDeviceWorkState6resultyys5UInt8V_s5Error_pSgtc_tF",
+            "mangledName": "$s16TopStepABMateSDK22TSSBEarbudsCommManngerC18getDeviceWorkState6resultyyAA0eijK0O_s5Error_pSgtc_tF",
             "moduleName": "TopStepABMateSDK",
             "objc_name": "getDeviceWorkStateWithResult:",
             "declAttributes": [
@@ -25517,7 +26318,7 @@
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "((any Swift.Error)?) -> ()",
+                "printedName": "(Swift.UInt8, Swift.UInt8, Swift.UInt8, (any Swift.Error)?) -> ()",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -25526,24 +26327,49 @@
                   },
                   {
                     "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "(any Swift.Error)?",
+                    "name": "Tuple",
+                    "printedName": "(Swift.UInt8, Swift.UInt8, Swift.UInt8, (any Swift.Error)?)",
                     "children": [
                       {
                         "kind": "TypeNominal",
-                        "name": "Error",
-                        "printedName": "any Swift.Error",
-                        "usr": "s:s5ErrorP"
+                        "name": "UInt8",
+                        "printedName": "Swift.UInt8",
+                        "usr": "s:s5UInt8V"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UInt8",
+                        "printedName": "Swift.UInt8",
+                        "usr": "s:s5UInt8V"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UInt8",
+                        "printedName": "Swift.UInt8",
+                        "usr": "s:s5UInt8V"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "(any Swift.Error)?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Error",
+                            "printedName": "any Swift.Error",
+                            "usr": "s:s5ErrorP"
+                          }
+                        ],
+                        "usr": "s:Sq"
                       }
-                    ],
-                    "usr": "s:Sq"
+                    ]
                   }
                 ]
               }
             ],
             "declKind": "Func",
             "usr": "c:@CM@TopStepABMateSDK@objc(cs)TSSBEarbudsCommMannger(im)setSingleDeviceVolumeWithType:volume:result:",
-            "mangledName": "$s16TopStepABMateSDK22TSSBEarbudsCommManngerC21setSingleDeviceVolume4type6volume6resultyAA0ejK11SettingTypeO_s5UInt8Vys5Error_pSgctF",
+            "mangledName": "$s16TopStepABMateSDK22TSSBEarbudsCommManngerC21setSingleDeviceVolume4type6volume6resultyAA0ejK11SettingTypeO_s5UInt8VyAK_A2Ks5Error_pSgtctF",
             "moduleName": "TopStepABMateSDK",
             "objc_name": "setSingleDeviceVolumeWithType:volume:result:",
             "declAttributes": [
@@ -25586,7 +26412,7 @@
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "((any Swift.Error)?) -> ()",
+                "printedName": "(Swift.UInt8, Swift.UInt8, Swift.UInt8, (any Swift.Error)?) -> ()",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -25595,24 +26421,49 @@
                   },
                   {
                     "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "(any Swift.Error)?",
+                    "name": "Tuple",
+                    "printedName": "(Swift.UInt8, Swift.UInt8, Swift.UInt8, (any Swift.Error)?)",
                     "children": [
                       {
                         "kind": "TypeNominal",
-                        "name": "Error",
-                        "printedName": "any Swift.Error",
-                        "usr": "s:s5ErrorP"
+                        "name": "UInt8",
+                        "printedName": "Swift.UInt8",
+                        "usr": "s:s5UInt8V"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UInt8",
+                        "printedName": "Swift.UInt8",
+                        "usr": "s:s5UInt8V"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UInt8",
+                        "printedName": "Swift.UInt8",
+                        "usr": "s:s5UInt8V"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "(any Swift.Error)?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Error",
+                            "printedName": "any Swift.Error",
+                            "usr": "s:s5ErrorP"
+                          }
+                        ],
+                        "usr": "s:Sq"
                       }
-                    ],
-                    "usr": "s:Sq"
+                    ]
                   }
                 ]
               }
             ],
             "declKind": "Func",
             "usr": "c:@CM@TopStepABMateSDK@objc(cs)TSSBEarbudsCommMannger(im)setAllDeviceVolumeWithSystemVolume:mediaVolume:callVolume:result:",
-            "mangledName": "$s16TopStepABMateSDK22TSSBEarbudsCommManngerC18setAllDeviceVolume06systemK005mediaK004callK06resultys5UInt8V_A2Jys5Error_pSgctF",
+            "mangledName": "$s16TopStepABMateSDK22TSSBEarbudsCommManngerC18setAllDeviceVolume06systemK005mediaK004callK06resultys5UInt8V_A2JyAJ_A2Js5Error_pSgtctF",
             "moduleName": "TopStepABMateSDK",
             "objc_name": "setAllDeviceVolumeWithSystemVolume:mediaVolume:callVolume:result:",
             "declAttributes": [
@@ -29444,6 +30295,7 @@
         "declKind": "Import",
         "moduleName": "TopStepABMateSDK",
         "declAttributes": [
+          "AccessControl",
           "RawDocComment"
         ]
       },
@@ -29452,7 +30304,10 @@
         "name": "CoreData",
         "printedName": "CoreData",
         "declKind": "Import",
-        "moduleName": "TopStepABMateSDK"
+        "moduleName": "TopStepABMateSDK",
+        "declAttributes": [
+          "AccessControl"
+        ]
       },
       {
         "kind": "TypeDecl",
@@ -29501,6 +30356,7 @@
             "declAttributes": [
               "Dynamic",
               "ObjC",
+              "Nonisolated",
               "Override"
             ],
             "init_kind": "Designated"
@@ -29563,6 +30419,7 @@
             "moduleName": "TopStepABMateSDK",
             "declAttributes": [
               "Dynamic",
+              "Nonisolated",
               "AccessControl",
               "NSManaged",
               "ObjC"
@@ -29658,6 +30515,7 @@
             "moduleName": "TopStepABMateSDK",
             "declAttributes": [
               "Dynamic",
+              "Nonisolated",
               "AccessControl",
               "NSManaged",
               "ObjC"
@@ -29745,6 +30603,7 @@
             "moduleName": "TopStepABMateSDK",
             "declAttributes": [
               "Dynamic",
+              "Nonisolated",
               "AccessControl",
               "NSManaged",
               "ObjC"
@@ -29848,6 +30707,7 @@
             "moduleName": "TopStepABMateSDK",
             "declAttributes": [
               "Dynamic",
+              "Nonisolated",
               "AccessControl",
               "NSManaged",
               "ObjC"
@@ -29951,6 +30811,7 @@
             "moduleName": "TopStepABMateSDK",
             "declAttributes": [
               "Dynamic",
+              "Nonisolated",
               "AccessControl",
               "NSManaged",
               "ObjC"
@@ -30046,6 +30907,7 @@
             "moduleName": "TopStepABMateSDK",
             "declAttributes": [
               "Dynamic",
+              "Nonisolated",
               "AccessControl",
               "NSManaged",
               "ObjC"
@@ -30125,6 +30987,7 @@
             "moduleName": "TopStepABMateSDK",
             "declAttributes": [
               "Dynamic",
+              "Nonisolated",
               "AccessControl",
               "NSManaged",
               "ObjC"
@@ -30204,6 +31067,7 @@
             "moduleName": "TopStepABMateSDK",
             "declAttributes": [
               "Dynamic",
+              "Nonisolated",
               "AccessControl",
               "NSManaged",
               "ObjC"
@@ -30291,6 +31155,7 @@
             "moduleName": "TopStepABMateSDK",
             "declAttributes": [
               "Dynamic",
+              "Nonisolated",
               "AccessControl",
               "NSManaged",
               "ObjC"
@@ -30386,6 +31251,7 @@
             "moduleName": "TopStepABMateSDK",
             "declAttributes": [
               "Dynamic",
+              "Nonisolated",
               "AccessControl",
               "NSManaged",
               "ObjC"
@@ -30465,6 +31331,7 @@
             "moduleName": "TopStepABMateSDK",
             "declAttributes": [
               "Dynamic",
+              "Nonisolated",
               "AccessControl",
               "NSManaged",
               "ObjC"
@@ -30544,6 +31411,7 @@
             "moduleName": "TopStepABMateSDK",
             "declAttributes": [
               "Dynamic",
+              "Nonisolated",
               "AccessControl",
               "NSManaged",
               "ObjC"
@@ -30631,6 +31499,7 @@
             "moduleName": "TopStepABMateSDK",
             "declAttributes": [
               "Dynamic",
+              "Nonisolated",
               "AccessControl",
               "NSManaged",
               "ObjC"
@@ -30726,6 +31595,7 @@
             "moduleName": "TopStepABMateSDK",
             "declAttributes": [
               "Dynamic",
+              "Nonisolated",
               "AccessControl",
               "NSManaged",
               "ObjC"
@@ -30813,6 +31683,7 @@
             "moduleName": "TopStepABMateSDK",
             "declAttributes": [
               "Dynamic",
+              "Nonisolated",
               "AccessControl",
               "NSManaged",
               "ObjC"
@@ -30916,6 +31787,7 @@
             "moduleName": "TopStepABMateSDK",
             "declAttributes": [
               "Dynamic",
+              "Nonisolated",
               "AccessControl",
               "NSManaged",
               "ObjC"
@@ -31019,6 +31891,7 @@
             "moduleName": "TopStepABMateSDK",
             "declAttributes": [
               "Dynamic",
+              "Nonisolated",
               "AccessControl",
               "NSManaged",
               "ObjC"
@@ -31122,6 +31995,7 @@
             "moduleName": "TopStepABMateSDK",
             "declAttributes": [
               "Dynamic",
+              "Nonisolated",
               "AccessControl",
               "NSManaged",
               "ObjC"
@@ -31225,6 +32099,7 @@
             "moduleName": "TopStepABMateSDK",
             "declAttributes": [
               "Dynamic",
+              "Nonisolated",
               "AccessControl",
               "NSManaged",
               "ObjC"
@@ -31309,6 +32184,7 @@
         "moduleName": "TopStepABMateSDK",
         "objc_name": "AIRecord",
         "declAttributes": [
+          "Nonisolated",
           "AccessControl",
           "ObjC"
         ],
@@ -31428,6 +32304,20 @@
           },
           {
             "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Identifiable",
             "printedName": "Identifiable",
             "children": [
@@ -31457,6 +32347,7 @@
         "declKind": "Import",
         "moduleName": "TopStepABMateSDK",
         "declAttributes": [
+          "AccessControl",
           "RawDocComment"
         ]
       },
@@ -31465,7 +32356,10 @@
         "name": "CoreData",
         "printedName": "CoreData",
         "declKind": "Import",
-        "moduleName": "TopStepABMateSDK"
+        "moduleName": "TopStepABMateSDK",
+        "declAttributes": [
+          "AccessControl"
+        ]
       },
       {
         "kind": "Import",
@@ -31474,6 +32368,7 @@
         "declKind": "Import",
         "moduleName": "TopStepABMateSDK",
         "declAttributes": [
+          "AccessControl",
           "RawDocComment"
         ]
       },
@@ -31482,7 +32377,10 @@
         "name": "CoreData",
         "printedName": "CoreData",
         "declKind": "Import",
-        "moduleName": "TopStepABMateSDK"
+        "moduleName": "TopStepABMateSDK",
+        "declAttributes": [
+          "AccessControl"
+        ]
       },
       {
         "kind": "TypeDecl",
@@ -31647,6 +32545,13 @@
             "printedName": "_HasCustomAnyHashableRepresentation",
             "usr": "s:s35_HasCustomAnyHashableRepresentationP",
             "mangledName": "$ss35_HasCustomAnyHashableRepresentationP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       }
@@ -32239,7 +33144,7 @@
       "filePath": "\/Users\/Zhuanz\/Desktop\/AIBuds\/TopStepABMateSDK\/TopStepABMateSDK\/Classes\/TopStepAIBudsSDK\/TopStepAIBudsSDK.swift",
       "kind": "StringLiteral",
       "offset": 8332,
-      "length": 26648,
+      "length": 26428,
       "value": "\"\""
     },
     {
@@ -32378,70 +33283,182 @@
     {
       "filePath": "\/Users\/Zhuanz\/Desktop\/AIBuds\/TopStepABMateSDK\/TopStepABMateSDK\/Classes\/TSABMate\/Tools\/TSABMetaEnum.swift",
       "kind": "IntegerLiteral",
-      "offset": 1698,
-      "length": 4,
-      "value": "0x01"
-    },
-    {
-      "filePath": "\/Users\/Zhuanz\/Desktop\/AIBuds\/TopStepABMateSDK\/TopStepABMateSDK\/Classes\/TSABMate\/Tools\/TSABMetaEnum.swift",
-      "kind": "IntegerLiteral",
-      "offset": 1734,
-      "length": 4,
-      "value": "0x02"
-    },
-    {
-      "filePath": "\/Users\/Zhuanz\/Desktop\/AIBuds\/TopStepABMateSDK\/TopStepABMateSDK\/Classes\/TSABMate\/Tools\/TSABMetaEnum.swift",
-      "kind": "IntegerLiteral",
-      "offset": 1778,
-      "length": 4,
-      "value": "0x03"
-    },
-    {
-      "filePath": "\/Users\/Zhuanz\/Desktop\/AIBuds\/TopStepABMateSDK\/TopStepABMateSDK\/Classes\/TSABMate\/Tools\/TSABMetaEnum.swift",
-      "kind": "IntegerLiteral",
-      "offset": 1820,
-      "length": 4,
-      "value": "0x04"
-    },
-    {
-      "filePath": "\/Users\/Zhuanz\/Desktop\/AIBuds\/TopStepABMateSDK\/TopStepABMateSDK\/Classes\/TSABMate\/Tools\/TSABMetaEnum.swift",
-      "kind": "IntegerLiteral",
-      "offset": 1983,
+      "offset": 1710,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/Zhuanz\/Desktop\/AIBuds\/TopStepABMateSDK\/TopStepABMateSDK\/Classes\/TSABMate\/Tools\/TSABMetaEnum.swift",
       "kind": "IntegerLiteral",
-      "offset": 2026,
+      "offset": 1783,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/Zhuanz\/Desktop\/AIBuds\/TopStepABMateSDK\/TopStepABMateSDK\/Classes\/TSABMate\/Tools\/TSABMetaEnum.swift",
       "kind": "IntegerLiteral",
-      "offset": 2072,
+      "offset": 1921,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/Zhuanz\/Desktop\/AIBuds\/TopStepABMateSDK\/TopStepABMateSDK\/Classes\/TSABMate\/Tools\/TSABMetaEnum.swift",
       "kind": "IntegerLiteral",
-      "offset": 2129,
+      "offset": 2025,
       "length": 1,
       "value": "3"
     },
     {
       "filePath": "\/Users\/Zhuanz\/Desktop\/AIBuds\/TopStepABMateSDK\/TopStepABMateSDK\/Classes\/TSABMate\/Tools\/TSABMetaEnum.swift",
       "kind": "IntegerLiteral",
-      "offset": 2183,
+      "offset": 2135,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Users\/Zhuanz\/Desktop\/AIBuds\/TopStepABMateSDK\/TopStepABMateSDK\/Classes\/TSABMate\/Tools\/TSABMetaEnum.swift",
       "kind": "IntegerLiteral",
-      "offset": 2238,
+      "offset": 2195,
+      "length": 1,
+      "value": "5"
+    },
+    {
+      "filePath": "\/Users\/Zhuanz\/Desktop\/AIBuds\/TopStepABMateSDK\/TopStepABMateSDK\/Classes\/TSABMate\/Tools\/TSABMetaEnum.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2337,
+      "length": 1,
+      "value": "6"
+    },
+    {
+      "filePath": "\/Users\/Zhuanz\/Desktop\/AIBuds\/TopStepABMateSDK\/TopStepABMateSDK\/Classes\/TSABMate\/Tools\/TSABMetaEnum.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2425,
+      "length": 1,
+      "value": "7"
+    },
+    {
+      "filePath": "\/Users\/Zhuanz\/Desktop\/AIBuds\/TopStepABMateSDK\/TopStepABMateSDK\/Classes\/TSABMate\/Tools\/TSABMetaEnum.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2530,
+      "length": 1,
+      "value": "8"
+    },
+    {
+      "filePath": "\/Users\/Zhuanz\/Desktop\/AIBuds\/TopStepABMateSDK\/TopStepABMateSDK\/Classes\/TSABMate\/Tools\/TSABMetaEnum.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2599,
+      "length": 1,
+      "value": "9"
+    },
+    {
+      "filePath": "\/Users\/Zhuanz\/Desktop\/AIBuds\/TopStepABMateSDK\/TopStepABMateSDK\/Classes\/TSABMate\/Tools\/TSABMetaEnum.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2677,
+      "length": 2,
+      "value": "10"
+    },
+    {
+      "filePath": "\/Users\/Zhuanz\/Desktop\/AIBuds\/TopStepABMateSDK\/TopStepABMateSDK\/Classes\/TSABMate\/Tools\/TSABMetaEnum.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2753,
+      "length": 2,
+      "value": "11"
+    },
+    {
+      "filePath": "\/Users\/Zhuanz\/Desktop\/AIBuds\/TopStepABMateSDK\/TopStepABMateSDK\/Classes\/TSABMate\/Tools\/TSABMetaEnum.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2829,
+      "length": 2,
+      "value": "12"
+    },
+    {
+      "filePath": "\/Users\/Zhuanz\/Desktop\/AIBuds\/TopStepABMateSDK\/TopStepABMateSDK\/Classes\/TSABMate\/Tools\/TSABMetaEnum.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2915,
+      "length": 2,
+      "value": "13"
+    },
+    {
+      "filePath": "\/Users\/Zhuanz\/Desktop\/AIBuds\/TopStepABMateSDK\/TopStepABMateSDK\/Classes\/TSABMate\/Tools\/TSABMetaEnum.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2980,
+      "length": 2,
+      "value": "14"
+    },
+    {
+      "filePath": "\/Users\/Zhuanz\/Desktop\/AIBuds\/TopStepABMateSDK\/TopStepABMateSDK\/Classes\/TSABMate\/Tools\/TSABMetaEnum.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3050,
+      "length": 2,
+      "value": "15"
+    },
+    {
+      "filePath": "\/Users\/Zhuanz\/Desktop\/AIBuds\/TopStepABMateSDK\/TopStepABMateSDK\/Classes\/TSABMate\/Tools\/TSABMetaEnum.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3216,
+      "length": 4,
+      "value": "0x01"
+    },
+    {
+      "filePath": "\/Users\/Zhuanz\/Desktop\/AIBuds\/TopStepABMateSDK\/TopStepABMateSDK\/Classes\/TSABMate\/Tools\/TSABMetaEnum.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3252,
+      "length": 4,
+      "value": "0x02"
+    },
+    {
+      "filePath": "\/Users\/Zhuanz\/Desktop\/AIBuds\/TopStepABMateSDK\/TopStepABMateSDK\/Classes\/TSABMate\/Tools\/TSABMetaEnum.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3296,
+      "length": 4,
+      "value": "0x03"
+    },
+    {
+      "filePath": "\/Users\/Zhuanz\/Desktop\/AIBuds\/TopStepABMateSDK\/TopStepABMateSDK\/Classes\/TSABMate\/Tools\/TSABMetaEnum.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3338,
+      "length": 4,
+      "value": "0x04"
+    },
+    {
+      "filePath": "\/Users\/Zhuanz\/Desktop\/AIBuds\/TopStepABMateSDK\/TopStepABMateSDK\/Classes\/TSABMate\/Tools\/TSABMetaEnum.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3501,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/Zhuanz\/Desktop\/AIBuds\/TopStepABMateSDK\/TopStepABMateSDK\/Classes\/TSABMate\/Tools\/TSABMetaEnum.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3544,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/Zhuanz\/Desktop\/AIBuds\/TopStepABMateSDK\/TopStepABMateSDK\/Classes\/TSABMate\/Tools\/TSABMetaEnum.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3590,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/Zhuanz\/Desktop\/AIBuds\/TopStepABMateSDK\/TopStepABMateSDK\/Classes\/TSABMate\/Tools\/TSABMetaEnum.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3647,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/Zhuanz\/Desktop\/AIBuds\/TopStepABMateSDK\/TopStepABMateSDK\/Classes\/TSABMate\/Tools\/TSABMetaEnum.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3701,
+      "length": 1,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/Zhuanz\/Desktop\/AIBuds\/TopStepABMateSDK\/TopStepABMateSDK\/Classes\/TSABMate\/Tools\/TSABMetaEnum.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3756,
       "length": 1,
       "value": "5"
     },
@@ -34506,35 +35523,35 @@
     {
       "filePath": "\/Users\/Zhuanz\/Desktop\/AIBuds\/TopStepABMateSDK\/TopStepABMateSDK\/Classes\/TSABMate\/TSSBEarbudsCommandHandler.swift",
       "kind": "IntegerLiteral",
-      "offset": 64890,
+      "offset": 63933,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/Zhuanz\/Desktop\/AIBuds\/TopStepABMateSDK\/TopStepABMateSDK\/Classes\/TSABMate\/TSSBEarbudsCommandHandler.swift",
       "kind": "IntegerLiteral",
-      "offset": 64915,
+      "offset": 63958,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/Zhuanz\/Desktop\/AIBuds\/TopStepABMateSDK\/TopStepABMateSDK\/Classes\/TSABMate\/TSSBEarbudsCommandHandler.swift",
       "kind": "IntegerLiteral",
-      "offset": 64940,
+      "offset": 63983,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/Zhuanz\/Desktop\/AIBuds\/TopStepABMateSDK\/TopStepABMateSDK\/Classes\/TSABMate\/TSSBEarbudsCommandHandler.swift",
       "kind": "IntegerLiteral",
-      "offset": 64973,
+      "offset": 64016,
       "length": 1,
       "value": "3"
     },
     {
       "filePath": "\/Users\/Zhuanz\/Desktop\/AIBuds\/TopStepABMateSDK\/TopStepABMateSDK\/Classes\/TSABMate\/TSSBEarbudsCommandHandler.swift",
       "kind": "IntegerLiteral",
-      "offset": 66833,
+      "offset": 65876,
       "length": 4,
       "value": "0x01"
     },

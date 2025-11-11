@@ -1,0 +1,121 @@
+PODS:
+  - BitByteData (2.0.4)
+  - HandyJSON (5.0.0)
+  - iOSDFULibrary (4.11.1):
+    - ZIPFoundation (= 0.9.11)
+  - libopus (1.1):
+    - libopus/float (= 1.1)
+  - libopus/float (1.1)
+  - PromiseKit (8.1.1):
+    - PromiseKit/CorePromise (= 8.1.1)
+    - PromiseKit/Foundation (= 8.1.1)
+    - PromiseKit/UIKit (= 8.1.1)
+  - PromiseKit/CorePromise (8.1.1)
+  - PromiseKit/Foundation (8.1.1):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (8.1.1):
+    - PromiseKit/CorePromise
+  - ReactiveObjC (3.1.1)
+  - RxCocoa (6.8.0):
+    - RxRelay (= 6.8.0)
+    - RxSwift (= 6.8.0)
+  - RxRelay (6.8.0):
+    - RxSwift (= 6.8.0)
+  - RxSwift (6.8.0)
+  - SocketRocket (0.7.1)
+  - SWCompression/TAR (4.8.6):
+    - BitByteData (~> 2.0)
+  - SwiftyJSON (5.0.1)
+  - TopStepAIBudsSDK (1.0.0):
+    - libopus (= 1.1)
+    - ReactiveObjC (= 3.1.1)
+    - RxCocoa (= 6.8.0)
+    - RxRelay (= 6.8.0)
+    - RxSwift (= 6.8.0)
+    - SocketRocket
+  - TopStepComKit-Git/ComKit (1.0.0-beta6):
+    - TopStepComKit-Git/Foundation
+  - TopStepComKit-Git/FitCoreImp (1.0.0-beta6):
+    - iOSDFULibrary (~> 4.11.0)
+    - TopStepComKit-Git/Foundation
+    - zipzap (~> 8.1.1)
+  - TopStepComKit-Git/Foundation (1.0.0-beta6)
+  - TopStepComKit-Git/SJCoreImp (1.0.0-beta6):
+    - HandyJSON (= 5.0.0)
+    - PromiseKit (= 8.1.1)
+    - ReactiveObjC (= 3.1.1)
+    - RxCocoa (= 6.8.0)
+    - RxSwift (= 6.8.0)
+    - SWCompression/TAR
+    - SwiftyJSON (= 5.0.1)
+    - TopStepComKit-Git/Foundation
+    - YYCategories (= 1.0.4)
+  - YYCategories (1.0.4):
+    - YYCategories/no-arc (= 1.0.4)
+  - YYCategories/no-arc (1.0.4)
+  - ZIPFoundation (0.9.11)
+  - zipzap (8.1.1)
+
+DEPENDENCIES:
+  - libopus (= 1.1)
+  - ReactiveObjC (= 3.1.1)
+  - RxCocoa (= 6.8.0)
+  - RxRelay (= 6.8.0)
+  - RxSwift (= 6.8.0)
+  - TopStepAIBudsSDK (from `.`)
+  - TopStepComKit-Git/ComKit (from `https://github.com/htangsmart/TopStepComKit.git`, branch `main`)
+  - TopStepComKit-Git/FitCoreImp (from `https://github.com/htangsmart/TopStepComKit.git`, branch `main`)
+  - TopStepComKit-Git/SJCoreImp (from `https://github.com/htangsmart/TopStepComKit.git`, branch `main`)
+
+SPEC REPOS:
+  trunk:
+    - BitByteData
+    - HandyJSON
+    - iOSDFULibrary
+    - libopus
+    - PromiseKit
+    - ReactiveObjC
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+    - SocketRocket
+    - SWCompression
+    - SwiftyJSON
+    - YYCategories
+    - ZIPFoundation
+    - zipzap
+
+EXTERNAL SOURCES:
+  TopStepAIBudsSDK:
+    :path: "."
+  TopStepComKit-Git:
+    :branch: main
+    :git: https://github.com/htangsmart/TopStepComKit.git
+
+CHECKOUT OPTIONS:
+  TopStepComKit-Git:
+    :commit: 0eee9fd66955a6cfec414789035677e8f28b8687
+    :git: https://github.com/htangsmart/TopStepComKit.git
+
+SPEC CHECKSUMS:
+  BitByteData: 2422ed269fcddc44976d97f171a183d25ef535ce
+  HandyJSON: 992f2d661716d6a91de82d0056927bc7813b5770
+  iOSDFULibrary: 1f4139c6c1bb2b2f1f7b127f67dc52504778f8be
+  libopus: ad5f060dcb8f30f139777244d70f9111f1c80863
+  PromiseKit: d1be44b474e5acfa16adf007a1f49f104e10fead
+  ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
+  RxCocoa: 2d33c1e1e5d66492052ad46b11024ae287572880
+  RxRelay: 335c78b926a2aea8d863a6d25f1ed3b5ad8e8705
+  RxSwift: 4e28be97cbcfeee614af26d83415febbf2bf6f45
+  SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
+  SWCompression: 9379873ad5e9f25b31db88c441649b59a4c2bab7
+  SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
+  TopStepAIBudsSDK: b310564bcffe5875fac4119a3e567d9123f3b46d
+  TopStepComKit-Git: f7cdeba4c0e2d8951b2626f30c52e8d5fc2dfc84
+  YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
+  ZIPFoundation: b1f0de4eed33e74a676f76e12559ab6b75990197
+  zipzap: 940162d9c9c60472c2eab341385e4214da0fdf1c
+
+PODFILE CHECKSUM: a98a94e7016abd875721d27d2a0bbf1938f0a0ed
+
+COCOAPODS: 1.16.2

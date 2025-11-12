@@ -11,10 +11,6 @@
 #endif
 
 #import "TSCppEISWrapper.h"
-#import "TSOpusDecoder.h"
-#import "TSSCOAudioCaptureManager.h"
-#import "TSSCOAudioFileManager.h"
-#import "TSVoiceActivityDetector.h"
 #import "TopStepAIBudsSDK.h"
 #import "TSCrashHandler.h"
 

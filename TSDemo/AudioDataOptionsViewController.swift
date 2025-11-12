@@ -145,9 +145,9 @@ final class SCOAudioDataViewController: UIViewController {
 final class DeviceCallbackAudioDataViewController: UIViewController {
     
     private enum AIRecordType: UInt8 {
-        case callRecord = 0
-        case aiRecord = 1
-        case transRecord = 2
+        case aiRecord = 0       // 现场录音
+        case callRecord = 1     // 通话录音
+        case transRecord = 2    // 翻译录音
     }
     
     private let device: TSSBEarbuds
@@ -256,7 +256,7 @@ final class DeviceCallbackAudioDataViewController: UIViewController {
             return
         }
         
-        startRecording(recordType: .callRecord)
+        startRecording(recordType: .aiRecord)
     }
     
     @objc private func stopRecordingTapped() {

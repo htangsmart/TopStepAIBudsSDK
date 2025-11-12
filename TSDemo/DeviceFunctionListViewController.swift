@@ -77,6 +77,11 @@ final class DeviceFunctionListViewController: UIViewController {
                 guard let self = self else { return }
                 let vc = DeviceDataImportViewController(device: self.device, observer: self.observer)
                 self.navigationController?.pushViewController(vc, animated: true)
+            },
+            FunctionItem(title: "音频数据获取", subtitle: "SCO链路与设备回调音频") { [weak self] in
+                guard let self = self else { return }
+                let vc = AudioDataOptionsViewController(device: self.device, observer: self.observer)
+                self.navigationController?.pushViewController(vc, animated: true)
             }
         ]
     }

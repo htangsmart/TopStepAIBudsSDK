@@ -135,6 +135,9 @@ class DeviceObserver: NSObject, TSSoudbudObserver {
     /// 设备支持功能 - Device support function
     let supportFunction = BehaviorRelay<DeviceSupportFunction>(value: DeviceSupportFunction())
     
+    /// AI 录音数据流 - AI record data stream
+    let aiRecordData = PublishRelay<Data>()
+    
     // MARK: - Initialization
     override init() {
         super.init()
@@ -468,6 +471,9 @@ extension DeviceObserver {
         DispatchQueue.main.async { [weak self] in
             let length = recordData?.count ?? 0
             print("🎤 [DeviceObserver] AI 录音 - AI Record: dataLength=\(length)")
+            if let data = recordData, !data.isEmpty {
+                self?.aiRecordData.accept(data)
+            }
         }
     }
     

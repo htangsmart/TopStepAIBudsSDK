@@ -43,5 +43,7 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>App使用麦克风权限，以便您可以进行语音输入</string>
 </dict>
 </plist>

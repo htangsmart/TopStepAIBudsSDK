@@ -8,6 +8,7 @@
 import UIKit
 import TopStepABMateSDK
 import RxSwift
+import RxRelay
 
 /// 音频数据获取列表页面
 final class AudioDataOptionsViewController: UIViewController {
@@ -100,11 +101,77 @@ extension AudioDataOptionsViewController: UITableViewDataSource, UITableViewDele
 }
 
 // MARK: - 占位页面
-/// SCO链路音频数据占位页面
+/// SCO链路音频数据页面
 final class SCOAudioDataViewController: UIViewController {
     
     private let device: TSSBEarbuds
     private let observer: DeviceObserver
+    private let captureManager = TSSCOAudioCaptureManager()
+    private let disposeBag = DisposeBag()
+    
+    private lazy var scoStatusLabel: UILabel = makeStatusLabel()
+    private lazy var bluetoothStatusLabel: UILabel = makeStatusLabel()
+    private lazy var vadStatusLabel: UILabel = makeStatusLabel()
+    private lazy var dataCountLabel: UILabel = makeStatusLabel()
+    private lazy var fileStatusLabel: UILabel = makeStatusLabel()
+    private lazy var vadSwitchLabel: UILabel = {
+        let label = UILabel()
+        label.font = .preferredFont(forTextStyle: .body)
+        label.textColor = .label
+        label.numberOfLines = 1
+        label.text = "启用语音活动检测 (VAD)"
+        return label
+    }()
+    private lazy var vadSwitch: UISwitch = {
+        let uiSwitch = UISwitch()
+        uiSwitch.addTarget(self, action: #selector(vadSwitchValueChanged(_:)), for: .valueChanged)
+        return uiSwitch
+    }()
+    private lazy var startButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("开启SCO链路", for: .normal)
+        button.titleLabel?.font = .preferredFont(forTextStyle: .headline)
+        button.addTarget(self, action: #selector(startButtonTapped), for: .touchUpInside)
+        return button
+    }()
+    private lazy var stopButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("关闭SCO链路", for: .normal)
+        button.titleLabel?.font = .preferredFont(forTextStyle: .headline)
+        button.isEnabled = false
+        button.addTarget(self, action: #selector(stopButtonTapped), for: .touchUpInside)
+        return button
+    }()
+    private lazy var logTextView: UITextView = {
+        let textView = UITextView()
+        textView.isEditable = false
+        textView.font = .monospacedSystemFont(ofSize: 13, weight: .regular)
+        textView.textColor = .secondaryLabel
+        textView.backgroundColor = .secondarySystemBackground
+        textView.layer.cornerRadius = 8
+        textView.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        textView.setContentHuggingPriority(.defaultLow, for: .vertical)
+        textView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
+        return textView
+    }()
+    
+    private var currentTempFilePath: String?
+    private var lastSavedFileURL: URL?
+    private var totalBytesInCurrentSegment: Int = 0
+    private var totalFramesInCurrentSegment: Int = 0
+    private var isVoiceSegmentActive: Bool = false
+    private let sampleRate = 16_000
+    private let channelCount = 1
+    private lazy var logDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm:ss.SSS"
+        return formatter
+    }()
+    private lazy var fileNameDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyyMMdd_HHmmss"
+        return formatter
+    }()
     
     init(device: TSSBEarbuds, observer: DeviceObserver) {
         self.device = device
@@ -120,24 +187,381 @@ final class SCOAudioDataViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         title = "SCO链路音频数据"
-        showPlaceholder(text: "SCO链路音频数据功能开发中")
-        print("🎧 SCO链路音频数据页面 | device: \(device)")
+        setupUI()
+        bindObserver()
+        setupCaptureCallbacks()
+        updateAllStatusLabels()
+        vadSwitch.isOn = captureManager.voiceActivityDetectionEnabled
+        appendLog("页面初始化完成，等待操作")
     }
     
-    private func showPlaceholder(text: String) {
-        let label = UILabel()
-        label.text = text
-        label.textAlignment = .center
-        label.textColor = .secondaryLabel
-        label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(label)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if isMovingFromParent {
+            tearDownCaptureIfNeeded()
+        }
+    }
+    
+    deinit {
+        tearDownCaptureIfNeeded()
+    }
+    
+    // MARK: - UI
+    private func setupUI() {
+        let contentStack = UIStackView()
+        contentStack.axis = .vertical
+        contentStack.spacing = 16
+        contentStack.translatesAutoresizingMaskIntoConstraints = false
+        
+        let vadSwitchRow = UIStackView(arrangedSubviews: [vadSwitchLabel, vadSwitch])
+        vadSwitchRow.axis = .horizontal
+        vadSwitchRow.alignment = .center
+        vadSwitchRow.spacing = 12
+        
+        let buttonStack = UIStackView(arrangedSubviews: [startButton, stopButton])
+        buttonStack.axis = .horizontal
+        buttonStack.spacing = 16
+        buttonStack.distribution = .fillEqually
+        
+        logTextView.translatesAutoresizingMaskIntoConstraints = false
+        logTextView.heightAnchor.constraint(equalToConstant: 220).isActive = true
+        
+        contentStack.addArrangedSubview(scoStatusLabel)
+        contentStack.addArrangedSubview(bluetoothStatusLabel)
+        contentStack.addArrangedSubview(vadStatusLabel)
+        contentStack.addArrangedSubview(dataCountLabel)
+        contentStack.addArrangedSubview(fileStatusLabel)
+        contentStack.addArrangedSubview(vadSwitchRow)
+        contentStack.addArrangedSubview(buttonStack)
+        contentStack.addArrangedSubview(logTextView)
+        
+        view.addSubview(contentStack)
         NSLayoutConstraint.activate([
-            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            label.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            label.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: 16),
-            label.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -16)
+            contentStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            contentStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            contentStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         ])
+    }
+    
+    // MARK: - Binding
+    private func bindObserver() {
+        observer.btConnectState
+            .asObservable()
+            .compactMap { $0 }
+            .distinctUntilChanged { $0.rawValue == $1.rawValue }
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] state in
+                self?.bluetoothStatusLabel.text = "蓝牙连接状态：\(self?.describe(btState: state) ?? "未知")"
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func setupCaptureCallbacks() {
+        captureManager.setupSpeakStart({ [weak self] in
+            guard let self else { return }
+            DispatchQueue.main.async {
+                guard !self.isVoiceSegmentActive else {
+                    self.appendLog("检测到语音开始（忽略重复回调）")
+                    return
+                }
+                self.isVoiceSegmentActive = true
+                self.currentTempFilePath = self.captureManager.fileManager.getCurrentTempAudioFilePath()
+                self.totalBytesInCurrentSegment = 0
+                self.totalFramesInCurrentSegment = 0
+                self.updateVADStatusLabel(with: .speakingStar)
+                self.updateDataCountLabel()
+                self.appendLog("检测到语音开始")
+            }
+        }, data: { [weak self] data in
+            guard let self else { return }
+            DispatchQueue.main.async {
+                self.totalBytesInCurrentSegment += data.count
+                self.totalFramesInCurrentSegment += data.count / MemoryLayout<Int16>.size
+                self.updateDataCountLabel()
+            }
+        }, speakEnd: { [weak self] in
+            guard let self else { return }
+            DispatchQueue.main.async {
+                self.appendLog("检测到语音结束")
+                self.updateVADStatusLabel(with: .speakingEnd)
+                self.handleSpeechSegmentFinished()
+            }
+        })
+    }
+    
+    private func tearDownCaptureIfNeeded() {
+        if captureManager.isCapturing {
+            captureManager.stopCapture()
+            appendLog("页面离开，自动关闭SCO链路")
+        }
+    }
+    
+    // MARK: - Actions
+    @objc private func startButtonTapped() {
+        guard !captureManager.isCapturing else {
+            appendLog("SCO链路已经开启")
+            return
+        }
+        appendLog("正在开启SCO链路…")
+        updateButtonStates(isCapturing: true, temporarilyDisable: true)
+        captureManager.startCapturePreferBluetooth(true, sampleRate: Double(sampleRate), success: { [weak self] in
+            DispatchQueue.main.async {
+                self?.appendLog("SCO链路开启成功")
+                self?.updateButtonStates(isCapturing: true)
+                self?.updateAllStatusLabels()
+            }
+        }, failed: { [weak self] error in
+            DispatchQueue.main.async {
+                self?.appendLog("SCO链路开启失败：\(error.localizedDescription)")
+                self?.updateButtonStates(isCapturing: false)
+                self?.updateAllStatusLabels()
+            }
+        })
+    }
+    
+    @objc private func stopButtonTapped() {
+        guard captureManager.isCapturing else {
+            appendLog("SCO链路已关闭")
+            return
+        }
+        
+        // 如果当前正在说话，先保存当前数据
+        if isVoiceSegmentActive {
+            appendLog("检测到正在说话，先保存当前数据…")
+            saveCurrentSpeechSegment()
+        }
+        
+        appendLog("正在关闭SCO链路…")
+        captureManager.stopCapture()
+        updateButtonStates(isCapturing: false)
+        updateAllStatusLabels()
+        appendLog("SCO链路已关闭")
+        isVoiceSegmentActive = false
+    }
+    
+    @objc private func vadSwitchValueChanged(_ sender: UISwitch) {
+        captureManager.voiceActivityDetectionEnabled = sender.isOn
+        appendLog("VAD已\(sender.isOn ? "开启" : "关闭")")
+        updateVADStatusLabel(with: captureManager.voiceActivityDetectionEnabled ? captureManager.vadState : nil)
+    }
+    
+    // MARK: - Status Updates
+    private func updateAllStatusLabels() {
+        updateSCOStatusLabel()
+        bluetoothStatusLabel.text = "蓝牙连接状态：\(describe(btState: observer.btConnectState.value ?? .disconnected))"
+        updateVADStatusLabel(with: captureManager.voiceActivityDetectionEnabled ? captureManager.vadState : nil)
+        updateDataCountLabel()
+        updateFileStatusLabel()
+    }
+    
+    private func updateSCOStatusLabel() {
+        let status = captureManager.isCapturing ? "已开启" : "未开启"
+        scoStatusLabel.text = "SCO链路状态：\(status)"
+    }
+    
+    private func updateVADStatusLabel(with state: TSVADState?) {
+        guard captureManager.voiceActivityDetectionEnabled else {
+            vadStatusLabel.text = "VAD状态：未启用"
+            return
+        }
+        let currentState = state ?? captureManager.vadState
+        vadStatusLabel.text = "VAD状态：\(describe(vadState: currentState))"
+    }
+    
+    private func updateDataCountLabel() {
+        let kiloBytes = Double(totalBytesInCurrentSegment) / 1024.0
+        dataCountLabel.text = String(format: "当前片段：%d 帧 / %.2f KB", totalFramesInCurrentSegment, kiloBytes)
+    }
+    
+    private func updateFileStatusLabel() {
+        if let url = lastSavedFileURL {
+            fileStatusLabel.text = "最近文件：\(url.lastPathComponent)"
+        } else {
+            fileStatusLabel.text = "最近文件：--"
+        }
+    }
+    
+    private func updateButtonStates(isCapturing: Bool, temporarilyDisable: Bool = false) {
+        if temporarilyDisable {
+            startButton.isEnabled = false
+            stopButton.isEnabled = false
+            return
+        }
+        startButton.isEnabled = !isCapturing
+        stopButton.isEnabled = isCapturing
+    }
+    
+    // MARK: - Speech Segment Handling
+    private func handleSpeechSegmentFinished() {
+        guard isVoiceSegmentActive else {
+            appendLog("检测到语音结束，但当前未标记语音段，忽略")
+            return
+        }
+        isVoiceSegmentActive = false
+        saveCurrentSpeechSegment()
+    }
+    
+    /// 保存当前语音段数据（用于正常结束或强制保存）
+    private func saveCurrentSpeechSegment() {
+        let frames = totalFramesInCurrentSegment
+        let bytes = totalBytesInCurrentSegment
+        totalFramesInCurrentSegment = 0
+        totalBytesInCurrentSegment = 0
+        updateDataCountLabel()
+        
+        guard captureManager.voiceActivityDetectionEnabled else {
+            appendLog("VAD已关闭，跳过转码缓存文件")
+            removeCurrentTempFileIfNeeded()
+            return
+        }
+        
+        guard let tempPath = captureManager.fileManager.getCurrentTempAudioFilePath() ?? currentTempFilePath else {
+            appendLog("未找到缓存PCM文件路径")
+            return
+        }
+        currentTempFilePath = nil
+        let tempURL = URL(fileURLWithPath: tempPath)
+        appendLog("准备转码缓存文件（\(frames) 帧，\(bytes) 字节）")
+        
+        DispatchQueue.global(qos: .utility).async { [weak self] in
+            self?.convertTempPCMToWav(tempURL: tempURL, frameCount: frames)
+        }
+    }
+    
+    private func removeCurrentTempFileIfNeeded() {
+        guard let tempPath = captureManager.fileManager.getCurrentTempAudioFilePath() ?? currentTempFilePath else {
+            return
+        }
+        currentTempFilePath = nil
+        let tempURL = URL(fileURLWithPath: tempPath)
+        if FileManager.default.fileExists(atPath: tempURL.path) {
+            try? FileManager.default.removeItem(at: tempURL)
+            appendLog("已删除临时PCM文件：\(tempURL.lastPathComponent)")
+        }
+    }
+    
+    private func convertTempPCMToWav(tempURL: URL, frameCount: Int) {
+        let fileManager = FileManager.default
+        guard fileManager.fileExists(atPath: tempURL.path) else {
+            DispatchQueue.main.async { [weak self] in
+                self?.appendLog("临时PCM文件不存在，转码取消")
+            }
+            return
+        }
+        
+        do {
+            let pcmData = try Data(contentsOf: tempURL)
+            guard !pcmData.isEmpty else {
+                try? fileManager.removeItem(at: tempURL)
+                DispatchQueue.main.async { [weak self] in
+                    self?.appendLog("PCM数据为空，已删除缓存文件")
+                }
+                return
+            }
+            
+            let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+            let recordDirectory = documentsURL.appendingPathComponent("AIChatRecord", isDirectory: true)
+            if !fileManager.fileExists(atPath: recordDirectory.path) {
+                try fileManager.createDirectory(at: recordDirectory, withIntermediateDirectories: true)
+            }
+            
+            let baseName = fileNameDateFormatter.string(from: Date())
+            var destinationURL = recordDirectory.appendingPathComponent(baseName).appendingPathExtension("wav")
+            var index = 1
+            while fileManager.fileExists(atPath: destinationURL.path) {
+                destinationURL = recordDirectory.appendingPathComponent("\(baseName)_\(index)").appendingPathExtension("wav")
+                index += 1
+            }
+            
+            var wavData = makeWavHeader(dataLength: pcmData.count)
+            wavData.append(pcmData)
+            try wavData.write(to: destinationURL, options: .atomic)
+            try? fileManager.removeItem(at: tempURL)
+            
+            DispatchQueue.main.async { [weak self] in
+                self?.lastSavedFileURL = destinationURL
+                self?.appendLog("已保存WAV文件：\(destinationURL.lastPathComponent)（\(frameCount) 帧）")
+                self?.updateFileStatusLabel()
+            }
+        } catch {
+            DispatchQueue.main.async { [weak self] in
+                self?.appendLog("转码失败：\(error.localizedDescription)")
+            }
+        }
+    }
+    
+    // MARK: - Helpers
+    private func appendLog(_ message: String) {
+        let timestamp = logDateFormatter.string(from: Date())
+        let newLine = "[\(timestamp)] \(message)"
+        let existing = logTextView.text ?? ""
+        let combined = existing.isEmpty ? newLine : existing + "\n" + newLine
+        let trimmed = combined.suffix(10_000)
+        logTextView.text = String(trimmed)
+        if logTextView.text.count > 0 {
+            logTextView.scrollRangeToVisible(NSRange(location: logTextView.text.count - 1, length: 1))
+        }
+    }
+    
+    private func makeWavHeader(dataLength: Int) -> Data {
+        let bitsPerSample: UInt16 = 16
+        let blockAlign = UInt16(channelCount) * bitsPerSample / 8
+        let byteRate = UInt32(sampleRate) * UInt32(blockAlign)
+        let chunkSize = UInt32(36 + dataLength)
+        
+        var header = Data(capacity: 44)
+        header.append(contentsOf: "RIFF".utf8)
+        header.append(littleEndian: chunkSize)
+        header.append(contentsOf: "WAVE".utf8)
+        header.append(contentsOf: "fmt ".utf8)
+        header.append(littleEndian: UInt32(16))
+        header.append(littleEndian: UInt16(1))
+        header.append(littleEndian: UInt16(channelCount))
+        header.append(littleEndian: UInt32(sampleRate))
+        header.append(littleEndian: byteRate)
+        header.append(littleEndian: blockAlign)
+        header.append(littleEndian: bitsPerSample)
+        header.append(contentsOf: "data".utf8)
+        header.append(littleEndian: UInt32(dataLength))
+        return header
+    }
+    
+    private func describe(vadState: TSVADState) -> String {
+        switch vadState {
+        case .silence:
+            return "静音"
+        case .speakingStar:
+            return "开始说话"
+        case .speaking:
+            return "说话中"
+        case .speakingEnd:
+            return "结束说话"
+        @unknown default:
+            return "未知"
+        }
+    }
+    
+    private func describe(btState: TSBTConnectState) -> String {
+        switch btState {
+        case .connected:
+            return "已连接"
+        case .connecting:
+            return "连接中"
+        case .disconnecting:
+            return "断开中"
+        case .disconnected:
+            return "未连接"
+        @unknown default:
+            return "未知"
+        }
+    }
+    
+    private func makeStatusLabel() -> UILabel {
+        let label = UILabel()
+        label.font = .preferredFont(forTextStyle: .body)
+        label.textColor = .label
+        label.numberOfLines = 0
+        return label
     }
 }
 

@@ -36,7 +36,14 @@ including device connection, audio processing, and fitness tracking capabilities
   # 编译设置
   s.pod_target_xcconfig = {
     'ENABLE_BITCODE' => 'NO',
-    'SWIFT_VERSION' => '5.0'
+    'SWIFT_VERSION' => '5.0',
+    'VALID_ARCHS' => 'arm64',
+    'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'
+  }
+
+  s.user_target_xcconfig = {
+    'VALID_ARCHS' => 'arm64',
+    'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'
   }
 
 end
